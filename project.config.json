@@ -11,6 +11,8 @@
 	"compileType": "miniprogram",
 	"appid": "wx8ae3e8607ee301fd",
 	"projectname": "lib-whu",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

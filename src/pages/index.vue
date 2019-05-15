@@ -1,17 +1,24 @@
 <template>
   <div class="container" @click="clickHandle('test click', $event)">
-
     <div class="userinfo" @click="bindViewTap">
       <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
       <div class="userinfo-nickname">
         <card :text="userInfo.nickName"></card>
       </div>
     </div>
-
-    <van-tag>标签</van-tag>
-    <van-tag type="danger">标签</van-tag>
-    <van-tag type="primary">标签</van-tag>
-    <van-tag type="success">标签</van-tag>
+    <div class='image'>
+      <img src='../../static/100/banner.png'/>
+    </div>
+    <vant-search
+    :value='searchName'
+    placeholder='点击搜索馆藏资源'
+    show-action
+    shape='round'
+    use-action-slot
+    bind:search='onSearch'
+    >
+    <view slot='action' bind:tap='onSearch'>搜索</view>
+    </vant-search>
 
     <div class="usermotto">
       <div class="user-motto">
@@ -24,6 +31,11 @@
       <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
     </form>
     <a href="/pages/counter" class="counter">去往Vuex示例页面</a>
+    <van-tabbar :active="active" bind:change="onChange">
+      <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+      <van-tabbar-item icon="search" dot>发现</van-tabbar-item>
+      <van-tabbar-item icon="friends-o" info="5">我的</van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
@@ -37,6 +49,8 @@ export default {
     return {
       motto: 'Hello World',
       userInfo: {},
+      searchName: '',
+      active: 0,
     };
   },
 
@@ -45,6 +59,9 @@ export default {
   },
 
   methods: {
+    onSearch() {
+
+    },
     bindViewTap() {
       const url = '/packageA/logs';
       this.$router.push(url);
