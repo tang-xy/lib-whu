@@ -2,6 +2,8 @@
   "pages": [
     "pages/index",
     "pages/counter",
+    "pages/find",
+    "pages/info",
     {
       "path": "packageA/logs",
       "subPackage": true
