@@ -1,5 +1,5 @@
 <template>
-  <div>Info</div>
+  <div>Borrow Rank</div>
 </template>
 
 <script>
@@ -11,4 +11,3 @@ export default {
 <style lang="scss" scoped>
 
 </style>
-
