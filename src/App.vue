@@ -7,6 +7,7 @@ export default {
       'van-tag': 'vant-weapp/dist/tag/index',
       'van-field': 'vant-weapp/dist/field/index',
       'van-search': 'vant-weapp/dist/search/index',
+      'van-icon': 'vant-weapp/dist/icon/index',
     },
   },
   created() {
