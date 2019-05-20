@@ -24,7 +24,7 @@ const store = new Vuex.Store({
       commit('setSession', session);
       vertifySession({ session }).then((response) => {
         if (response) {
-          wx.navigateTo({ url: '/pages/login' });
+          wx.navigateTo({ url: '/pages/login?type=login' });
         } else {
           commit('setLogin', response.data.login);
           commit('setLibBind', response.data.libBind);
