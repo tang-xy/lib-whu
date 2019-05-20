@@ -148,7 +148,7 @@ export default {
     padding-bottom: 0vh;
   }
   .find-tittle{
-      border-bottom: 0.1vh solid #777777;
+      border-bottom: 0.1vh solid #979797;
       margin-bottom: .5rem;
       padding-bottom: .5rem;
   }
