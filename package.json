@@ -13,6 +13,7 @@
     "sdev": "concurrently \"npm run server\" \"npm run dev\" "
   },
   "dependencies": {
+    "concurrently": "^4.1.0",
     "flyio": "^0.6.14",
     "mockjs": "^1.0.1-beta3",
     "mpvue": "^2.0.0",

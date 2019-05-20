@@ -34,6 +34,7 @@ module.exports = {
     'no-unused-vars' : ['off'],
     'import/no-unresolved': ['off'],
     'no-console': ['off'],
+    'import/no-named-as-default': ['off'],
     // allow optionalDependencies
     'import/no-extraneous-dependencies': ['error', {
       'optionalDependencies': ['test/unit/index.js']

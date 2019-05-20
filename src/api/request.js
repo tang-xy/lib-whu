@@ -8,13 +8,17 @@ fly.config.headers = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json;charset=utf-8',
 };
-fly.interceptors.request.use((error) => {
-  Promise.reject(error);
+fly.interceptors.request.use(config => config, (err) => {
+  wx.navigateTo({ url: '/pages/error?type=0' });
+  return Promise.reject(err);
 });
 
 fly.interceptors.response.use(
   response => response,
-  err => Promise.reject(err),
+  (err) => {
+    wx.navigateTo({ url: '/pages/error?type=0' });
+    return Promise.reject(err);
+  },
 );
 
 export default fly;

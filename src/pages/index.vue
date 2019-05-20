@@ -35,6 +35,10 @@ import card from '@/components/card';
 
 export default {
   mpType: 'page',
+  onLoad() {
+    const session = wx.getStorageSync('session') || '';
+    this.$store.dispatch('setSession', session);
+  },
 
   data() {
 
@@ -65,10 +69,6 @@ export default {
       const url = '/pages/notice';
       wx.navigateTo({ url });
     },
-  },
-
-  created() {
-
   },
 };
 </script>

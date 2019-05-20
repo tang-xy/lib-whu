@@ -2,5 +2,22 @@
   "test": {
     "id": "test",
     "value": 1
-  }
+  },
+  "vertify": [
+    {
+      "session": "test01",
+      "login": true,
+      "libBind": true
+    },
+    {
+      "session": "test02",
+      "login": true,
+      "libBind": false
+    },
+    {
+      "session": "test03",
+      "login": false,
+      "libBind": false
+    }
+  ]
 }
