@@ -66,12 +66,14 @@ export default {
     },
     onInputSearch(e) {
       this.searchContent = e.detail.value;
+      this.search(this.searchContent);
     },
     onClickHistory(e) {
-
+      const list = this.searchHistory;
+      this.search(list[e.detail.key]);
     },
     search(value) {
-
+      wx.navigateTo({ url: `/pages/search/result?value=${value}` });
     },
   },
 };
