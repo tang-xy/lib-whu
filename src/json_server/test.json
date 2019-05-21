@@ -2,5 +2,47 @@
   "test": {
     "id": "test",
     "value": 1
-  }
+  },
+  "vertify": [
+    {
+      "session": "test01",
+      "login": true,
+      "libBind": true
+    },
+    {
+      "session": "test02",
+      "login": true,
+      "libBind": false
+    },
+    {
+      "session": "test03",
+      "login": false,
+      "libBind": false
+    }
+  ],
+  "libvertify": [
+    {
+      "username": "test01",
+      "password": "test01",
+      "result": 1
+    }
+  ],
+  "account": [
+    {
+      "id": 0,
+      "session": "test01",
+      "login": true,
+      "libBind": true,
+      "libun": "test01",
+      "libpw": "test01"
+    }
+  ],
+  "login": [
+    {
+      "id": 0,
+      "session": "test01",
+      "login": true,
+      "libBind": false
+    }
+  ]
 }
