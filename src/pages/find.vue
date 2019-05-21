@@ -1,13 +1,10 @@
 <template>
   <div class="find-view">
-    <div class="find-act">
-      <span>&nbsp;&nbsp;热门活动&nbsp;</span>
-    </div>
-    <scroll-view  scroll-y="true" style="height:200px"  class="scroll-view" bindscrolltolower="loadMore">
+    <scroll-view  scroll-y="true"  class="scroll-view" bindscrolltolower="loadMore">
       <view class="swiper">
         <swiper class="swiper-box" :indicator-dots="indicatorDots" :vertical="vertical"
               :autoplay="autoplay" :interval="interval" :duration="duration"
-              indicator-color="#fff" indicator-active-color="red">
+              indicator-color="#fff">
           <block :wx:for-items="banner_url" wx:key="item.id">
             <swiper-item>
               <block :wx:if="item">
@@ -24,41 +21,20 @@
     <div class='education-button-container'>
       <button type='default' @click='toSeat'>
         <image src='/static/200/日程 (1)@3x.png' mode='aspectFit'/>
-        <span>培训日程</span>
       </button>
       <button type='default' @click='toBorrow'>
         <image src='/static/200/视频 (2) 副本@3x.png' mode='aspectFit'/>
-        <span>小布微课</span>
       </button>
       <button type='default' @click='toRank'>
+        <image src='/static/200/视频 (1)@3x.png' mode='aspectFit'/>
+      </button>
+      <button type='default' @click='toNotice'>
         <image src='/static/200/齿轮@3x.png' mode='aspectFit'/>
-        <span>使用攻略</span>
       </button>
-      <button type='default' @click='toNotice'>
-        <image src='/static/200/书 (2)@3x.png' mode='aspectFit'/>
-        <span>往期培训</span>
-      </button>
-    </div>
-    <div class="find-tittle">
-      <span>&nbsp;&nbsp;移动数据库&nbsp;</span>
-    </div>
-    <div class='education-button-container'>
-      <button type='default' @click='toSeat'>
-        <image src='/static/200/图层 1@3x.png' mode='aspectFit'/>
-        <span>百度教育</span>
-      </button>
-      <button type='default' @click='toBorrow'>
-        <image src='/static/200/图层 2@3x.png' mode='aspectFit'/>
-        <span>新东方</span>
-      </button>
-      <button type='default' @click='toRank'>
-        <image src='/static/200/图层 4@3x.png' mode='aspectFit'/>
-        <span>知识世界</span>
-      </button>
-      <button type='default' @click='toNotice'>
-        <image src='/static/200/图层 3@3x.png' mode='aspectFit'/>
-        <span>书香中国</span>
-      </button>
+      <span>培训日程</span>
+      <span>小布微课</span>
+      <span>小布微课</span>
+      <span>使用攻略</span>
     </div>
     <div class="find-tittle">
       <span>&nbsp;&nbsp;新生专栏&nbsp;</span>
@@ -66,20 +42,41 @@
     <div class='education-button-container'>
       <button type='default' @click='toSeat'>
         <image src='/static/200/我的图书馆@3x.png' mode='aspectFit'/>
-        <span>关于本馆</span>
       </button>
       <button type='default' @click='toBorrow'>
-        <image src='/static/200/我的图书馆@3x.png' mode='aspectFit'/>
-        <span>玩转本馆</span>
+        <image src='/static/200/书 (2)@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toRank'>
         <image src='/static/200/lingdao@3x.png' mode='aspectFit'/>
-        <span>馆长寄语</span>
       </button>
       <button type='default' @click='toNotice'>
         <image src='/static/200/游戏@3x.png' mode='aspectFit'/>
-        <span>新生游戏</span>
       </button>
+      <span>关于本馆</span>
+      <span>玩转本馆</span>
+      <span>馆长寄语</span>
+      <span>新生游戏</span>
+    </div>
+    <div class="find-tittle">
+      <span>&nbsp;&nbsp;移动数据库&nbsp;</span>
+    </div>
+    <div class='education-button-container'>
+      <button type='default' @click='toSeat'>
+        <image src='/static/200/图层 1@3x.png' mode='aspectFit'/>
+      </button>
+      <button type='default' @click='toBorrow'>
+        <image src='/static/200/图层 2@3x.png' mode='aspectFit'/>
+      </button>
+      <button type='default' @click='toRank'>
+        <image src='/static/200/图层 4@3x.png' mode='aspectFit'/>
+      </button>
+      <button type='default' @click='toNotice'>
+        <image src='/static/200/图层 3@3x.png' mode='aspectFit'/>
+      </button>
+      <span>百度教育</span>
+      <span>&nbsp;新东方&nbsp;&nbsp;</span>
+      <span>知识世界</span>
+      <span>书香中国</span>
     </div>
   </div>
 </template>
@@ -132,11 +129,12 @@ export default {
   padding-top: 2vh;
   padding-bottom: 0vh;
   background-color: #f7f7f7;
-  .find-act{
-    font-size: 2vh;
-    justify-content:center;
-  }
   .scroll-view{
+    width: 96vw;
+    height: 27vh;
+    .swiper-box{
+      height: 27vh;
+    }
     .scroll-image{
       width: 96vw;
       height: 27vh;
@@ -145,16 +143,13 @@ export default {
         height: 100%;
       }
     }
-    padding-bottom: 0vh;
   }
   .find-tittle{
-      border-bottom: 0.1vh solid #979797;
-      margin-bottom: .5rem;
-      padding-bottom: .5rem;
+      border-bottom: 0.1vh solid #e6e6e6;
   }
   .education-button-container{
     display: flex;
-    margin-top: 2vh;
+    margin-top: 1vh;
     width: 96vw;
     height: 30vh;
     flex-wrap: wrap;
@@ -171,13 +166,15 @@ export default {
         width: 90%;
         height: 50%;
       }
-      span{
-        width: 24%;
-        height: 40%;
-        align-items: center;
-        font-size: 2vh
-      }
     }
+    span{
+        align-items: center;
+        justify-content: center;
+        font-size: 2vh;
+        margin-top: -13vh;
+        padding-left: 4.5vh;
+        padding-right: 4.3vh;
+      }
 
   }
 }
