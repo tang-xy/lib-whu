@@ -1,6 +1,6 @@
 <template>
 <div class='search-result-list'>
-  <searchResultCard
+  <search-result-card
   v-for='(item, index) in result'
   :key=index
   :name=item.name

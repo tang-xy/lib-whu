@@ -28,7 +28,7 @@
       <image src='/static/110/垃圾桶@3x.png' mode='scaleToFill'/>
     </div>
     <div class='search-history-container'>
-      <button v-for='(item, index) in searchHistory' :key=index @click=onClickHistory>{{item.name}}</button>
+      <button v-for='(item, index) in searchHistory' :key=index @click=onClickHistory(index)>{{item.name}}</button>
     </div>
     <image class='bk' src='/static/110/bk.png' mode='scaleToFill'/>
   </div>
@@ -68,9 +68,9 @@ export default {
       this.searchContent = e.detail.value;
       this.search(this.searchContent);
     },
-    onClickHistory(e) {
+    onClickHistory(key) {
       const list = this.searchHistory;
-      this.search(list[e.detail.key]);
+      this.search(list[key]);
     },
     search(value) {
       wx.navigateTo({ url: `/pages/search/result?value=${value}` });
