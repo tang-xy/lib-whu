@@ -11,7 +11,7 @@
     <div class="info-list">
       <div class="info-margin"/>
       <div class="info-line">
-        <image :src=piclist.cardpic mode='aspectFit'/>
+        <image :src=picurl.cardpic mode='aspectFit'/>
         <div>
           <span>&nbsp;电子校园卡</span>
           <image src='/static/320/更多 (1)@3x.png' mode='aspectFit'/>
@@ -24,7 +24,7 @@
       </div>
       <div class="info-margin"/>
       <div class="info-line">
-        <image :src=piclist.zhangdanpic mode='aspectFit'/>
+        <image :src=picurl.zhangdanpic mode='aspectFit'/>
         <div>
           <span>&nbsp;图书馆账单</span>
           <image src='/static/320/更多 (1)@3x.png' mode='aspectFit'/>
@@ -37,7 +37,7 @@
     <div class="info-list">
       <div class="info-margin"/>
       <div class="info-line">
-        <image :src=piclist.jieyuepic mode='aspectFit'/>
+        <image :src=picurl.jieyuepic mode='aspectFit'/>
         <div>
           <span>&nbsp;借阅信息</span>
           <image src='/static/320/更多 (1)@3x.png' mode='aspectFit'/>
@@ -50,7 +50,7 @@
       </div>
       <div class="info-margin"/>
       <div class="info-line">
-        <image :src=piclist.lishipic mode='aspectFit'/>
+        <image :src=picurl.lishipic mode='aspectFit'/>
         <div>
           <span>&nbsp;借阅历史</span>
           <image src='/static/320/更多 (1)@3x.png' mode='aspectFit'/>
@@ -63,7 +63,7 @@
       </div>
       <div class="info-margin"/>
       <div class="info-line">
-        <image :src=piclist.yuyuepic mode='aspectFit'/>
+        <image :src=picurl.yuyuepic mode='aspectFit'/>
         <div>
           <span>&nbsp;预约结果</span>
           <image src='/static/320/更多 (1)@3x.png' mode='aspectFit'/>
@@ -76,7 +76,7 @@
     <div class="info-list">
       <div class="info-margin"/>
       <div class="info-line">
-        <image :src=piclist.ziyuanpic mode='aspectFit'/>
+        <image :src=picurl.ziyuanpic mode='aspectFit'/>
         <div>
           <span>&nbsp;资源导购</span>
           <image src='/static/320/更多 (1)@3x.png' mode='aspectFit'/>
@@ -89,7 +89,7 @@
     <div class="info-list">
       <div class="info-margin"/>
       <div class="info-line">
-        <image :src=piclist.jianyipic mode='aspectFit'/>
+        <image :src=picurl.jianyipic mode='aspectFit'/>
         <div>
           <span>&nbsp;建议与反馈</span>
           <image src='/static/320/更多 (1)@3x.png' mode='aspectFit'/>
@@ -106,20 +106,49 @@ export default {
   mpType: 'page',
   data: {
     piclist: {
-      cardpic: '/static/320/卡 (1)@3x.png',
-      zhangdanpic: '/static/320/账单 (1)@3x.png',
-      jieyuepic: '/static/320/书 (4)@3x.png',
-      lishipic: '/static/320/历史 (1)@3x.png',
-      yuyuepic: '/static/320/预约 (1)@3x.png',
-      ziyuanpic: '/static/320/购物车@3x.png',
-      jianyipic: '/static/320/建议 (1)@3x.png',
+      cardpic: '卡 (1)@3x.png',
+      zhangdanpic: '账单 (1)@3x.png',
+      jieyuepic: '书 (4)@3x.png',
+      lishipic: '历史 (1)@3x.png',
+      yuyuepic: '预约 (1)@3x.png',
+      ziyuanpic: '购物车@3x.png',
+      jianyipic: '建议 (1)@3x.png',
     },
   },
-  methods:{
-    onClick() {
-      
+  computed: {
+    base: function base() {
+      if (this.$store.getters.getLibBind && this.$store.getters.getLogin) {
+        return '/static/330/';
+      }
+      return '/static/320/';
     },
-  }
+
+    picurl: function pic() {
+      console.log(this);
+      if (this.data) {
+        const a = {};
+        Object.keys(this.piclist).forEach(function lo(key) {
+          a[key] = this.piclist[key];
+        });
+        return a;
+      }
+      return {
+        cardpic: '/static/320/卡 (1)@3x.png',
+        zhangdanpic: '/static/320/账单 (1)@3x.png',
+        jieyuepic: '/static/320/书 (4)@3x.png',
+        lishipic: '/static/320/历史 (1)@3x.png',
+        yuyuepic: '/static/320/预约 (1)@3x.png',
+        ziyuanpic: '/static/320/购物车@3x.png',
+        jianyipic: '/static/320/建议 (1)@3x.png',
+      };
+    },
+  },
+  methods: {
+    onClick() {
+      const url = '/pages/login';
+      wx.navigateTo({ url });
+    },
+  },
 };
 </script>
 
