@@ -3,7 +3,7 @@
     <div class="info-logon">
       <image src='/static/320/矢量免扣卡通人物@3x.png'/>
       <view @click="onClick">点击登录
-        <span>&nbsp;&nbsp;登录更精彩</span>
+        <span>&nbsp;登录更精彩</span>
       </view>
       <div/>
     </div>
@@ -105,7 +105,6 @@
 export default {
   mpType: 'page',
   data: {
-    base: '/static/330/',
     piclist: {
       cardpic: '/static/320/卡 (1)@3x.png',
       zhangdanpic: '/static/320/账单 (1)@3x.png',
@@ -116,11 +115,11 @@ export default {
       jianyipic: '/static/320/建议 (1)@3x.png',
     },
   },
-  computed: {
-    picurl: function picurl() {
-      return this.base;
+  methods:{
+    onClick() {
+      
     },
-  },
+  }
 };
 </script>
 
