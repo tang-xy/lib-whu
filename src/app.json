@@ -73,6 +73,18 @@
       "route": "pages/notice"
     },
     {
+      "path": "pages/login/login",
+      "config":{
+      },
+      "route": "pages/login"
+    },
+    {
+      "path": "pages/error",
+      "config":{
+      },
+      "route": "pages/error"
+    },
+    {
       "path": "packageA/logs",
       "subPackage": true
     }
