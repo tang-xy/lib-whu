@@ -170,10 +170,10 @@ export default {
     span{
         align-items: center;
         justify-content: center;
-        font-size: 2vh;
+        font-size: 2.5vw;
         margin-top: -13vh;
-        padding-left: 4.5vh;
-        padding-right: 4.3vh;
+        padding-left: 7.5vw;
+        padding-right: 6.3vw;
       }
 
   }

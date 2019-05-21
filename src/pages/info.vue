@@ -116,16 +116,11 @@ export default {
       jianyipic: '/static/320/建议 (1)@3x.png',
     },
   },
-  /* computed: {
-    picurl: function () {
-      const a = {};
-      Object.keys(this.piclist).forEach(key => {
-        this.a[key] = this.base + this.piclist[key];
-      });
-      return this.a;
+  computed: {
+    picurl: function picurl() {
+      return this.base;
     },
   },
-  */
 };
 </script>
 
@@ -165,9 +160,9 @@ export default {
       height: 10vh;
       padding-top: 8.3vh;
       background-color: #ffffff;
-      font-size: 5vh;
+      font-size: 45rpx;
       span{
-        font-size: 3vh;
+        font-size: 34rpx;
         color: #777777;
       }
     }
@@ -212,7 +207,7 @@ export default {
       flex-wrap: wrap;
       span{
         padding-top:1.25vh;
-        font-size: 3.25vh;
+        font-size: 0.9;
         width: 95%;
         color: #ABABAB;
       }
