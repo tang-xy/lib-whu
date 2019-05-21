@@ -1,7 +1,7 @@
 <template>
   <div class='container'>
     <image class='bk' src='/static/340/上方@3x.png' mode='aspectFill'/>
-    <button v-if=login type='default' @click='login'>
+    <button v-if=login type='default' open-type='getUserInfo' @getuserinfo='getUserInfo' @click='wxlogin'>
       <span>微信快速登录</span>
       <image src='/static/340/矩形 5@3x.png' mode='scaleToFill'/>
     </button>
@@ -33,28 +33,61 @@ export default {
   mpType: 'page',
   data: {
     login: true,
+    userName: '',
+    password: '',
+    code: '',
   },
   onLoad(options) {
     const { type } = options;
     if (type === 'login') {
-      this.login = false;
+      this.login = true;
+      wx.setNavigationBarTitle({ title: '登录' });
+      this.wxlogin();
+    } else {
+      wx.setNavigationBarTitle({ title: '绑定图书馆账号' });
     }
   },
   methods: {
-    login() {
-      wx.login();
+    wxlogin() {
+      const that = this;
+      wx.login({
+        success(res) {
+          that.code = res.code;
+        },
+      });
     },
     bind() {
-
+      if (this.userName === '' || this.password === '') {
+        wx.showToast({ title: '学号/密码不能为空', icon: 'none' });
+      } else {
+        this.$store.dispatch('bindLibAccount', this.userName, this.password);
+      }
+    },
+    getUserInfo(e) {
+      if (e.mp.detail.userInfo) {
+        console.log(e.mp.detail.userInfo);
+        wx.showLoading({ title: '登录中...' });
+        const { encryptedData, userInfo, iv } = e.mp.detail;
+        this.$store.dispatch('wechatLogin', {
+          code: this.code,
+          encryptedData,
+          iv,
+        });
+        if (this.$store.getters.getLibBind) {
+          wx.navigateBack({ delta: 1 });
+        } else {
+          this.login = false;
+        }
+      }
     },
     exit() {
-
+      wx.navigateBack({ delta: 1 });
     },
     inputUsername(e) {
-
+      this.userName = e.detial.value;
     },
     inputPassword(e) {
-
+      this.password = e.detial.value;
     },
   },
   created() {
