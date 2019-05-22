@@ -50,6 +50,18 @@ export function bindLib(params) {
   });
 }
 
+export function searchLib(params) {
+  return new Promise((resolve, reject) => {
+    request.get('/searchlib', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
 export function getTestData(params) {
   return new Promise((resolve, reject) => {
     request.get('/test', params)
