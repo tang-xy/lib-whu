@@ -1,16 +1,16 @@
 <template>
   <div class='search-result-card' @click=clickCard>
     <div class='title'>
-      <span id='index'>{{index}}</span>
-      <span id='name'>{{name}}</span>
+      <span class='index'>{{index}}&nbsp;&nbsp;</span>
+      <span class='name'>{{name}}</span>
     </div>
     <div class='author'>
-      <span id='key'>作者：</span>
-      <span id='value'>{{author}}</span>
+      <span class='key'>作者：</span>
+      <span class='value'>{{author}}</span>
     </div>
     <div class='publish'>
-      <span id='key'>出版信息：</span>
-      <span id='value'>{{publish}}</span>
+      <span class='key'>出版信息：</span>
+      <span class='value'>{{publish}}</span>
     </div>
   </div>
 </template>
@@ -56,21 +56,34 @@ export default {
 
 <style lang="scss" scoped>
 .search-result-card{
-  width: 100%;
-  height: 20%;
   margin-top: 2%;
   margin-bottom: 2%;
   border-style: solid;
   border-radius: 5px;
   border-width: 1px;
+  border-color: grey;
+  padding-left: 5%;
+  padding-bottom: 3%;
+  padding-top: 3%;
+  background-color: white;
   .title{
     display: flex;
+    font-size: 40rpx;
+    font-weight: bold;
   }
   .author{
     display: flex;
+    font-size: 30rpx;
+    .value{
+      font-weight: lighter;
+    }
   }
   .publish{
     display: flex;
+    font-size: 30rpx;
+    .value{
+      font-weight: lighter;
+    }
   }
 }
 </style>

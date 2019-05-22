@@ -37,7 +37,7 @@ export default {
 
 <style lang="scss" scoped>
 .search-result-list{
-  width: 100%;
+  margin: 3vw;
   height: 100%;
 }
 
