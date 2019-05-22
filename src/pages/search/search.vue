@@ -5,12 +5,12 @@
     </div>
     <div class='lang-switch'>
       <button id='cn' type='default' @click='onSwitchToCN' style='margin-left: 4.5vw;'>
-        <span style='color: white'>中文库</span>
-        <image src='/static/110/圆角矩形 10@3x.png' mode='scaleToFill'/>
+        <span :style='{color: cnStyle.color}'>中文库</span>
+        <image :src=cnStyle.src mode='scaleToFill'/>
       </button>
       <button id='en' type='default' @click='onSwitchToEN' style='margin-right: 4.5vw;'>
-        <span style='color: #4A88DD'>英文库</span>
-        <image src='/static/110/圆角矩形 10 副本@3x.png' mode='scaleToFill'/>
+        <span :style='{color: enStyle.color}'>英文库</span>
+        <image :src=enStyle.src mode='scaleToFill'/>
       </button>
     </div>
     <div class='search-bar'>
@@ -39,6 +39,14 @@ export default {
   mpType: 'page',
   data: {
     lang: 'cn',
+    cnStyle: {
+      src: '/static/110/圆角矩形 10@3x.png',
+      color: 'white',
+    },
+    enStyle: {
+      src: '/static/110/圆角矩形 10 副本@3x.png',
+      color: '#4A88DD',
+    },
     searchType: ['全面检索', '题名', '著者', '索书号', 'ISSN', 'ISBN'],
     index: 0,
     searchContent: '',
@@ -56,13 +64,29 @@ export default {
   },
   methods: {
     onSwitchToCN() {
-
+      this.lang = 'cn';
+      this.cnStyle = {
+        src: '/static/110/圆角矩形 10@3x.png',
+        color: 'white',
+      };
+      this.enStyle = {
+        src: '/static/110/圆角矩形 10 副本@3x.png',
+        color: '#4A88DD',
+      };
     },
     onSwitchToEN() {
-
+      this.lang = 'en';
+      this.enStyle = {
+        src: '/static/110/圆角矩形 10@3x.png',
+        color: 'white',
+      };
+      this.cnStyle = {
+        src: '/static/110/圆角矩形 10 副本@3x.png',
+        color: '#4A88DD',
+      };
     },
-    onSearchTypeChange() {
-
+    onSearchTypeChange(e) {
+      this.index = Number(e.target.value);
     },
     onInputSearch(e) {
       this.searchContent = e.detail.value;
