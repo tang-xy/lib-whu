@@ -1,7 +1,7 @@
 <template>
   <div class='index-view'>
     <div class='index-image'>
-      <image src='/static/100/banner@3x.png'/>
+      <image src='/static/100/1_100首页.png'/>
     </div>
     <div class='index-search'>
       <button type='default' @click='onSearch'>

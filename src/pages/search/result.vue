@@ -20,10 +20,13 @@ import { searchLib } from '../../api';
 export default {
   mpType: 'page',
   onLoad(options) {
-    wx.showLoading({ title: '登录中...' });
+    wx.showLoading({ title: '加载中...' });
     const { value } = options;
     const that = this;
-    searchLib().then((response) => {
+    searchLib({
+      _start: 0,
+      _limit: 10,
+    }).then((response) => {
       that.result = response;
       wx.hideLoading();
     });
