@@ -62,6 +62,18 @@ export function searchLib(params) {
   });
 }
 
+export function getRank(params) {
+  return new Promise((resolve, reject) => {
+    request.get('/rank', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
 export function getTestData(params) {
   return new Promise((resolve, reject) => {
     request.get('/test', params)
