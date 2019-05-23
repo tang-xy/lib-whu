@@ -74,6 +74,18 @@ export function getRank(params) {
   });
 }
 
+export function getBorrowInfo(params) {
+  return new Promise((resolve, reject) => {
+    request.get('/borrowinfo', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
 export function getTestData(params) {
   return new Promise((resolve, reject) => {
     request.get('/test', params)

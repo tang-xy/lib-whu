@@ -15,7 +15,7 @@
 import searchResultCard from '../card/searchResultCard';
 
 export default {
-  name: 'SearchResultCard',
+  name: 'SearchResultList',
   components: {
     searchResultCard,
   },
