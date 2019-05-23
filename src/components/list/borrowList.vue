@@ -1,25 +1,26 @@
 <template>
-<div class='borrow-rank-list'>
-  <borrow-rank-card
+<div class='borrow-list'>
+  <borrow-card
   v-for='(item, index) in result'
   :key=index
   :name=item.name
   :author=item.author
-  :rate=item.rate
-  :rank=item.rank
-  :borrow-times=item.borrowTimes
-  @click-card=onClickCard
+  :position=item.position
+  :from-time=item.fromTime
+  :to-time=item.toTime
+  :is-selected=item.isSelected
+  @click=onClickCard(index)
   />
 </div>
 </template>
 
 <script>
-import borrowRankCard from '../card/borrowRankCard';
+import borrowCard from '../card/borrowCard';
 
 export default {
-  name: 'BorrowRankList',
+  name: 'BorrowList',
   components: {
-    borrowRankCard,
+    borrowCard,
   },
   props: {
     result: {
@@ -38,8 +39,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.borrow-rank-list{
+.borrow-list{
   margin: 3vw;
+  margin-left: 8vw;
   height: 100%;
 }
 
