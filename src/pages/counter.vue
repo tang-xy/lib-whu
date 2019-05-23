@@ -1,13 +1,24 @@
 <template>
-  <div class="counter-warp">
-    <p>Vuex counter：{{ count }}</p>
-    <p>
-      <button @click="increment">+</button>
-      <button @click="decrement">-</button>
-    </p>
-
-    <a href="/pages/index" class="home">去往首页</a>
-  </div>
+  <scroll-view  scroll-y="true" style="height:200px"  class="page-body" bindscrolltolower="loadMore">
+    <view class="swiper">
+      <swiper class="swiper-box" :indicator-dots="indicatorDots" :vertical="vertical"
+            :autoplay="autoplay" :interval="interval" :duration="duration"
+            indicator-color="#fff" indicator-active-color="red">
+        <block :wx:for-items="banner_url" wx:key="item.id">
+          <navigator url="../blogList/blogList">
+            <swiper-item>
+              <block :wx:if="item">
+                <image class="imgw" :src="item.url"  mode="aspectFill"/>
+              </block>
+              <block wx:else>
+                <image src="../../images/default_pic.png" mode="aspectFill"></image>
+              </block>
+            </swiper-item>
+          </navigator>
+        </block>
+      </swiper>
+    </view>
+  </scroll-view>
 </template>
 
 <script>
