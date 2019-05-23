@@ -10,10 +10,10 @@
     <div class="info-margin"/>
     <div class="info-list">
       <div class="info-margin"/>
-      <div class="info-line">
+      <div class="info-line" >
         <image :src=picurl.cardpic mode='aspectFit'/>
         <div>
-          <span>&nbsp;电子校园卡</span>
+          <span :disabled='disabled'>&nbsp;电子校园卡</span>
           <image src='/static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
@@ -104,35 +104,18 @@
 <script>
 export default {
   mpType: 'page',
-  data: {
-    piclist: {
-      cardpic: '卡 (1)@3x.png',
-      zhangdanpic: '账单 (1)@3x.png',
-      jieyuepic: '书 (4)@3x.png',
-      lishipic: '历史 (1)@3x.png',
-      yuyuepic: '预约 (1)@3x.png',
-      ziyuanpic: '购物车@3x.png',
-      jianyipic: '建议 (1)@3x.png',
-    },
-  },
-  computed: {
-    base: function base() {
-      if (this.$store.getters.getLibBind && this.$store.getters.getLogin) {
-        return '/static/330/';
-      }
-      return '/static/320/';
-    },
-
-    picurl: function pic() {
-      console.log(this);
-      if (this.data) {
-        const a = {};
-        Object.keys(this.piclist).forEach(function lo(key) {
-          a[key] = this.piclist[key];
-        });
-        return a;
-      }
-      return {
+  data() {
+    return {
+      piclist: {
+        cardpic: '卡 (1)@3x.png',
+        zhangdanpic: '账单 (1)@3x.png',
+        jieyuepic: '书 (4)@3x.png',
+        lishipic: '历史 (1)@3x.png',
+        yuyuepic: '预约 (1)@3x.png',
+        ziyuanpic: '购物车@3x.png',
+        jianyipic: '建议 (1)@3x.png',
+      },
+      picurl: {
         cardpic: '/static/320/卡 (1)@3x.png',
         zhangdanpic: '/static/320/账单 (1)@3x.png',
         jieyuepic: '/static/320/书 (4)@3x.png',
@@ -140,8 +123,30 @@ export default {
         yuyuepic: '/static/320/预约 (1)@3x.png',
         ziyuanpic: '/static/320/购物车@3x.png',
         jianyipic: '/static/320/建议 (1)@3x.png',
-      };
-    },
+      },
+      disabled: false,
+    };
+  },
+  onShow() {
+    const t = this;
+    let baseurl = '';
+    if (t.$store.getters.getLibBind || t.$store.getters.getLogin) {
+      baseurl = '/static/320/';
+      t.disabled = false;
+    } else {
+      baseurl = '/static/330/';
+      t.disabled = true;
+    }
+    /* if (t.data === undefined) {
+      return;
+    } */
+    const a = {};
+    Object.keys(t.piclist).forEach((key) => {
+      a[key] = baseurl + t.piclist[key];
+    });
+    t.picurl = a;
+  },
+  computed: {
   },
   methods: {
     onClick() {
@@ -237,7 +242,12 @@ export default {
         padding-top:1.25vh;
         font-size: 0.9;
         width: 95%;
+      }
+      span:disabled{
         color: #ABABAB;
+      }
+      span:enabled{
+        color: #000;
       }
       image{
         padding-top:1.5vh;

@@ -5,7 +5,7 @@
         <swiper class="swiper-box" :indicator-dots="indicatorDots" :vertical="vertical"
               :autoplay="autoplay" :interval="interval" :duration="duration"
               indicator-color="#fff">
-          <block :wx:for-items="banner_url" wx:key="item.id">
+          <block :wx:for-items="banner_url" :wx:key="item.id">
             <swiper-item>
               <block :wx:if="item">
                 <image class="scroll-image" :src="item.pic"  mode="aspectFill"/>
@@ -88,22 +88,26 @@ export default {
   mpType: 'page',
   config: {
   },
-  data: {
-    banner_url: [
-      {
-        pic: '/static/200/banner1 拷贝@3x.png',
-        url: '',
-      },
-      {
-        pic: '/static/200/banner1 拷贝@3x.png',
-        url: '',
-      },
-    ],
-    open: false,
-    indicatorDots: true,
-    autoplay: true,
-    interval: 3000,
-    duration: 500,
+  data() {
+    return {
+      banner_url: [
+        {
+          pic: '/static/200/banner1 拷贝@3x.png',
+          url: '',
+          id: 0,
+        },
+        {
+          pic: '/static/200/banner1 拷贝@3x.png',
+          url: '',
+          id: 1,
+        },
+      ],
+      open: false,
+      indicatorDots: true,
+      autoplay: true,
+      interval: 3000,
+      duration: 500,
+    };
   },
   computed: {
     ...mapState([

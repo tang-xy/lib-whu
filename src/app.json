@@ -19,6 +19,12 @@
       "route": "pages/info"
     },
     {
+      "path": "pages/training/training",
+      "config":{
+      },
+      "route": "pages/training"      
+    },
+    {
       "path": "pages/search/search",
       "config":{
       },
