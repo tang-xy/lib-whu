@@ -85,6 +85,12 @@
       "route": "pages/error"
     },
     {
+      "path": "pages/unfinished",
+      "config":{
+      },
+      "route": "pages/unfinished"
+    },
+    {
       "path": "packageA/logs",
       "subPackage": true
     }
