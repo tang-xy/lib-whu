@@ -1,59 +1,40 @@
 <template>
-  <div class='borrow-card' :class="{ 'selected': isSelected }" @click=onClick>
+  <div class='notice-card' @click=onClick>
     <div class='circle'/>
     <div class='line'/>
     <div class='title'>
-      <span class='name'>{{name}}</span>
-      <span class='author'>{{author}}&nbsp;著</span>
+      <span>{{title}}</span>
     </div>
     <div class='info'>
-      <span class='position'>{{position}}</span>
-      <span class='time'>{{fromTime}}至{{toTime}}</span>
+      <span class='volume'>点击{{volume}}次</span>
+      <span class='time'>{{time}}</span>
     </div>
-    <button class='ratio'>
-      <image :class="{ 'ratio-selected': isSelected }" src='/static/131/椭圆 11@3x.png'/>
-    </button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'BorrowCard',
+  name: 'NoticeCard',
   props: {
     key: {
       type: Number,
       required: true,
       default: 0,
     },
-    name: {
+    title: {
       type: String,
       required: true,
       default: '',
     },
-    author: {
+    volume: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    time: {
       type: String,
       required: true,
       default: '',
-    },
-    position: {
-      type: String,
-      required: true,
-      default: '',
-    },
-    fromTime: {
-      type: String,
-      required: true,
-      default: '',
-    },
-    toTime: {
-      type: String,
-      required: true,
-      default: '',
-    },
-    isSelected: {
-      type: Boolean,
-      required: true,
-      default: false,
     },
   },
   data: {
@@ -72,7 +53,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.borrow-card{
+.notice-card{
   margin-top: 2%;
   margin-bottom: 2%;
   border-style: solid;
@@ -112,43 +93,12 @@ export default {
     color: #444444;
     margin-top: 1.5vh;
     margin-bottom: 1.5vh;
-    .name{
-      margin-right: 4vw;
-    }
-    .author{
-      font-size: 30rpx;
-      font-weight: lighter;
-      color: grey;
-    }
   }
   .info{
     display: flex;
     font-size: 25rpx;
     color: #777777;
     justify-content: space-between;
-  }
-  .ratio{
-    width: 5vw;
-    height: 5vw;
-    position: absolute;
-    padding: 0px;
-    background: none;
-    border-width: 5rpx;
-    border-style: solid;
-    border-color: #7aa6e2;
-    border-radius: 2.5vw;
-    top: 3vh;
-    right: 2vw;
-    image{
-      display: none;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 0;
-    }
-    .ratio-selected{
-      display: block;
-    }
   }
 }
 </style>
