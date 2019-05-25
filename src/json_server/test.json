@@ -269,5 +269,40 @@
       "fromTime": "2019-03-26",
       "toTime": "2019-05-26"
     }
-  ]
+  ],
+  "detail": {
+    "name":"明朝那些事",
+    "author":"当年明月",
+    "publish":"北京北京联合出版公司 2017",
+    "theme": "中国历史 - 明代 - 通俗读物",
+    "books": [
+      {
+        "status": "阅览",
+        "returnDate": "在架上",
+        "position": "历史学院外借书库",
+        "number": "K248.09/D1764",
+        "code": "401100057610",
+        "rfid": "",
+        "reserve": false
+      },
+      {
+        "status": "外借书",
+        "returnDate": "2019-6-23",
+        "position": "历史学院外借书库",
+        "number": "K248.09/D1764",
+        "code": "401100057610",
+        "rfid": "",
+        "reserve": false
+      },
+      {
+        "status": "外借书",
+        "returnDate": "在架上",
+        "position": "历史学院外借书库",
+        "number": "K248.09/D1764",
+        "code": "401100057610",
+        "rfid": "",
+        "reserve": true
+      }
+    ]
+  }
 }
