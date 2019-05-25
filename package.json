@@ -21,6 +21,7 @@
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
     "vant-weapp": "^0.5.0",
+    "vue": "^2.6.10",
     "vuex": "^3.0.0"
   },
   "devDependencies": {

@@ -98,6 +98,18 @@ export function getBorrowInfo(params) {
   });
 }
 
+export function getBookDetail(params) {
+  return new Promise((resolve, reject) => {
+    request.get('/detail', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
 export function getTestData(params) {
   return new Promise((resolve, reject) => {
     request.get('/test', params)
