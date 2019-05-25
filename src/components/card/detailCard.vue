@@ -24,8 +24,9 @@
       <div class='key'>取书分馆</div>
       <div class='value'>
         <picker @change=onLibChange :value=libIndex :range=libs>
+          <image class='book' src='/static/112/立即预约@3x.png' mode='scaleToFill'/>
           <span>总馆</span>
-          <image src='/static/110/长箭头@3x.png' mode='scaleToFill'/>
+          <image class='arrow' src='/static/112/更多 (1)@3x.png' mode='scaleToFill'/>
         </picker>
       </div>
     </div>
@@ -106,6 +107,7 @@ export default {
   display: flex;
   flex-direction: column;
   font-size: 35rpx;
+  font-weight: lighter;
   // border-style: solid;
   // border-radius: 5px;
   // border-width: 1px;
@@ -114,12 +116,12 @@ export default {
   padding-bottom: 3%;
   padding-top: 3%;
   padding-right: 3%;
-  background-color: white;
+  // background-color: white;
   position: relative;
   .info{
     display: flex;
     border-style: solid;
-    border-style: 1px;
+    border-width: 1rpx;
     .key{
       width: 30%;
       text-align: center;
@@ -129,6 +131,47 @@ export default {
     .value{
       width: 70%;
       margin-left: 4%;
+      background: white;
+      position: relative;
+      picker{
+        border-style: solid;
+        border-width: 1rpx;
+        border-color: #82a6dd;
+        border-radius: 10rpx;
+        font-size: 30rpx;
+        width: 70%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        display: flex;
+        position: relative;
+        align-items: center;
+        padding-left: 5%;
+        justify-content: center;
+        .book{
+          width: 5vw;
+          height: 5vw;
+          position: absolute;
+          left: 2vw;
+        }
+        .arrow{
+          width: 5vw;
+          height: 2vw;
+          position: absolute;
+          right: 2vw;
+          top: 35%;
+        }
+      }
+      button{
+        font-size: 30rpx;
+        border-radius: 100rpx;
+        background: #82a6dd;
+        color: white;
+        margin-top: 1%;
+        margin-bottom: 1%;
+        width: 50%;
+        position: absolute;
+        line-height: 40rpx;
+      }
     }
   }
 }

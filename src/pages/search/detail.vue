@@ -134,6 +134,7 @@ export default {
       justify-content: flex-end;
       align-items: center;
       font-size: 35rpx;
+      padding-right: 2%;
       image{
         width: 5vw;
         height: 5vw;
