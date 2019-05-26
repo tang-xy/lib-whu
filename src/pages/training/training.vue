@@ -1,8 +1,5 @@
 <template>
   <div class='container'>
-    <div class='total'>
-      <span>共检索到{{result.length}}条记录。</span>
-    </div>
     <scroll-view
     class='scroll-list'
     scroll-y=true

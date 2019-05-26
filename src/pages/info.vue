@@ -98,6 +98,15 @@
       <div class="info-margin">
       </div>
     </div>
+    <div class="info-margin"/>
+    <div class="info-list">
+      <div class="info-margin"/>
+        <div class="info-bind">
+          <span>{{text}}</span>
+        </div>
+      </div>
+      <div class="info-margin">
+      </div>
   </div>
 </template>
 
@@ -125,17 +134,20 @@ export default {
         jianyipic: '/static/320/建议 (1)@3x.png',
       },
       disabled: false,
+      text: '点击绑定',
     };
   },
   onShow() {
     const t = this;
     let baseurl = '';
-    if (t.$store.getters.getLibBind || t.$store.getters.getLogin) {
-      baseurl = '/static/320/';
-      t.disabled = false;
-    } else {
+    if (t.$store.getters.getLibBind && t.$store.getters.getLogin) {
       baseurl = '/static/330/';
       t.disabled = true;
+      t.text = '解除绑定';
+    } else {
+      baseurl = '/static/320/';
+      t.disabled = false;
+      t.text = '点击绑定';
     }
     /* if (t.data === undefined) {
       return;
@@ -171,6 +183,15 @@ export default {
     image{
       width: 100%;
       height: 100%;
+    }
+  }
+  .info-bind{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    span{
+      display: flex;
     }
   }
   .info-logon{

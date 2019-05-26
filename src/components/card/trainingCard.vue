@@ -1,16 +1,35 @@
 <template>
   <div class='training-card' :class="{ 'selected': isSelected }">
-    <div class='title'>
-      <span class='name'>{{name}}</span>
-      <span class='author'>{{author}}&nbsp;著</span>
+    <div class='author'>
+      <span class='key'>讲座主题：</span>
+      <span class='value'>{{theme}}</span>
     </div>
-    <div class='info'>
-      <span class='position'>{{position}}</span>
-      <span class='time'>{{fromTime}}至{{toTime}}</span>
+    <div class='speaker'>
+      <span class='key'>主讲人：</span>
+      <span class='value'>{{spealker}}</span>
     </div>
-    <button class='ratio'>
-      <image :class="{ 'ratio-selected': isSelected }" src='/static/131/椭圆 11@3x.png'/>
-    </button>
+    <div class='timer'>
+      <span class='key'>时间：</span>
+      <span class='value'>{{timer}}</span>
+    </div>
+    <div class='place'>
+      <span class='key'>地点：</span>
+      <span class='value'>{{place}}</span>
+    </div>
+    <div class="info-underscores">
+        <view class="divLine"></view>
+    </div>
+    <div class="line">
+      <button type='default' @click='toStar' class="star">
+        <image src='/static/221/星星@3x.png' mode='aspectFit'/>
+      </button>
+      <button type='default' @click='toStar' class="star">
+        <image src='/static/221/分享@3x.png' mode='aspectFit'/>
+      </button>
+      <button class="more">
+        <span>详情</span>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -18,35 +37,25 @@
 export default {
   name: 'trainingCard',
   props: {
-    key: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
-    name: {
+    theme: {
       type: String,
       required: true,
-      default: '',
+      default: 'theme',
     },
-    author: {
+    spealker: {
       type: String,
       required: true,
-      default: '',
+      default: 'spealker',
     },
-    position: {
+    timer: {
       type: String,
       required: true,
-      default: '',
+      default: 'timer',
     },
-    fromTime: {
+    place: {
       type: String,
       required: true,
-      default: '',
-    },
-    toTime: {
-      type: String,
-      required: true,
-      default: '',
+      default: 'place',
     },
     isSelected: {
       type: Boolean,
@@ -67,7 +76,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.borrow-card{
+.training-card{
   margin-top: 2%;
   margin-bottom: 2%;
   border-style: solid;
@@ -80,69 +89,122 @@ export default {
   padding-right: 3%;
   background-color: white;
   position: relative;
-  .line{
-    width: 1px;
-    height: 85%;
-    border-right-style: solid;
-    border-color: #7aa6e2;
-    border-width: 5rpx;
-    left: -4.3vw;
-    top: 2vh;
-    opacity: 0.7;
-    position: absolute;
-  }
-  .circle{
-    position: absolute;
-    width: 28rpx;
-    height: 28rpx;
-    background-color: #7aa6e2;
-    left: -5.5vw;
-    top: -0.2vh;
-    border-radius: 14rpx;
-  }
-  .title{
+  .author{
     display: flex;
     font-size: 40rpx;
     align-items: center;
     color: #444444;
     margin-top: 1.5vh;
     margin-bottom: 1.5vh;
-    .name{
+    .key{
       margin-right: 4vw;
     }
-    .author{
+    .value{
       font-size: 30rpx;
       font-weight: lighter;
       color: grey;
     }
   }
-  .info{
+  .speaker{
     display: flex;
-    font-size: 25rpx;
-    color: #777777;
-    justify-content: space-between;
-  }
-  .ratio{
-    width: 5vw;
-    height: 5vw;
-    position: absolute;
-    padding: 0px;
-    background: none;
-    border-width: 5rpx;
-    border-style: solid;
-    border-color: #7aa6e2;
-    border-radius: 2.5vw;
-    top: 3vh;
-    right: 2vw;
-    image{
-      display: none;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 0;
+    font-size: 40rpx;
+    align-items: center;
+    color: #444444;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+    .key{
+      margin-right: 4vw;
     }
-    .ratio-selected{
-      display: block;
+    .value{
+      font-size: 30rpx;
+      font-weight: lighter;
+      color: grey;
+    }
+  }
+  .timer{
+    display: flex;
+    font-size: 40rpx;
+    align-items: center;
+    color: #444444;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+    .key{
+      margin-right: 4vw;
+    }
+    .value{
+      font-size: 30rpx;
+      font-weight: lighter;
+      color: grey;
+    }
+  }
+  .place{
+    display: flex;
+    font-size: 40rpx;
+    align-items: center;
+    color: #444444;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+    .key{
+      margin-right: 4vw;
+    }
+    .value{
+      font-size: 30rpx;
+      font-weight: lighter;
+      color: grey;
+    }
+  }
+  .info-underscores{
+    height: 1vh;
+    padding-left: 5%;
+    width: 90%;
+    .divLine{
+      background: #ababab;
+      height: 0.2vh;
+    }
+  }
+  .line{
+    flex-wrap: wrap;
+    display: flex;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    border-style: none;
+    padding-left: 0%;
+    padding-bottom: 0%;
+    padding-top: 0%;
+    padding-right: 0%;
+    .star{
+      border-style: none;
+      padding-left: 0%;
+      padding-bottom: 0%;
+      padding-top: 0%;
+      padding-right: 0%;
+      height: 9vw;
+      width: 9vw;
+      background: none;
+      image{
+          height: 100%;
+          width: 100%;
+      }
+    }
+    .star::after{
+      border: none;
+    }
+    .more{
+      padding-left: 0%;
+      padding-bottom: 0%;
+      padding-top: 0%;
+      padding-right: 0%;
+      height: 9vw;
+      width: 9vw;
+      background: none;
+      border: none;
+      font-size: 32rpx;
+      span{
+        color: #777777;
+      }
+    }
+    .more::after{
+      border: none;
     }
   }
 }
