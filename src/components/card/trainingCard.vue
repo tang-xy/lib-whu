@@ -21,9 +21,9 @@
     </div>
     <div class="line">
       <button type='default' @click='toStar' class="star">
-        <image src='/static/221/星星@3x.png' mode='aspectFit'/>
+        <image :src=picpath mode='aspectFit'/>
       </button>
-      <button type='default' @click='toStar' class="star">
+      <button type='default' open-type="share" class="star">
         <image src='/static/221/分享@3x.png' mode='aspectFit'/>
       </button>
       <button class="more">
@@ -69,8 +69,16 @@ export default {
     index() {
       return (this.key + 1).toString();
     },
+    picpath() {
+      if (this.isSelected) {
+        return '/static/221/选中@3x.png';
+      } return '/static/221/星星@3x.png';
+    },
   },
   methods: {
+    toStar() {
+      this.isSelected = !this.isSelected;
+    },
   },
 };
 </script>
