@@ -5,9 +5,9 @@
         <swiper class="swiper-box" :indicator-dots="indicatorDots" :vertical="vertical"
               :autoplay="autoplay" :interval="interval" :duration="duration"
               indicator-color="#fff">
-          <block :wx:for-items="banner_url" :wx:key="item.id">
+          <block v-for='(item, index) in banner_url' :key=index>
             <swiper-item>
-              <block :wx:if="item">
+              <block :wx:if="item.pic">
                 <image class="scroll-image" :src="item.pic"  mode="aspectFill"/>
               </block>
             </swiper-item>
@@ -19,16 +19,16 @@
         <span>&nbsp;&nbsp;教学培训&nbsp;</span>
     </div>
     <div class='education-button-container'>
-      <button type='default' @click='toSeat'>
+      <button type='default' @click='toTraining'>
         <image src='/static/200/日程 (1)@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toBorrow'>
+      <button type='default' @click='toUnfinished'>
         <image src='/static/200/视频 (2) 副本@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toRank'>
+      <button type='default' @click='toUnfinished'>
         <image src='/static/200/视频 (1)@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toNotice'>
+      <button type='default' @click='toUnfinished'>
         <image src='/static/200/齿轮@3x.png' mode='aspectFit'/>
       </button>
       <span>培训日程</span>
@@ -40,16 +40,16 @@
       <span>&nbsp;&nbsp;新生专栏&nbsp;</span>
     </div>
     <div class='education-button-container'>
-      <button type='default' @click='toSeat'>
+      <button type='default' @click='toUnfinished'>
         <image src='/static/200/我的图书馆@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toBorrow'>
+      <button type='default' @click='toUnfinished'>
         <image src='/static/200/书 (2)@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toRank'>
+      <button type='default' @click='toUnfinished'>
         <image src='/static/200/lingdao@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toNotice'>
+      <button type='default' @click='toUnfinished'>
         <image src='/static/200/游戏@3x.png' mode='aspectFit'/>
       </button>
       <span>关于本馆</span>
@@ -61,16 +61,16 @@
       <span>&nbsp;&nbsp;移动数据库&nbsp;</span>
     </div>
     <div class='education-button-container'>
-      <button type='default' @click='toSeat'>
+      <button type='default' @click='toUnfinished'>
         <image src='/static/200/图层 1@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toBorrow'>
+      <button type='default' @click='toUnfinished'>
         <image src='/static/200/图层 2@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toRank'>
+      <button type='default' @click='toUnfinished'>
         <image src='/static/200/图层 4@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toNotice'>
+      <button type='default' @click='toUnfinished'>
         <image src='/static/200/图层 3@3x.png' mode='aspectFit'/>
       </button>
       <span>百度教育</span>
@@ -120,6 +120,15 @@ export default {
       'increment',
       'decrement',
     ]),
+    toTraining() {
+      console.log('training');
+      const url = '/pages/training';
+      wx.navigateTo({ url });
+    },
+    toUnfinished() {
+      const url = '/pages/unfinished';
+      wx.navigateTo({ url });
+    },
   },
 };
 </script>
