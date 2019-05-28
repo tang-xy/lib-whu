@@ -25,6 +25,12 @@
       "route": "pages/training"      
     },
     {
+      "path": "pages/weike/weike",
+      "config":{
+      },
+      "route": "pages/weike"      
+    },
+    {
       "path": "pages/search/search",
       "config":{
       },

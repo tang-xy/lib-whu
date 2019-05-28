@@ -22,7 +22,7 @@
       <button type='default' @click='toTraining'>
         <image src='/static/200/日程 (1)@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toUnfinished'>
+      <button type='default' @click='toWeiKe'>
         <image src='/static/200/视频 (2) 副本@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toUnfinished'>
@@ -127,6 +127,10 @@ export default {
     },
     toUnfinished() {
       const url = '/pages/unfinished';
+      wx.navigateTo({ url });
+    },
+    toWeiKe() {
+      const url = '/pages/weike';
       wx.navigateTo({ url });
     },
   },
