@@ -1,23 +1,23 @@
 <template>
   <div class='container'>
     <div class='list-type'>
-      <button class='list-choice' :class="{ 'list-choice-selected': year }" @click=onChoiceYear>年&nbsp;榜</button>
-      <button class='list-choice' :class="{ 'list-choice-selected': month }" @click=onChoiceMonth>月&nbsp;榜</button>
-      <button class='list-choice' :class="{ 'list-choice-selected': week }" @click=onChoiceWeek>周&nbsp;榜</button>
+      <button class='list-choice' :class="{ 'list-choice-selected': notice }" @click=onChoiceNotice>通知公告</button>
+      <button class='list-choice' :class="{ 'list-choice-selected': source }" @click=onChoiceSource>资源动态</button>
+      <button class='list-choice' :class="{ 'list-choice-selected': classInfo }" @click=onChoiceClass>培训信息</button>
     </div>
     <scroll-view
     class='scroll-list'
     scroll-y=true
     enable-back-to-top=true
     @scrolltolower=onScrollToBottom>
-      <borrow-rank-list :result=result @click-card=onClickCard />
+      <notice-list :result=displayList @click-card=onClickCard />
     </scroll-view>
   </div>
 </template>
 
 <script>
-import borrowRankList from '../../components/list/borrowRankList';
-import { getRank } from '../../api';
+import noticeList from '../../components/list/noticeList';
+import { getNotice } from '../../api';
 
 export default {
   mpType: 'page',
@@ -25,41 +25,45 @@ export default {
     wx.showLoading({ title: '加载中...' });
     const { value } = options;
     const that = this;
-    getRank({
-      _start: 0,
-      _limit: 10,
-    }).then((response) => {
+    getNotice().then((response) => {
       that.result = response;
       wx.hideLoading();
     });
   },
   data: {
-    result: {},
-    year: true,
-    month: false,
-    week: false,
+    result: [],
+    type: 0,
+  },
+  computed: {
+    displayList() {
+      const that = this;
+      return that.result.filter(e => e.type === that.type);
+    },
+    notice() {
+      return this.type === 0;
+    },
+    source() {
+      return this.type === 1;
+    },
+    classInfo() {
+      return this.type === 2;
+    },
   },
   components: {
-    borrowRankList,
+    noticeList,
   },
   methods: {
     onClickCard(key) {
-      wx.navigateTo({ url: `/pages/search/detail?key=${key}` });
+      wx.navigateTo({ url: `/pages/notice/detail?key=${key}` });
     },
-    onChoiceYear() {
-      this.year = true;
-      this.week = false;
-      this.month = false;
+    onChoiceNotice() {
+      this.type = 0;
     },
-    onChoiceWeek() {
-      this.year = false;
-      this.week = true;
-      this.month = false;
+    onChoiceSource() {
+      this.type = 1;
     },
-    onChoiceMonth() {
-      this.year = false;
-      this.week = false;
-      this.month = true;
+    onChoiceClass() {
+      this.type = 2;
     },
     onScrollToBottom() {
 

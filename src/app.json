@@ -31,7 +31,7 @@
       "route": "pages/weike"      
     },
     {
-      "path": "pages/search/search",
+      "path": "pages/search",
       "config":{
       },
       "route": "pages/search"
@@ -91,13 +91,19 @@
       "route": "pages/seatReserve/myReservation"
     },
     {
-      "path": "pages/notice/notice",
+      "path": "pages/notice",
       "config":{
       },
       "route": "pages/notice"
     },
     {
-      "path": "pages/login/login",
+      "path": "pages/notice/detail",
+      "config":{
+      },
+      "route": "pages/notice/detail"
+    },
+    {
+      "path": "pages/login",
       "config":{
       },
       "route": "pages/login"
