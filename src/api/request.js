@@ -2,7 +2,12 @@ import Fly from 'flyio';
 
 const fly = new Fly();
 
-fly.config.baseURL = 'http://127.0.0.1:2019';
+const localhost = 'http://127.0.0.1:2018';
+const debughost = 'http://127.0.0.1:2019';
+const producthost = 'https://system.lib.whu.edu.cn/mp';
+
+// fly.config.baseURL = localhost;
+fly.config.baseURL = debughost;
 fly.config.timeout = 10000;
 fly.config.headers = {
   'Access-Control-Allow-Origin': '*',

@@ -3,7 +3,20 @@ import request from './request';
 export function vertifySession(params) {
   console.log(params);
   return new Promise((resolve, reject) => {
-    request.get('/vertify', params)
+    request.get('/user/vertify_session', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
+export function updateSession(params) {
+  console.log(params);
+  return new Promise((resolve, reject) => {
+    request.post('/user/update_session', params)
       .then((response) => {
         resolve(response.data);
       })
@@ -16,7 +29,7 @@ export function vertifySession(params) {
 export function vertifyLibAccount(params) {
   console.log(params);
   return new Promise((resolve, reject) => {
-    request.get('/libvertify', params)
+    request.get('/libaccount/liblogin', params)
       .then((response) => {
         resolve(response.data);
       })
@@ -28,7 +41,7 @@ export function vertifyLibAccount(params) {
 
 export function login(params) {
   return new Promise((resolve, reject) => {
-    request.get('/login', params)
+    request.post('/user/login', params)
       .then((response) => {
         resolve(response.data);
       })
@@ -40,7 +53,7 @@ export function login(params) {
 
 export function bindLib(params) {
   return new Promise((resolve, reject) => {
-    request.post('/account', params)
+    request.post('/user/bind_lib', params)
       .then((response) => {
         resolve(response.data);
       })

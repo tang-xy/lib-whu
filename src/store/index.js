@@ -2,7 +2,7 @@
 // make sure to call Vue.use(Vuex) if using a module system
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { vertifySession, bindLib, vertifyLibAccount, login } from '../api';
+import { vertifySession, updateSession, bindLib, vertifyLibAccount, login } from '../api';
 
 Vue.use(Vuex);
 
@@ -27,23 +27,40 @@ const store = new Vuex.Store({
   },
   actions: {
     setSession({ commit, state }, session) {
-      commit('setSession', session);
+      if (session === '') {
+        wx.navigateTo({ url: '/pages/login?type=login' });
+        return;
+      }
       vertifySession({ session }).then((response) => {
-        console.log(response);
-        if (response.length === 0) {
-          wx.navigateTo({ url: '/pages/login?type=login' });
-        } else {
-          commit('setLogin', response[0].login);
-          commit('setLibBind', response[0].libBind);
-        }
+        wx.checkSession({
+          success() {
+            commit('setLogin', response[0].login);
+          },
+          fail() {
+            wx.login({
+              success(res) {
+                updateSession({ wxSessionKey: res.code }).then((r) => {
+                  if (r.status === 0) {
+                    commit('setLogin', true);
+                  }
+                });
+              },
+            });
+          },
+        });
+        commit('setLibBind', response[0].libBind);
+        commit('setSession', session);
       }).catch(() => {
         wx.navigateTo({ url: '/pages/error?type=0' });
       });
     },
     wechatLogin({ commit, state }, params) {
-      login({ id: 0 }).then((response) => {
+      login({
+        code: params.code,
+        userInfo: params.userInfo,
+      }).then((response) => {
         commit('setSession', response[0].session);
-        commit('setLogin', response[0].login);
+        commit('setLogin', true);
         commit('setLibBind', response[0].libBind);
         wx.setStorageSync('session', response[0].session);
         wx.hideLoading();
@@ -51,9 +68,9 @@ const store = new Vuex.Store({
     },
     bindLibAccount({ commit, state }, un, pw) {
       const { session } = state;
-      vertifyLibAccount({ username: un, password: pw }).then((response) => {
-        if (response[0].result === 1) {
-          bindLib({ session, libun: un, linpw: pw });
+      vertifyLibAccount({ libId: un, libPsw: pw }).then((response) => {
+        if (response.status === 0) {
+          bindLib({ session, libId: un });
           wx.showToast({ title: '绑定成功', icon: 'success' });
           commit('setLibBind', true);
         }

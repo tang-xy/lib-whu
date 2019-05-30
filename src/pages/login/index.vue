@@ -65,7 +65,6 @@ export default {
     },
     getUserInfo(e) {
       if (e.mp.detail.userInfo) {
-        console.log(e.mp.detail.userInfo);
         wx.showLoading({ title: '登录中...' });
         const { encryptedData, userInfo, iv } = e.mp.detail;
         this.$store.dispatch('wechatLogin', {
