@@ -72,6 +72,7 @@ export default {
           code: this.code,
           encryptedData,
           iv,
+          userInfo,
         });
         if (this.$store.getters.getLibBind) {
           wx.navigateBack({ delta: 1 });
