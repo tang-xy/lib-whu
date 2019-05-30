@@ -22,13 +22,13 @@
       "path": "pages/training/training",
       "config":{
       },
-      "route": "pages/training"      
+      "route": "pages/training"
     },
     {
       "path": "pages/weike/weike",
       "config":{
       },
-      "route": "pages/weike"      
+      "route": "pages/weike"
     },
     {
       "path": "pages/search",
@@ -73,7 +73,7 @@
       "route": "pages/suggest"
     },
     {
-      "path": "pages/seatReserve/seatReserve",
+      "path": "pages/seatReserve",
       "config":{
       },
       "route": "pages/seatReserve"
