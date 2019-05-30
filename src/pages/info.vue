@@ -10,7 +10,7 @@
     <div class="info-margin"/>
     <div class="info-list">
       <div class="info-margin"/>
-      <div class="info-line">
+      <div class="info-line" @click="toCard">
         <image :src=picurl.cardpic mode='aspectFit'/>
         <div>
           <span>&nbsp;电子校园卡</span>
@@ -88,7 +88,7 @@
     <div class="info-margin"/>
     <div class="info-list">
       <div class="info-margin"/>
-      <div class="info-line">
+      <div class="info-line" @click="toSuggest">
         <image :src=picurl.jianyipic mode='aspectFit'/>
         <div>
           <span>&nbsp;建议与反馈</span>
@@ -176,17 +176,29 @@ export default {
       wx.navigateTo({ url });
     },
     onLogin() {
-      wx.showModal({
-        title: '确定解绑？',
-        content: '解除绑定后将无法使用座位预约、借阅信息查询等功能，重新绑定即可查看',
-        success(res) {
-          if (res.confirm) {
-            console.log('用户点击确定');
-          } else if (res.cancel) {
-            console.log('用户点击取消');
-          }
-        },
-      });
+      if (this.disabled) {
+        wx.showModal({
+          title: '确定解绑？',
+          content: '解除绑定后将无法使用座位预约、借阅信息查询等功能，重新绑定即可查看',
+          success(res) {
+            if (res.confirm) {
+              console.log('用户点击确定');
+            } else if (res.cancel) {
+              console.log('用户点击取消');
+            }
+          },
+        });
+      } else {
+        this.onClick();
+      }
+    },
+    toCard() {
+      const url = '/pages/card';
+      wx.navigateTo({ url });
+    },
+    toSuggest() {
+      const url = '/pages/suggest';
+      wx.navigateTo({ url });
     },
   },
 };
