@@ -19,6 +19,18 @@
       "route": "pages/info"
     },
     {
+      "path": "pages/training/training",
+      "config":{
+      },
+      "route": "pages/training"      
+    },
+    {
+      "path": "pages/weike/weike",
+      "config":{
+      },
+      "route": "pages/weike"      
+    },
+    {
       "path": "pages/search",
       "config":{
       },
@@ -47,6 +59,18 @@
       "config":{
       },
       "route": "pages/borrow/rank"
+    },
+    {
+      "path": "pages/card/card",
+      "config":{
+      },
+      "route": "pages/card"
+    },
+    {
+      "path": "pages/suggest/suggest",
+      "config":{
+      },
+      "route": "pages/suggest"
     },
     {
       "path": "pages/seatReserve/seatReserve",
