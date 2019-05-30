@@ -1,19 +1,19 @@
 <template>
   <div class='info-view'>
     <div class="info-logon">
-      <image src='/static/320/矢量免扣卡通人物@3x.png'/>
-      <view @click="onClick">点击登录
-        <span>&nbsp;登录更精彩</span>
+      <image :src="user.pic"/>
+      <view @click="onClick">{{user.name}}
+        <span>&nbsp;{{user.id}}</span>
       </view>
       <div/>
     </div>
     <div class="info-margin"/>
     <div class="info-list">
       <div class="info-margin"/>
-      <div class="info-line" >
+      <div class="info-line">
         <image :src=picurl.cardpic mode='aspectFit'/>
         <div>
-          <span :disabled='disabled'>&nbsp;电子校园卡</span>
+          <span>&nbsp;电子校园卡</span>
           <image src='/static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
@@ -101,7 +101,7 @@
     <div class="info-margin"/>
     <div class="info-list">
       <div class="info-margin"/>
-        <div class="info-bind">
+        <div class="info-bind" @click="onLogin">
           <span>{{text}}</span>
         </div>
       </div>
@@ -135,6 +135,11 @@ export default {
       },
       disabled: false,
       text: '点击绑定',
+      user: {
+        name: '点击登录',
+        id: '登录更精彩',
+        pic: '/static/320/矢量免扣卡通人物@3x.png',
+      },
     };
   },
   onShow() {
@@ -144,12 +149,17 @@ export default {
       baseurl = '/static/330/';
       t.disabled = true;
       t.text = '解除绑定';
+      t.user = Object({
+        name: '李安国',
+        id: '2017*****007',
+        pic: '/static/330/图层 1@3x.png',
+      });
     } else {
       baseurl = '/static/320/';
       t.disabled = false;
       t.text = '点击绑定';
     }
-    /* if (t.data === undefined) {
+    /* if (t.data === undefined) {i
       return;
     } */
     const a = {};
@@ -164,6 +174,19 @@ export default {
     onClick() {
       const url = '/pages/login';
       wx.navigateTo({ url });
+    },
+    onLogin() {
+      wx.showModal({
+        title: '确定解绑？',
+        content: '解除绑定后将无法使用座位预约、借阅信息查询等功能，重新绑定即可查看',
+        success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定');
+          } else if (res.cancel) {
+            console.log('用户点击取消');
+          }
+        },
+      });
     },
   },
 };
@@ -221,7 +244,7 @@ export default {
       }
     }
     div{
-      width: 40%;
+      width: 0%;
     }
   }
   .info-margin{
