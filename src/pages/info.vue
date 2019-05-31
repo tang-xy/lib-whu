@@ -174,6 +174,7 @@ export default {
   methods: {
     onClick() {
 <<<<<<< HEAD
+<<<<<<< HEAD
       const url = '/pages/login?type=liblogin';
 =======
       if (this.disabled) {
@@ -182,6 +183,15 @@ export default {
       const url = '/pages/login';
 >>>>>>> 增加资源
       wx.navigateTo({ url });
+=======
+      if (this.disabled) {
+        const url = '/pages/information';
+        wx.navigateTo({ url });
+      } else {
+        const url = '/pages/login';
+        wx.navigateTo({ url });
+      }
+>>>>>>> 添加更新个人信息页面
     },
     onLogin() {
       if (this.disabled) {
