@@ -11,7 +11,7 @@
     <div class="info-margin"/>
     <div class="info-list">
       <div class="info-margin"/>
-      <div class="info-line" @click="toCard">
+      <div class="info-line" @click="toCard" :disabled='disabled'>
         <image :src=picurl.cardpic mode='aspectFit'/>
         <div>
           <span>&nbsp;电子校园卡</span>
@@ -24,7 +24,7 @@
         <view class="divLine"></view>
       </div>
       <div class="info-margin"/>
-      <div class="info-line">
+      <div class="info-line" :disabled='disabled' @click="toUnfinished">
         <image :src=picurl.zhangdanpic mode='aspectFit'/>
         <div>
           <span>&nbsp;图书馆账单</span>
@@ -37,7 +37,7 @@
     <div class="info-margin"/>
     <div class="info-list">
       <div class="info-margin"/>
-      <div class="info-line">
+      <div class="info-line" :disabled='disabled'>
         <image :src=picurl.jieyuepic mode='aspectFit'/>
         <div>
           <span>&nbsp;借阅信息</span>
@@ -50,7 +50,7 @@
         <view class="divLine"></view>
       </div>
       <div class="info-margin"/>
-      <div class="info-line">
+      <div class="info-line" :disabled='disabled'>
         <image :src=picurl.lishipic mode='aspectFit'/>
         <div>
           <span>&nbsp;借阅历史</span>
@@ -63,7 +63,7 @@
         <view class="divLine"></view>
       </div>
       <div class="info-margin"/>
-      <div class="info-line">
+      <div class="info-line" :disabled='disabled'>
         <image :src=picurl.yuyuepic mode='aspectFit'/>
         <div>
           <span>&nbsp;预约结果</span>
@@ -76,7 +76,7 @@
     <div class="info-margin"/>
     <div class="info-list">
       <div class="info-margin"/>
-      <div class="info-line">
+      <div class="info-line" :disabled='disabled'>
         <image :src=picurl.ziyuanpic mode='aspectFit'/>
         <div>
           <span>&nbsp;资源导购</span>
@@ -89,7 +89,7 @@
     <div class="info-margin"/>
     <div class="info-list">
       <div class="info-margin"/>
-      <div class="info-line" @click="toSuggest">
+      <div class="info-line" @click="toSuggest" :disabled='disabled'>
         <image :src=picurl.jianyipic mode='aspectFit'/>
         <div>
           <span>&nbsp;建议与反馈</span>
@@ -173,7 +173,14 @@ export default {
   },
   methods: {
     onClick() {
+<<<<<<< HEAD
       const url = '/pages/login?type=liblogin';
+=======
+      if (this.disabled) {
+        return;
+      }
+      const url = '/pages/login';
+>>>>>>> 增加资源
       wx.navigateTo({ url });
     },
     onLogin() {
