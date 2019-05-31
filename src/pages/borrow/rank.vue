@@ -26,8 +26,8 @@ export default {
     const { value } = options;
     const that = this;
     getRank({
-      _start: 0,
-      _limit: 10,
+      start: 0,
+      limit: 10,
     }).then((response) => {
       that.result = response;
       wx.hideLoading();
