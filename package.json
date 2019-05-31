@@ -9,10 +9,11 @@
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
-    "server": "json-server ./src/json_server/test.json --port 2019",
+    "server": "json-server ./src/json_server/test.json --port 2018",
     "sdev": "concurrently \"npm run server\" \"npm run dev\" "
   },
   "dependencies": {
+    "concurrently": "^4.1.0",
     "flyio": "^0.6.14",
     "mockjs": "^1.0.1-beta3",
     "mpvue": "^2.0.0",
@@ -20,6 +21,7 @@
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
     "vant-weapp": "^0.5.0",
+    "vue": "^2.6.10",
     "vuex": "^3.0.0"
   },
   "devDependencies": {

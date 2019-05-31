@@ -1,41 +1,32 @@
 <template>
-  <div class="container" @click="clickHandle('test click', $event)">
-    <div class="userinfo" @click="bindViewTap">
-      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-      <div class="userinfo-nickname">
-        <card :text="userInfo.nickName"></card>
-      </div>
+  <div class='index-view'>
+    <div class='index-image'>
+      <image src='/static/100/1_100首页.png'/>
     </div>
-    <div class='image'>
-      <img src='../../static/100/banner.png'/>
+    <div class='index-search'>
+      <button type='default' @click='onSearch'>
+        <image src='/static/100/sousuo@3x.png'/>
+        <span>&nbsp;点击搜索馆藏资源</span>
+      </button>
     </div>
-    <vant-search
-    :value='searchName'
-    placeholder='点击搜索馆藏资源'
-    show-action
-    shape='round'
-    use-action-slot
-    bind:search='onSearch'
-    >
-    <view slot='action' bind:tap='onSearch'>搜索</view>
-    </vant-search>
-
-    <div class="usermotto">
-      <div class="user-motto">
-        <card :text="motto"></card>
-      </div>
+    <div class='index-command'>
+      <image src='/static/100/个性@3x.png'/>
+      <span>&nbsp;推荐功能&nbsp;&nbsp;</span>
     </div>
-
-    <form class="form-container">
-      <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
-    </form>
-    <a href="/pages/counter" class="counter">去往Vuex示例页面</a>
-    <van-tabbar :active="active" bind:change="onChange">
-      <van-tabbar-item icon="home-o">首页</van-tabbar-item>
-      <van-tabbar-item icon="search" dot>发现</van-tabbar-item>
-      <van-tabbar-item icon="friends-o" info="5">我的</van-tabbar-item>
-    </van-tabbar>
+    <div class='index-button-container'>
+      <button type='default' @click='toSeat'>
+        <image src='/static/100/座位预约@3x.png' mode='aspectFit'/>
+      </button>
+      <button type='default' @click='toBorrow'>
+        <image src='/static/100/借阅@3x.png' mode='aspectFit'/>
+      </button>
+      <button type='default' @click='toRank'>
+        <image src='/static/100/借阅排行@3x.png' mode='aspectFit'/>
+      </button>
+      <button type='default' @click='toNotice'>
+        <image src='/static/100/通知公告@3x.png' mode='aspectFit'/>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -44,84 +35,114 @@ import card from '@/components/card';
 
 export default {
   mpType: 'page',
+  onLoad() {
+    const session = wx.getStorageSync('session') || '';
+    this.$store.dispatch('setSession', session);
+  },
 
   data() {
-    return {
-      motto: 'Hello World',
-      userInfo: {},
-      searchName: '',
-      active: 0,
-    };
+
   },
 
   components: {
-    card,
+
   },
 
   methods: {
     onSearch() {
-
+      const url = '/pages/search';
+      wx.navigateTo({ url });
     },
-    bindViewTap() {
-      const url = '/packageA/logs';
-      this.$router.push(url);
+    toSeat() {
+      const url = '/pages/seatReserve';
+      wx.navigateTo({ url });
     },
-    getUserInfo() {
-      // 调用登录接口
-      wx.login({
-        success: () => {
-          wx.getUserInfo({
-            success: (res) => {
-              this.userInfo = res.userInfo;
-            },
-          });
-        },
-      });
+    toBorrow() {
+      const url = '/pages/borrow';
+      wx.navigateTo({ url });
     },
-    clickHandle(msg, ev) {
-      // eslint-disable-next-line
-      console.log('clickHandle:', msg, ev);
+    toRank() {
+      const url = '/pages/borrow/rank';
+      wx.navigateTo({ url });
     },
-  },
-
-  created() {
-    // 调用应用实例的方法获取全局数据
-    this.getUserInfo();
+    toNotice() {
+      const url = '/pages/notice';
+      wx.navigateTo({ url });
+    },
   },
 };
 </script>
 
-<style scoped>
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+<style lang="scss" scoped>
+.index-view{
+  width: 96%;
+  height: 96vh;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  background-color: #f7f7f7;
+  .index-image{
+    width: 96vw;
+    height: 27vh;
+    image{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .index-command{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96vw;
+    height: 7vh;
+    image{
+      height: 5vh;
+      width: 5vh;
+    }
+  }
+  .index-search{
+    margin-top: 4vh;
+    margin-bottom: 2vh;
+    width: 96vw;
+    height: 7vh;
+    button{
+      background-color: #E4E4E4;
+      border-color: #e6e6e6;
+      border-width: 1em;
+      border-radius: 3vh;
+      color: #a4a4a4;
+      height: 6vh;
+      width: 100%;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      image{
+        height: 4vh;
+        width: 4vh;
+      }
+    }
+  }
+  .index-button-container{
+    display: flex;
+    margin-top: 2vh;
+    width: 96vw;
+    height: 40vh;
+    flex-wrap: wrap;
+    button::after{
+      border: none;
+    }
+    button{
+      width: 50%;
+      height: 50%;
+      padding: 0%;
+      background-color: transparent;
+      image{
+        width: 96%;
+        height: 100%;
+      }
+    }
+  }
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-
-.form-control {
-  display: block;
-  padding: 0 12px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-}
-
-.counter {
-  display: inline-block;
-  margin: 10px auto;
-  padding: 5px 10px;
-  color: blue;
-  border: 1px solid blue;
-}
 </style>

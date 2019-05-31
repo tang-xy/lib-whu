@@ -1,18 +1,166 @@
 {
   "pages": [
-    "pages/index",
-    "pages/counter",
-    "pages/find",
-    "pages/info",
+    {
+      "path": "pages/index",
+      "config":{
+      },
+      "route": "pages/index"
+    },
+    {
+      "path": "pages/find",
+      "config":{
+      },
+      "route": "pages/find"
+    },
+    {
+      "path": "pages/info",
+      "config":{
+      },
+      "route": "pages/info"
+    },
+    {
+      "path": "pages/training/training",
+      "config":{
+      },
+      "route": "pages/training"
+    },
+    {
+      "path": "pages/weike/weike",
+      "config":{
+      },
+      "route": "pages/weike"
+    },
+    {
+      "path": "pages/search",
+      "config":{
+      },
+      "route": "pages/search"
+    },
+    {
+      "path": "pages/search/result",
+      "config":{
+      },
+      "route": "pages/search/result"
+    },
+    {
+      "path": "pages/search/detail",
+      "config":{
+      },
+      "route": "pages/search/detail"
+    },
+    {
+      "path": "pages/borrow/borrow",
+      "config":{
+      },
+      "route": "pages/borrow"
+    },
+    {
+      "path": "pages/borrow/rank",
+      "config":{
+      },
+      "route": "pages/borrow/rank"
+    },
+    {
+      "path": "pages/card/card",
+      "config":{
+      },
+      "route": "pages/card"
+    },
+    {
+      "path": "pages/suggest/suggest",
+      "config":{
+      },
+      "route": "pages/suggest"
+    },
+    {
+      "path": "pages/information/information",
+      "config":{
+      },
+      "route": "pages/information"
+    },
+    {
+      "path": "pages/seatReserve",
+      "config":{
+      },
+      "route": "pages/seatReserve"
+    },
+    {
+      "path": "pages/seatReserve/announcement",
+      "config":{
+      },
+      "route": "pages/seatReserve/announcement"
+    },
+    {
+      "path": "pages/seatReserve/myReservation",
+      "config":{
+      },
+      "route": "pages/seatReserve/myReservation"
+    },
+    {
+      "path": "pages/notice",
+      "config":{
+      },
+      "route": "pages/notice"
+    },
+    {
+      "path": "pages/notice/detail",
+      "config":{
+      },
+      "route": "pages/notice/detail"
+    },
+    {
+      "path": "pages/login",
+      "config":{
+      },
+      "route": "pages/login"
+    },
+    {
+      "path": "pages/error",
+      "config":{
+      },
+      "route": "pages/error"
+    },
+    {
+      "path": "pages/unfinished",
+      "config":{
+      },
+      "route": "pages/unfinished"
+    },
     {
       "path": "packageA/logs",
       "subPackage": true
     }
   ],
-  "window": {
+  "window":{
+    "navigationBarTitleText": "武汉大学图书馆",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "selectedColor": "#4A88DD",
+    "color": "#666",
+    "list": [
+      {
+        "pagePath": "pages/index",
+        "iconPath": "static/200/shouye@3x.png",
+        "selectedIconPath": "static/100/shouye_selected@3x.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/find",
+        "iconPath": "static/100/yanjing@3x.png",
+        "selectedIconPath": "static/200/yanjing_selected@3x.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/info",
+        "iconPath": "static/100/wo@3x.png",
+        "selectedIconPath": "static/320/wo_selected@3x.png",
+        "text": "我的"
+      }
+    ]
   }
 }

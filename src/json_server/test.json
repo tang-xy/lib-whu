@@ -2,5 +2,471 @@
   "test": {
     "id": "test",
     "value": 1
+  },
+  "vertify": [
+    {
+      "session": "test01",
+      "login": true,
+      "libBind": true
+    },
+    {
+      "session": "test02",
+      "login": true,
+      "libBind": false
+    },
+    {
+      "session": "test03",
+      "login": false,
+      "libBind": false
+    }
+  ],
+  "libvertify": [
+    {
+      "username": "test01",
+      "password": "test01",
+      "result": 1
+    }
+  ],
+  "account": [
+    {
+      "id": 0,
+      "session": "test01",
+      "login": true,
+      "libBind": true,
+      "libun": "test01",
+      "libpw": "test01"
+    }
+  ],
+  "login": [
+    {
+      "id": 0,
+      "session": "test01",
+      "login": true,
+      "libBind": false
+    }
+  ],
+  "searchlib": [
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "publish": "北京北京联合出版公司 2017"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "publish": "北京北京联合出版公司 2017"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "publish": "北京北京联合出版公司 2017"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "publish": "北京北京联合出版公司 2017"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "publish": "北京北京联合出版公司 2017"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "publish": "北京北京联合出版公司 2017"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "publish": "北京北京联合出版公司 2017"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "publish": "北京北京联合出版公司 2017"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "publish": "北京北京联合出版公司 2017"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "publish": "北京北京联合出版公司 2017"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "publish": "北京北京联合出版公司 2017"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "publish": "北京北京联合出版公司 2017"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "publish": "北京北京联合出版公司 2017"
+    }
+  ],
+  "rank": [
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "rank": 1,
+      "rate": 9.0,
+      "borrowTimes": 900
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "rank": 1,
+      "rate": 9.0,
+      "borrowTimes": 900
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "rank": 1,
+      "rate": 9.0,
+      "borrowTimes": 900
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "rank": 1,
+      "rate": 9.0,
+      "borrowTimes": 900
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "rank": 1,
+      "rate": 9.0,
+      "borrowTimes": 900
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "rank": 1,
+      "rate": 9.0,
+      "borrowTimes": 900
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "rank": 1,
+      "rate": 9.0,
+      "borrowTimes": 900
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "rank": 1,
+      "rate": 9.0,
+      "borrowTimes": 900
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "rank": 1,
+      "rate": 9.0,
+      "borrowTimes": 900
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "rank": 1,
+      "rate": 9.0,
+      "borrowTimes": 900
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "rank": 1,
+      "rate": 9.0,
+      "borrowTimes": 900
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "rank": 1,
+      "rate": 9.0,
+      "borrowTimes": 900
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "rank": 1,
+      "rate": 9.0,
+      "borrowTimes": 900
+    }
+  ],
+  "borrowinfo": [
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "position": "信息馆借阅区二楼东",
+      "fromTime": "2019-03-26",
+      "toTime": "2019-05-26"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "position": "信息馆借阅区二楼东",
+      "fromTime": "2019-03-26",
+      "toTime": "2019-05-26"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "position": "信息馆借阅区二楼东",
+      "fromTime": "2019-03-26",
+      "toTime": "2019-05-26"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "position": "信息馆借阅区二楼东",
+      "fromTime": "2019-03-26",
+      "toTime": "2019-05-26"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "position": "信息馆借阅区二楼东",
+      "fromTime": "2019-03-26",
+      "toTime": "2019-05-26"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "position": "信息馆借阅区二楼东",
+      "fromTime": "2019-03-26",
+      "toTime": "2019-05-26"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "position": "信息馆借阅区二楼东",
+      "fromTime": "2019-03-26",
+      "toTime": "2019-05-26"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "position": "信息馆借阅区二楼东",
+      "fromTime": "2019-03-26",
+      "toTime": "2019-05-26"
+    },
+    {
+      "name": "明朝那些事",
+      "author": "当年明月",
+      "position": "信息馆借阅区二楼东",
+      "fromTime": "2019-03-26",
+      "toTime": "2019-05-26"
+    }
+  ],
+  "notice": [
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 0
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 0
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 0
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 0
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 0
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 0
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 0
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 0
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 0
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 0
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 1
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 1
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 1
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 1
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 1
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 1
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 1
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 2
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 2
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 2
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 2
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 2
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 2
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 2
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 2
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 2
+    },
+    {
+      "title": "通知公告",
+      "volume": 100,
+      "time": "2019-03-26",
+      "type": 2
+    }
+  ],
+  "detail": {
+    "name":"明朝那些事",
+    "author":"当年明月",
+    "publish":"北京北京联合出版公司 2017",
+    "theme": "中国历史 - 明代 - 通俗读物",
+    "books": [
+      {
+        "status": "阅览",
+        "returnDate": "在架上",
+        "position": "历史学院外借书库",
+        "number": "K248.09/D1764",
+        "code": "401100057610",
+        "rfid": "",
+        "reserve": false
+      },
+      {
+        "status": "外借书",
+        "returnDate": "2019-6-23",
+        "position": "历史学院外借书库",
+        "number": "K248.09/D1764",
+        "code": "401100057610",
+        "rfid": "",
+        "reserve": false
+      },
+      {
+        "status": "外借书",
+        "returnDate": "在架上",
+        "position": "历史学院外借书库",
+        "number": "K248.09/D1764",
+        "code": "401100057610",
+        "rfid": "",
+        "reserve": true
+      }
+    ]
   }
 }
