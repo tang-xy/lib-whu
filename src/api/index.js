@@ -4,7 +4,7 @@ export function vertifySession(params) {
   console.log(params);
   return new Promise((resolve, reject) => {
     console.log(request);
-    request.get('/user/vertify_session', params)
+    request.get('/user/vertify_session/', params)
       .then((response) => {
         resolve(response.data);
       })
@@ -17,7 +17,7 @@ export function vertifySession(params) {
 export function updateSession(params) {
   console.log(params);
   return new Promise((resolve, reject) => {
-    request.get('/user/update_session', params)
+    request.get('/user/update_session/', params)
       .then((response) => {
         resolve(response.data);
       })
@@ -30,7 +30,7 @@ export function updateSession(params) {
 export function vertifyLibAccount(params) {
   console.log(params);
   return new Promise((resolve, reject) => {
-    request.get('/libuser/login', params)
+    request.get('/libuser/login/', params)
       .then((response) => {
         resolve(response.data);
       })
@@ -42,7 +42,7 @@ export function vertifyLibAccount(params) {
 
 export function login(params) {
   return new Promise((resolve, reject) => {
-    request.get('/user/login', params)
+    request.get('/user/login/', params)
       .then((response) => {
         resolve(response.data);
       })
@@ -54,7 +54,7 @@ export function login(params) {
 
 export function bindLib(params) {
   return new Promise((resolve, reject) => {
-    request.get('/user/bind_lib', params)
+    request.get('/user/bind_lib/', params)
       .then((response) => {
         resolve(response.data);
       })
@@ -66,7 +66,7 @@ export function bindLib(params) {
 
 export function searchLib(params) {
   return new Promise((resolve, reject) => {
-    request.get('/libuser/search_lib', params)
+    request.get('/libuser/search_lib/', params)
       .then((response) => {
         resolve(response.data);
       })
@@ -78,7 +78,7 @@ export function searchLib(params) {
 
 export function getRank(params) {
   return new Promise((resolve, reject) => {
-    request.get('/libuser/rank', params)
+    request.get('/libuser/rank/', params)
       .then((response) => {
         resolve(response.data);
       })
@@ -90,7 +90,7 @@ export function getRank(params) {
 
 export function getNotice(params) {
   return new Promise((resolve, reject) => {
-    request.get('/libuser/notice', params)
+    request.get('/libuser/notice/', params)
       .then((response) => {
         console.log(response.data);
         resolve(response.data);
@@ -103,7 +103,7 @@ export function getNotice(params) {
 
 export function getBorrowInfo(params) {
   return new Promise((resolve, reject) => {
-    request.get('/libuser/borrow_info', params)
+    request.get('/libuser/borrow_info/', params)
       .then((response) => {
         console.log(response.data);
         resolve(response.data);
@@ -116,7 +116,7 @@ export function getBorrowInfo(params) {
 
 export function getBookDetail(params) {
   return new Promise((resolve, reject) => {
-    request.get('/libuser/detail', params)
+    request.get('/libuser/detail/', params)
       .then((response) => {
         resolve(response.data);
       })
@@ -128,7 +128,7 @@ export function getBookDetail(params) {
 
 export function getTestData(params) {
   return new Promise((resolve, reject) => {
-    request.get('/test', params)
+    request.get('/test/', params)
       .then((response) => {
         resolve(response.data);
       })
