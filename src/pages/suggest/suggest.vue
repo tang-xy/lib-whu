@@ -59,14 +59,14 @@ export default {
     margin-top: 4vh;
     margin-bottom: 2vh;
     width: 92vw;
-    height: 12vh;
+    height: 8vh;
     background-color: #5B92DF;
     span{
         color: #fff;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 56rpx;
+        font-size: 50rpx;
     }
   }
 }

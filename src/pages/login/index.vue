@@ -44,6 +44,7 @@ export default {
       wx.setNavigationBarTitle({ title: '登录' });
       this.wxlogin();
     } else {
+      this.login = false;
       wx.setNavigationBarTitle({ title: '绑定图书馆账号' });
     }
   },
@@ -60,18 +61,18 @@ export default {
       if (this.userName === '' || this.password === '') {
         wx.showToast({ title: '学号/密码不能为空', icon: 'none' });
       } else {
-        this.$store.dispatch('bindLibAccount', this.userName, this.password);
+        this.$store.dispatch('bindLibAccount', { libId: this.userName, libPsw: this.password });
       }
     },
     getUserInfo(e) {
       if (e.mp.detail.userInfo) {
-        console.log(e.mp.detail.userInfo);
         wx.showLoading({ title: '登录中...' });
         const { encryptedData, userInfo, iv } = e.mp.detail;
         this.$store.dispatch('wechatLogin', {
           code: this.code,
           encryptedData,
           iv,
+          userInfo,
         });
         if (this.$store.getters.getLibBind) {
           wx.navigateBack({ delta: 1 });
@@ -84,10 +85,10 @@ export default {
       wx.navigateBack({ delta: 1 });
     },
     inputUsername(e) {
-      this.userName = e.detial.value;
+      this.userName = e.mp.detail.value;
     },
     inputPassword(e) {
-      this.password = e.detial.value;
+      this.password = e.mp.detail.value;
     },
   },
   created() {
