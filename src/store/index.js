@@ -32,14 +32,18 @@ const store = new Vuex.Store({
         return;
       }
       vertifySession({ session }).then((response) => {
+        if (!response.login) {
+          wx.navigateTo({ url: '/pages/login?type=login' });
+          return;
+        }
         wx.checkSession({
           success() {
-            commit('setLogin', response[0].login);
+            commit('setLogin', true);
           },
           fail() {
             wx.login({
               success(res) {
-                updateSession({ wxSessionKey: res.code }).then((r) => {
+                updateSession({ code: res.code, session }).then((r) => {
                   if (r.status === 0) {
                     commit('setLogin', true);
                   }
@@ -48,7 +52,7 @@ const store = new Vuex.Store({
             });
           },
         });
-        commit('setLibBind', response[0].libBind);
+        commit('setLibBind', response.libBind);
         commit('setSession', session);
       }).catch(() => {
         wx.navigateTo({ url: '/pages/error?type=0' });
@@ -57,22 +61,36 @@ const store = new Vuex.Store({
     wechatLogin({ commit, state }, params) {
       login({
         code: params.code,
-        userInfo: params.userInfo,
+        nickName: params.userInfo.nickName,
+        avatarUrl: params.userInfo.avatarUrl,
+        gender: params.userInfo.gender,
+        province: params.userInfo.province,
+        city: params.userInfo.city,
+        country: params.userInfo.country,
       }).then((response) => {
-        commit('setSession', response[0].session);
+        console.log(response);
+        commit('setSession', response.session);
         commit('setLogin', true);
-        commit('setLibBind', response[0].libBind);
-        wx.setStorageSync('session', response[0].session);
+        commit('setLibBind', response.libBind);
+        wx.setStorageSync('session', response.session);
         wx.hideLoading();
+        wx.navigateBack({ delta: 1 });
       });
     },
-    bindLibAccount({ commit, state }, un, pw) {
+    bindLibAccount({ commit, state }, info) {
       const { session } = state;
-      vertifyLibAccount({ libId: un, libPsw: pw }).then((response) => {
+      console.log(info);
+      vertifyLibAccount(info).then((response) => {
         if (response.status === 0) {
-          bindLib({ session, libId: un });
-          wx.showToast({ title: '绑定成功', icon: 'success' });
-          commit('setLibBind', true);
+          console.log(response);
+          bindLib({ session, libId: info.libId }).then((r) => {
+            wx.showToast({ title: '绑定成功', icon: 'success' });
+            commit('setLibBind', true);
+            commit('setUserInfo', response.user);
+            wx.navigateBack({ delta: 1 });
+          });
+        } else {
+          wx.showToast({ title: '学号/密码错误', icon: 'none' });
         }
       }).catch(() => {
         wx.showToast({ title: '学号/密码错误', icon: 'none' });
@@ -91,6 +109,10 @@ const store = new Vuex.Store({
     setLibBind(state, value) {
       // eslint-disable-next-line no-param-reassign
       state.libBind = value;
+    },
+    setUserInfo(state, value) {
+      // eslint-disable-next-line no-param-reassign
+      state.userInfo = value;
     },
     increment: (state) => {
       const obj = state;

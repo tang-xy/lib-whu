@@ -44,6 +44,7 @@ export default {
       wx.setNavigationBarTitle({ title: '登录' });
       this.wxlogin();
     } else {
+      this.login = false;
       wx.setNavigationBarTitle({ title: '绑定图书馆账号' });
     }
   },
@@ -60,7 +61,7 @@ export default {
       if (this.userName === '' || this.password === '') {
         wx.showToast({ title: '学号/密码不能为空', icon: 'none' });
       } else {
-        this.$store.dispatch('bindLibAccount', this.userName, this.password);
+        this.$store.dispatch('bindLibAccount', { libId: this.userName, libPsw: this.password });
       }
     },
     getUserInfo(e) {
@@ -84,10 +85,10 @@ export default {
       wx.navigateBack({ delta: 1 });
     },
     inputUsername(e) {
-      this.userName = e.detial.value;
+      this.userName = e.mp.detail.value;
     },
     inputPassword(e) {
-      this.password = e.detial.value;
+      this.password = e.mp.detail.value;
     },
   },
   created() {

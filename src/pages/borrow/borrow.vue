@@ -31,8 +31,8 @@ export default {
     const { value } = options;
     const that = this;
     getBorrowInfo({
-      _start: 0,
-      _limit: 10,
+      start: 0,
+      limit: 10,
     }).then((response) => {
       that.result = response.map((e) => {
         const tmp = e;

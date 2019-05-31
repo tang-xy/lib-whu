@@ -1,9 +1,10 @@
 <template>
   <div class='info-view'>
     <div class="info-logon">
-      <image :src="user.pic"/>
-      <view @click="onClick">{{user.name}}
-        <span>&nbsp;{{user.id}}</span>
+      <open-data type=userAvatarUrl lang=zh_CN />
+      <view @click="onClick">
+        <open-data type=userNickName lang=zh_CN />
+        <span>&nbsp;{{user.name}}&nbsp;{{user.id}}</span>
       </view>
       <div/>
     </div>
@@ -145,7 +146,7 @@ export default {
   onShow() {
     const t = this;
     let baseurl = '';
-    if (t.$store.getters.getLibBind && t.$store.getters.getLogin) {
+    if (t.$store.getters.getLogin) {
       baseurl = '/static/330/';
       t.disabled = true;
       t.text = '解除绑定';
@@ -172,7 +173,7 @@ export default {
   },
   methods: {
     onClick() {
-      const url = '/pages/login';
+      const url = '/pages/login?type=liblogin';
       wx.navigateTo({ url });
     },
     onLogin() {
