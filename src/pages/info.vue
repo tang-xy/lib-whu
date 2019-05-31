@@ -38,10 +38,6 @@
     <div class="info-list">
       <div class="info-margin"/>
       <div class="info-line" @click="toBorrow">
-<<<<<<< HEAD
->>>>>>> 跳转借阅历史
-=======
->>>>>>> 更改资源
         <image :src=picurl.jieyuepic mode='aspectFit'/>
         <div>
           <span>&nbsp;借阅信息</span>
@@ -164,9 +160,6 @@ export default {
       t.disabled = false;
       t.text = '点击绑定';
     }
-    /* if (t.data === undefined) {i
-      return;
-    } */
     const a = {};
     Object.keys(t.piclist).forEach((key) => {
       a[key] = baseurl + t.piclist[key];
@@ -177,20 +170,6 @@ export default {
   },
   methods: {
     onClick() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      const url = '/pages/login?type=liblogin';
-=======
-      if (this.disabled) {
-        return;
-      }
-      const url = '/pages/login';
->>>>>>> 增加资源
-      wx.navigateTo({ url });
-=======
-=======
->>>>>>> 更改资源
       if (this.disabled) {
         const url = '/pages/information';
         wx.navigateTo({ url });
@@ -198,10 +177,6 @@ export default {
         const url = '/pages/login';
         wx.navigateTo({ url });
       }
-<<<<<<< HEAD
->>>>>>> 添加更新个人信息页面
-=======
->>>>>>> 更改资源
     },
     onLogin() {
       if (this.disabled) {

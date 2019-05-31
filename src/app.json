@@ -73,17 +73,13 @@
       "route": "pages/suggest"
     },
     {
-<<<<<<< HEAD
-      "path": "pages/seatReserve",
-=======
       "path": "pages/information/information",
       "config":{
       },
       "route": "pages/information"
     },
     {
-      "path": "pages/seatReserve/seatReserve",
->>>>>>> 添加更新个人信息页面
+      "path": "pages/seatReserve",
       "config":{
       },
       "route": "pages/seatReserve"
