@@ -59,7 +59,7 @@ export default {
   methods: {
     onUpdate() {
       if (this.userName === '' || this.major === '' || this.tel === '' || this.email === '') {
-        wx.showToast({ title: '学号/密码不能为空', icon: 'none' });
+        wx.showToast({ title: '信息不能为空', icon: 'none' });
       } else {
         wx.showToast({
           title: '信息更新成功',

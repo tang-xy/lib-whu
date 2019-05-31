@@ -37,7 +37,11 @@
     <div class="info-margin"/>
     <div class="info-list">
       <div class="info-margin"/>
+<<<<<<< HEAD
       <div class="info-line" :disabled='disabled'>
+=======
+      <div class="info-line" @click="toBorrow">
+>>>>>>> 跳转借阅历史
         <image :src=picurl.jieyuepic mode='aspectFit'/>
         <div>
           <span>&nbsp;借阅信息</span>
@@ -212,6 +216,10 @@ export default {
     },
     toCard() {
       const url = '/pages/card';
+      wx.navigateTo({ url });
+    },
+    toBorrow() {
+      const url = '/pages/borrow';
       wx.navigateTo({ url });
     },
     toSuggest() {
