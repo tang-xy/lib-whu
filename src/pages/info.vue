@@ -37,11 +37,11 @@
     <div class="info-margin"/>
     <div class="info-list">
       <div class="info-margin"/>
-<<<<<<< HEAD
-      <div class="info-line" :disabled='disabled'>
-=======
       <div class="info-line" @click="toBorrow">
+<<<<<<< HEAD
 >>>>>>> 跳转借阅历史
+=======
+>>>>>>> 更改资源
         <image :src=picurl.jieyuepic mode='aspectFit'/>
         <div>
           <span>&nbsp;借阅信息</span>
@@ -179,6 +179,7 @@ export default {
     onClick() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       const url = '/pages/login?type=liblogin';
 =======
       if (this.disabled) {
@@ -188,6 +189,8 @@ export default {
 >>>>>>> 增加资源
       wx.navigateTo({ url });
 =======
+=======
+>>>>>>> 更改资源
       if (this.disabled) {
         const url = '/pages/information';
         wx.navigateTo({ url });
@@ -195,7 +198,10 @@ export default {
         const url = '/pages/login';
         wx.navigateTo({ url });
       }
+<<<<<<< HEAD
 >>>>>>> 添加更新个人信息页面
+=======
+>>>>>>> 更改资源
     },
     onLogin() {
       if (this.disabled) {
