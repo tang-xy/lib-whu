@@ -1,28 +1,28 @@
 <template>
   <div class='container'>
-    <image class='bk' src='/static/340/上方@3x.png' mode='aspectFill'/>
+    <image class='bk' src='https://system.lib.whu.edu.cn/mp-static/340/上方@3x.png' mode='aspectFill'/>
     <button v-if=login type='default' open-type='getUserInfo' @getuserinfo='getUserInfo' @click='wxlogin'>
       <span>微信快速登录</span>
-      <image src='/static/340/矩形 5@3x.png' mode='scaleToFill'/>
+      <image src='https://system.lib.whu.edu.cn/mp-static/340/矩形 5@3x.png' mode='scaleToFill'/>
     </button>
     <div class='bind-container' v-if=!login>
       <div class='input-container'>
-        <image src='/static/340/证件@3x.png' style='width:3.5vh; height:2.5vh;'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/340/证件@3x.png' style='width:3.5vh; height:2.5vh;'/>
         <span>&nbsp;学&nbsp;&nbsp;号&nbsp;</span>
         <input class='un-input' type='number' placeholder='请输入学号或学工号' @input=inputUsername confirm-type='next'/>
       </div>
       <div class='input-container' style='top: 10vh;'>
-        <image src='/static/340/密码@3x.png' style='width:3.5vh; height:3.5vh;'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/340/密码@3x.png' style='width:3.5vh; height:3.5vh;'/>
         <span>&nbsp;密&nbsp;&nbsp;码&nbsp;</span>
         <input class='pw-input' type='text' placeholder='请输入密码' @input=inputPassword password=true/>
       </div>
       <button id='bind' type='default' @click='bind'>
         <span>绑&nbsp;&nbsp;&nbsp;&nbsp;定</span>
-        <image src='/static/340/矩形 5@3x.png' mode='scaleToFill'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/340/矩形 5@3x.png' mode='scaleToFill'/>
       </button>
       <button id='exit' type='default' @click='exit'>
         <span>以后再说</span>
-        <image src='/static/340/矩形 5 副本@3x.png' mode='scaleToFill'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/340/矩形 5 副本@3x.png' mode='scaleToFill'/>
       </button>
     </div>
   </div>

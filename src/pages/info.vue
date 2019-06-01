@@ -15,7 +15,7 @@
         <image :src=picurl.cardpic mode='aspectFit'/>
         <div>
           <span>&nbsp;电子校园卡</span>
-          <image src='/static/320/更多 (1)@3x.png' mode='aspectFit'/>
+          <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
       <div class="info-margin">
@@ -28,7 +28,7 @@
         <image :src=picurl.zhangdanpic mode='aspectFit'/>
         <div>
           <span>&nbsp;图书馆账单</span>
-          <image src='/static/320/更多 (1)@3x.png' mode='aspectFit'/>
+          <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
       <div class="info-margin">
@@ -41,7 +41,7 @@
         <image :src=picurl.jieyuepic mode='aspectFit'/>
         <div>
           <span>&nbsp;借阅信息</span>
-          <image src='/static/320/更多 (1)@3x.png' mode='aspectFit'/>
+          <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
       <div class="info-margin">
@@ -54,7 +54,7 @@
         <image :src=picurl.lishipic mode='aspectFit'/>
         <div>
           <span>&nbsp;借阅历史</span>
-          <image src='/static/320/更多 (1)@3x.png' mode='aspectFit'/>
+          <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
       <div class="info-margin">
@@ -67,7 +67,7 @@
         <image :src=picurl.yuyuepic mode='aspectFit'/>
         <div>
           <span>&nbsp;预约结果</span>
-          <image src='/static/320/更多 (1)@3x.png' mode='aspectFit'/>
+          <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
       <div class="info-margin">
@@ -80,7 +80,7 @@
         <image :src=picurl.ziyuanpic mode='aspectFit'/>
         <div>
           <span>&nbsp;资源导购</span>
-          <image src='/static/320/更多 (1)@3x.png' mode='aspectFit'/>
+          <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
       <div class="info-margin">
@@ -93,7 +93,7 @@
         <image :src=picurl.jianyipic mode='aspectFit'/>
         <div>
           <span>&nbsp;建议与反馈</span>
-          <image src='/static/320/更多 (1)@3x.png' mode='aspectFit'/>
+          <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
       <div class="info-margin">
@@ -126,20 +126,20 @@ export default {
         jianyipic: '建议 (1)@3x.png',
       },
       picurl: {
-        cardpic: '/static/320/卡 (1)@3x.png',
-        zhangdanpic: '/static/320/账单 (1)@3x.png',
-        jieyuepic: '/static/320/书 (4)@3x.png',
-        lishipic: '/static/320/历史 (1)@3x.png',
-        yuyuepic: '/static/320/预约 (1)@3x.png',
-        ziyuanpic: '/static/320/购物车@3x.png',
-        jianyipic: '/static/320/建议 (1)@3x.png',
+        cardpic: 'https://system.lib.whu.edu.cn/mp-static/320/卡 (1)@3x.png',
+        zhangdanpic: 'https://system.lib.whu.edu.cn/mp-static/320/账单 (1)@3x.png',
+        jieyuepic: 'https://system.lib.whu.edu.cn/mp-static/320/书 (4)@3x.png',
+        lishipic: 'https://system.lib.whu.edu.cn/mp-static/320/历史 (1)@3x.png',
+        yuyuepic: 'https://system.lib.whu.edu.cn/mp-static/320/预约 (1)@3x.png',
+        ziyuanpic: 'https://system.lib.whu.edu.cn/mp-static/320/购物车@3x.png',
+        jianyipic: 'https://system.lib.whu.edu.cn/mp-static/320/建议 (1)@3x.png',
       },
       disabled: false,
       text: '点击绑定',
       user: {
         name: '点击登录',
         id: '登录更精彩',
-        pic: '/static/320/矢量免扣卡通人物@3x.png',
+        pic: 'https://system.lib.whu.edu.cn/mp-static/320/矢量免扣卡通人物@3x.png',
       },
     };
   },
@@ -147,16 +147,16 @@ export default {
     const t = this;
     let baseurl = '';
     if (t.$store.getters.getLogin) {
-      baseurl = '/static/330/';
+      baseurl = 'https://system.lib.whu.edu.cn/mp-static/330/';
       t.disabled = true;
       t.text = '解除绑定';
       t.user = Object({
         name: '李安国',
         id: '2017*****007',
-        pic: '/static/330/图层 1@3x.png',
+        pic: 'https://system.lib.whu.edu.cn/mp-static/330/图层 1@3x.png',
       });
     } else {
-      baseurl = '/static/320/';
+      baseurl = 'https://system.lib.whu.edu.cn/mp-static/320/';
       t.disabled = false;
       t.text = '点击绑定';
     }

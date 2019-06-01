@@ -20,16 +20,16 @@
     </div>
     <div class='education-button-container'>
       <button type='default' @click='toTraining'>
-        <image src='/static/200/日程 (1)@3x.png' mode='aspectFit'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/日程 (1)@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toWeiKe'>
-        <image src='/static/200/视频 (2) 副本@3x.png' mode='aspectFit'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/视频 (2) 副本@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toUnfinished'>
-        <image src='/static/200/视频 (1)@3x.png' mode='aspectFit'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/视频 (1)@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toUnfinished'>
-        <image src='/static/200/齿轮@3x.png' mode='aspectFit'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/齿轮@3x.png' mode='aspectFit'/>
       </button>
       <span>培训日程</span>
       <span>小布微课</span>
@@ -41,16 +41,16 @@
     </div>
     <div class='education-button-container'>
       <button type='default' @click='toUnfinished'>
-        <image src='/static/200/我的图书馆@3x.png' mode='aspectFit'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/我的图书馆@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toUnfinished'>
-        <image src='/static/200/书 (2)@3x.png' mode='aspectFit'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/书 (2)@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toUnfinished'>
-        <image src='/static/200/lingdao@3x.png' mode='aspectFit'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/lingdao@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toUnfinished'>
-        <image src='/static/200/游戏@3x.png' mode='aspectFit'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/游戏@3x.png' mode='aspectFit'/>
       </button>
       <span>关于本馆</span>
       <span>玩转本馆</span>
@@ -62,16 +62,16 @@
     </div>
     <div class='education-button-container'>
       <button type='default' @click='toUnfinished'>
-        <image src='/static/200/图层 1@3x.png' mode='aspectFit'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/图层 1@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toUnfinished'>
-        <image src='/static/200/图层 2@3x.png' mode='aspectFit'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/图层 2@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toUnfinished'>
-        <image src='/static/200/图层 4@3x.png' mode='aspectFit'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/图层 4@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toUnfinished'>
-        <image src='/static/200/图层 3@3x.png' mode='aspectFit'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/图层 3@3x.png' mode='aspectFit'/>
       </button>
       <span>百度教育</span>
       <span>&nbsp;新东方&nbsp;&nbsp;</span>
@@ -92,12 +92,12 @@ export default {
     return {
       banner_url: [
         {
-          pic: '/static/200/banner1 拷贝@3x.png',
+          pic: 'https://system.lib.whu.edu.cn/mp-static/200/banner1 拷贝@3x.png',
           url: '',
           id: 0,
         },
         {
-          pic: '/static/200/banner1 拷贝@3x.png',
+          pic: 'https://system.lib.whu.edu.cn/mp-static/200/banner1 拷贝@3x.png',
           url: '',
           id: 1,
         },

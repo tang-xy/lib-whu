@@ -145,20 +145,20 @@
     "list": [
       {
         "pagePath": "pages/index",
-        "iconPath": "static/200/shouye@3x.png",
-        "selectedIconPath": "static/100/shouye_selected@3x.png",
+        "iconPath": "static/shouye@3x.png",
+        "selectedIconPath": "static/shouye_selected@3x.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/find",
         "iconPath": "static/100/yanjing@3x.png",
-        "selectedIconPath": "static/200/yanjing_selected@3x.png",
+        "selectedIconPath": "static/yanjing_selected@3x.png",
         "text": "发现"
       },
       {
         "pagePath": "pages/info",
-        "iconPath": "static/100/wo@3x.png",
-        "selectedIconPath": "static/320/wo_selected@3x.png",
+        "iconPath": "static/wo@3x.png",
+        "selectedIconPath": "static/wo_selected@3x.png",
         "text": "我的"
       }
     ]

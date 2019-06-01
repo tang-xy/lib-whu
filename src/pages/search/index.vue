@@ -16,21 +16,21 @@
     <div class='search-bar'>
       <picker @change=onSearchTypeChange :value=index :range=searchType>
         <span>{{searchType[index]}}</span>
-        <image src='/static/110/长箭头@3x.png' mode='scaleToFill'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/110/长箭头@3x.png' mode='scaleToFill'/>
       </picker>
       <div class='input-container'>
-        <image src='/static/110/搜索@3x.png' mode='scaleToFill'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/110/搜索@3x.png' mode='scaleToFill'/>
         <input class='search-input' type='text' placeholder='搜索' @confirm=onInputSearch focus=true/>
       </div>
     </div>
     <div class='search-history-bar'>
       <span>历史搜索</span>
-      <image src='/static/110/垃圾桶@3x.png' mode='scaleToFill'/>
+      <image src='https://system.lib.whu.edu.cn/mp-static/110/垃圾桶@3x.png' mode='scaleToFill'/>
     </div>
     <div class='search-history-container'>
       <button v-for='(item, index) in searchHistory' :key=index @click=onClickHistory(index)>{{item.name}}</button>
     </div>
-    <image class='bk' src='/static/110/bk.png' mode='scaleToFill'/>
+    <image class='bk' src='https://system.lib.whu.edu.cn/mp-static/110/bk.png' mode='scaleToFill'/>
   </div>
 </template>
 
@@ -40,11 +40,11 @@ export default {
   data: {
     lang: 'cn',
     cnStyle: {
-      src: '/static/110/圆角矩形 10@3x.png',
+      src: 'https://system.lib.whu.edu.cn/mp-static/110/圆角矩形 10@3x.png',
       color: 'white',
     },
     enStyle: {
-      src: '/static/110/圆角矩形 10 副本@3x.png',
+      src: 'https://system.lib.whu.edu.cn/mp-static/110/圆角矩形 10 副本@3x.png',
       color: '#4A88DD',
     },
     searchType: ['全面检索', '题名', '著者', '索书号', 'ISSN', 'ISBN'],
@@ -66,22 +66,22 @@ export default {
     onSwitchToCN() {
       this.lang = 'cn';
       this.cnStyle = {
-        src: '/static/110/圆角矩形 10@3x.png',
+        src: 'https://system.lib.whu.edu.cn/mp-static/110/圆角矩形 10@3x.png',
         color: 'white',
       };
       this.enStyle = {
-        src: '/static/110/圆角矩形 10 副本@3x.png',
+        src: 'https://system.lib.whu.edu.cn/mp-static/110/圆角矩形 10 副本@3x.png',
         color: '#4A88DD',
       };
     },
     onSwitchToEN() {
       this.lang = 'en';
       this.enStyle = {
-        src: '/static/110/圆角矩形 10@3x.png',
+        src: 'https://system.lib.whu.edu.cn/mp-static/110/圆角矩形 10@3x.png',
         color: 'white',
       };
       this.cnStyle = {
-        src: '/static/110/圆角矩形 10 副本@3x.png',
+        src: 'https://system.lib.whu.edu.cn/mp-static/110/圆角矩形 10 副本@3x.png',
         color: '#4A88DD',
       };
     },

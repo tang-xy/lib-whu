@@ -1,12 +1,12 @@
 <template>
   <div class='card'>
-      <image class="background" src='/static/331/上方@3x.png'>
+      <image class="background" src='https://system.lib.whu.edu.cn/mp-static/331/上方@3x.png'>
         <div class="title">
           <span>信息更新</span>
         </div>
         <div class="table">
             <div class="line">
-                <image src='/static/331/姓名@3x.png'/>
+                <image src='https://system.lib.whu.edu.cn/mp-static/331/姓名@3x.png'/>
                 <span>真实姓名:</span>
                 <div>
                     <input type='text' @input='inputName'/>
@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="line">
-                <image src='/static/331/博士帽@3x.png'/>
+                <image src='https://system.lib.whu.edu.cn/mp-static/331/博士帽@3x.png'/>
                 <span>专业:</span>
                 <div>
                     <input type='text' @input="inputMajor"/>
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="line">
-                <image src='/static/331/电话@3x.png'/>
+                <image src='https://system.lib.whu.edu.cn/mp-static/331/电话@3x.png'/>
                 <span>联系电话:</span>
                 <div>
                     <input type='number' @input="inputTel"/>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="line">
-                <image src='/static/331/邮箱@3x.png'/>
+                <image src='https://system.lib.whu.edu.cn/mp-static/331/邮箱@3x.png'/>
                 <span>邮箱:</span>
                 <div>
                     <input type='text' @input="inputEmail"/>

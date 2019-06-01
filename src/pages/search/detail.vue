@@ -18,12 +18,12 @@
         <span class='value'>{{publish}}</span>
       </div>
       <button class='share' @click=onShare>
-        <image src='/static/112/分享@3x.png'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/112/分享@3x.png'/>
       </button>
     </div>
     <div class='list-container'>
       <div class='title'>
-        <image src='/static/112/书 (3)@3x.png'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/112/书 (3)@3x.png'/>
         <span>馆藏分布情况</span>
       </div>
       <scroll-view

@@ -1,7 +1,7 @@
 <template>
   <div class='card'>
     <div class='card-image'>
-      <image src='/static/380/undraw_book_lover_mkck@3x.png'/>
+      <image src='https://system.lib.whu.edu.cn/mp-static/380/undraw_book_lover_mkck@3x.png'/>
     </div>
     <div class='text'>
       <span>将手机贴近门禁刷卡区，即可刷手机进出图书馆</span>

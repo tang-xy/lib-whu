@@ -11,7 +11,7 @@
       <span class='time'>{{fromTime}}至{{toTime}}</span>
     </div>
     <button class='ratio'>
-      <image :class="{ 'ratio-selected': isSelected }" src='/static/131/椭圆 11@3x.png'/>
+      <image :class="{ 'ratio-selected': isSelected }" src='https://system.lib.whu.edu.cn/mp-static/131/椭圆 11@3x.png'/>
     </button>
   </div>
 </template>

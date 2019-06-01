@@ -11,8 +11,8 @@
     </div>
     <div class='control-container'>
       <div class='select-all'>
-        <image src='/static/130/圆角矩形 3@3x.png'/>
-        <image style='position:absolute;' src='/static/131/勾@3x.png'/>
+        <image src='https://system.lib.whu.edu.cn/mp-static/130/圆角矩形 3@3x.png'/>
+        <image style='position:absolute;' src='https://system.lib.whu.edu.cn/mp-static/131/勾@3x.png'/>
         <span>全选</span>
       </div>
       <button class='con-borrow'>续借</button>

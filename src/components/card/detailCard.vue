@@ -24,9 +24,9 @@
       <div class='key'>取书分馆</div>
       <div class='value'>
         <picker @change=onLibChange :value=libIndex :range=libs>
-          <image class='book' src='/static/112/立即预约@3x.png' mode='scaleToFill'/>
+          <image class='book' src='https://system.lib.whu.edu.cn/mp-static/112/立即预约@3x.png' mode='scaleToFill'/>
           <span>总馆</span>
-          <image class='arrow' src='/static/112/更多 (1)@3x.png' mode='scaleToFill'/>
+          <image class='arrow' src='https://system.lib.whu.edu.cn/mp-static/112/更多 (1)@3x.png' mode='scaleToFill'/>
         </picker>
       </div>
     </div>
