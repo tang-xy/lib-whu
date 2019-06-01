@@ -151,7 +151,7 @@
       },
       {
         "pagePath": "pages/find",
-        "iconPath": "static/100/yanjing@3x.png",
+        "iconPath": "static/yanjing@3x.png",
         "selectedIconPath": "static/yanjing_selected@3x.png",
         "text": "发现"
       },
