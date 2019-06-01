@@ -116,7 +116,7 @@ export function getBorrowInfo(params) {
 
 export function getBookDetail(params) {
   return new Promise((resolve, reject) => {
-    request.get('/libuser/detail/', params)
+    request.get('/libuser/book_detail/', params)
       .then((response) => {
         resolve(response.data);
       })

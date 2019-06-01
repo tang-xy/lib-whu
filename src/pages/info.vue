@@ -1,7 +1,7 @@
 <template>
   <div class='info-view'>
     <div class="info-logon">
-      <open-data type=userAvatarUrl lang=zh_CN />
+      <open-data class='avatar' type=userAvatarUrl lang=zh_CN />
       <view @click="onClick">
         <open-data type=userNickName lang=zh_CN />
         <span>&nbsp;{{user.name}}&nbsp;{{user.id}}</span>
@@ -245,18 +245,20 @@ export default {
     flex-wrap: wrap;
     -webkit-flex-direction: row;
     flex-direction: row;
-    image{
+    .avatar{
       padding-left: 5%;
       padding-top: 5vh;
       width: 25%;
       height: 18vh;
     }
     view{
-      width: 30%;
+      width: 50%;
       height: 10vh;
       padding-top: 8.3vh;
       background-color: #ffffff;
       font-size: 45rpx;
+      display: flex;
+      flex-direction: column;
       span{
         font-size: 34rpx;
         color: #777777;

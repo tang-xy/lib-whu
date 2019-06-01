@@ -89,7 +89,7 @@ export default {
       this.index = Number(e.target.value);
     },
     onInputSearch(e) {
-      this.searchContent = e.detail.value;
+      this.searchContent = e.mp.detail.value;
       this.search(this.searchContent);
     },
     onClickHistory(key) {
