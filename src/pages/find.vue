@@ -139,22 +139,22 @@ export default {
 
 <style lang="scss" scoped>
 .find-view{
-  width: 96%;
-  height: 150vh;
-  padding-left: 2%;
-  padding-right: 2%;
-  padding-top: 2vh;
+  width: 750rpx;
+  height: 1224rpx;
+  padding-left: 8rpx;
+  padding-right: 11rpx;
+  padding-top: 22rpx;
   padding-bottom: 0vh;
   background-color: #f7f7f7;
   .scroll-view{
-    width: 96vw;
-    height: 27vh;
+    width: 731rpx;
+    height: 295rpx;
     .swiper-box{
-      height: 27vh;
+      height: 295rpx;
     }
     .scroll-image{
-      width: 96vw;
-      height: 27vh;
+      width: 731rpx;
+      height: 295rpx;
       image{
         width: 100%;
         height: 100%;
@@ -162,35 +162,50 @@ export default {
     }
   }
   .find-tittle{
-      border-bottom: 0.1vh solid #e6e6e6;
+      border-bottom: 3rpx solid #ABABAB;
+      margin-left: 45rpx;
+      margin-right: 67rpx;
+      margin-top: 31rpx; 
+      margin-bottom: 12rpx;
+      span{
+        font-size: 30rpx;
+        color: #525252;
+      }
   }
   .education-button-container{
     display: flex;
-    margin-top: 1vh;
-    width: 96vw;
-    height: 30vh;
+    margin-top: 12rpx;
+    margin-left: 73rpx;
+    margin-right: 28rpx;
+    width: 646rpx;
+    height: 190rpx;
     flex-wrap: wrap;
     button::after{
       border: none;
     }
     button{
-      width: 24%;
-      height: 75%;
+      width: 115rpx;
+      height: 115rpx;
       padding: 0%;
+      margin-right: 47rpx;
       background-color: transparent;
+      flex-direction: column;
       -webkit-flex-direction: column;
       image{
-        width: 90%;
-        height: 50%;
+        width: 100%;
+        height: 100%;
       }
     }
     span{
+        -webkit-flex-direction: column;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        font-size: 2.5vw;
-        margin-top: -13vh;
-        padding-left: 7.5vw;
-        padding-right: 6.3vw;
+        font-size: 24rpx;
+        margin-top: 0vh;
+        margin-left: 12rpx;
+        margin-right: 52rpx;
+        color: #525252;
       }
 
   }
