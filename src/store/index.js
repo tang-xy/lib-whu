@@ -32,6 +32,7 @@ const store = new Vuex.Store({
         return;
       }
       vertifySession({ session }).then((response) => {
+        console.log(response);
         if (!response.login) {
           wx.navigateTo({ url: '/pages/login?type=login' });
           return;
@@ -74,7 +75,9 @@ const store = new Vuex.Store({
         commit('setLibBind', response.libBind);
         wx.setStorageSync('session', response.session);
         wx.hideLoading();
-        wx.navigateBack({ delta: 1 });
+        if (response.libBind) {
+          wx.navigateBack({ delta: 1 });
+        }
       });
     },
     bindLibAccount({ commit, state }, info) {

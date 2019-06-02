@@ -146,7 +146,7 @@ export default {
   onShow() {
     const t = this;
     let baseurl = '';
-    if (t.$store.getters.getLogin) {
+    if (t.$store.getters.getLibBind) {
       baseurl = 'https://system.lib.whu.edu.cn/mp-static/330/';
       t.disabled = true;
       t.text = '解除绑定';
