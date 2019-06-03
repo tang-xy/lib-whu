@@ -1,6 +1,6 @@
 <template>
   <web-view
-  src='https://seat.lib.whu.edu.cn'
+  src='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx311d49281953c3fb&redirect_uri=http%3a%2f%2fsystem.lib.whu.edu.cn%2flibseat-wechat%2findex&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect'
   @load=webLoad
   />
 </template>

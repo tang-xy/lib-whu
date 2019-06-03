@@ -4,7 +4,7 @@
       <open-data class='avatar' type=userAvatarUrl lang=zh_CN />
       <view @click="onClick">
         <open-data type=userNickName lang=zh_CN />
-        <span>&nbsp;{{user.name}}&nbsp;{{user.id}}</span>
+        <span>{{user.name}}&nbsp;{{user.id}}</span>
       </view>
       <div/>
     </div>
@@ -214,9 +214,7 @@ export default {
 <style lang="scss" scoped>
 .info-view{
   width: 100%;
-  height: 96vh;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
+  height: 100vh;
   background-color: #f7f7f7;
   .info-image{
     width: 96vw;
@@ -239,28 +237,31 @@ export default {
   .info-logon{
     background-color: #ffffff;
     width: 100%;
-    height: 25vh;
+    height: 248rpx;
     display: flex;
     display: -webkit-flex;
     flex-wrap: wrap;
     -webkit-flex-direction: row;
     flex-direction: row;
     .avatar{
-      padding-left: 5%;
-      padding-top: 5vh;
-      width: 25%;
-      height: 18vh;
+      margin-left: 33rpx;
+      margin-top: 54rpx;
+      width: 150rpx;
+      height: 150rpx;
     }
     view{
       width: 50%;
-      height: 10vh;
-      padding-top: 8.3vh;
+      height: 152rpx;
+      padding-top: 96rpx;
+      padding-left: 24rpx;
       background-color: #ffffff;
-      font-size: 45rpx;
+      font-size: 43rpx;
+      color: #393939;
       display: flex;
       flex-direction: column;
       span{
-        font-size: 34rpx;
+        margin-left: 2rpx;
+        font-size: 30rpx;
         color: #777777;
       }
     }
@@ -269,7 +270,7 @@ export default {
     }
   }
   .info-margin{
-    height: 1.5vh;
+    height: 13rpx;
   }
   .info-underscores{
     height: 1vh;
