@@ -20,12 +20,12 @@
         <view class="divLine"></view>
     </div>
     <div class="line">
-      <button type='default' @click='toStar' class="star">
+      <div type='default' @click='toStar' class="star">
         <image :src=picpath mode='aspectFit'/>
-      </button>
-      <button type='default' open-type="share" class="star">
+      </div>
+      <div type='default' open-type="share" class="star">
         <image src='https://system.lib.whu.edu.cn/mp-static/221/分享@3x.png' mode='aspectFit'/>
-      </button>
+      </div>
       <button class="more">
         <span>详情</span>
       </button>
@@ -85,109 +85,102 @@ export default {
 
 <style lang="scss" scoped>
 .training-card{
-  margin-top: 2%;
-  margin-bottom: 2%;
+  height: 382rpx;
+  width: 625rpx;
   border-style: solid;
-  border-radius: 5px;
-  border-width: 1px;
-  border-color: grey;
-  padding-left: 5%;
-  padding-bottom: 3%;
-  padding-top: 3%;
-  padding-right: 3%;
+  border-radius: 1rpx;
+  border-width: 1rpx;
+  border-color: #777777;
+  padding-left: 35rpx;
+  padding-bottom: 24rpx;
+  padding-top: 27rpx;
+  padding-right: 35rpx;
   background-color: white;
+  margin-bottom: 16rpx;
   position: relative;
   .author{
     display: flex;
-    font-size: 40rpx;
+    font-size: 24rpx;
     align-items: center;
-    color: #444444;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
+    color: #525252;
+    margin-left: 4rpx;
+    margin-bottom: 48rpx;
     .key{
-      margin-right: 4vw;
+      font-size: 24rpx;
     }
     .value{
-      font-size: 30rpx;
+      font-size: 24rpx;
       font-weight: lighter;
-      color: grey;
+      color: #525252;
     }
   }
   .speaker{
     display: flex;
-    font-size: 40rpx;
+    font-size: 24rpx;
     align-items: center;
-    color: #444444;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
+    color: #525252;
+    margin-top: 0;
+    margin-left: 4rpx;
+    margin-bottom: 48rpx;
     .key{
-      margin-right: 4vw;
+      font-size: 24rpx;
     }
     .value{
-      font-size: 30rpx;
+      font-size: 24rpx;
       font-weight: lighter;
-      color: grey;
+      color: #525252;
     }
   }
   .timer{
     display: flex;
-    font-size: 40rpx;
+    font-size: 24rpx;
     align-items: center;
-    color: #444444;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
+    color: #525252;
+    margin-left: 4rpx;
+    margin-bottom: 48rpx;
     .key{
-      margin-right: 4vw;
+      font-size: 24rpx;
     }
     .value{
-      font-size: 30rpx;
+      font-size: 24rpx;
       font-weight: lighter;
-      color: grey;
+      color: #525252;
     }
   }
   .place{
     display: flex;
-    font-size: 40rpx;
+    font-size: 24rpx;
     align-items: center;
-    color: #444444;
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
+    color: #525252;
+    margin-left: 4rpx;
+    margin-bottom: 48rpx;
     .key{
-      margin-right: 4vw;
+      font-size: 24rpx;
     }
     .value{
-      font-size: 30rpx;
+      font-size: 24rpx;
       font-weight: lighter;
-      color: grey;
+      color: #525252;
     }
   }
   .info-underscores{
-    height: 1vh;
-    padding-left: 5%;
-    width: 90%;
+    height: 3rpx;
+    padding-left: 0;
+    width: 100%;
     .divLine{
       background: #ababab;
-      height: 0.2vh;
+      height: 3rpx;
     }
   }
   .line{
     flex-wrap: wrap;
     display: flex;
-    margin-top: 0%;
-    margin-bottom: 0%;
-    border-style: none;
-    padding-left: 0%;
-    padding-bottom: 0%;
-    padding-top: 0%;
-    padding-right: 0%;
     .star{
-      border-style: none;
-      padding-left: 0%;
-      padding-bottom: 0%;
-      padding-top: 0%;
-      padding-right: 0%;
-      height: 9vw;
-      width: 9vw;
+      margin-left: 32rpx;
+      margin-top: 19rpx;
+      margin-right: 181rpx;
+      height: 43rpx;
+      width: 41rpx;
       background: none;
       image{
           height: 100%;
