@@ -37,7 +37,7 @@ export default {
 
 <style lang="scss" scoped>
 .training-list{
-  margin: 3vw;
+  margin: 0;
   height: 100%;
 }
 
