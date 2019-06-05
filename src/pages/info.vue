@@ -11,7 +11,7 @@
     <div class="info-margin"/>
     <div class="info-list">
       <div class="info-margin"/>
-      <div class="info-line" @click="toCard" :disabled='disabled'>
+      <div class="info-line" @click="toUnfinished" :disabled='disabled'>
         <image :src=picurl.cardpic mode='aspectFit'/>
         <div>
           <span>&nbsp;电子校园卡</span>
