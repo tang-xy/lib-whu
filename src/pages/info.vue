@@ -100,7 +100,7 @@
       </div>
     </div>
     <div class="info-margin"/>
-    <div class="info-list">
+    <div class="info-list" v-if="disabled" >
       <div class="info-margin"/>
         <div class="info-bind" @click="onLogin">
           <span>{{text}}</span>
@@ -216,15 +216,6 @@ export default {
   width: 100%;
   height: 100vh;
   background-color: #f7f7f7;
-  .info-image{
-    width: 96vw;
-    height: 27vh;
-    padding-bottom: 2vh;
-    image{
-      width: 100%;
-      height: 100%;
-    }
-  }
   .info-bind{
     width: 100%;
     display: flex;
@@ -289,25 +280,26 @@ export default {
     display: flex;
     display: -webkit-flex;
     flex-wrap: wrap;
-    height: 5vh;
+    height: 87rpx;
     background-color: #ffffff;
     -webkit-flex-direction: column;
     image{
-      padding-top:2.5%;
-      width: 15%;
-      height: 90%;
+      margin-top:21rpx;
+      margin-left: 36rpx;
+      width: 54rpx;
+      height: 54rpx;
       align-items: left;
       justify-content: left;
     }
     div{
-      width: 80%;
+      width: 660rpx;
       height: 100%;
       display: flex;
       flex-wrap: wrap;
       span{
-        padding-top:1.25vh;
-        font-size: 0.9;
-        width: 95%;
+        padding-top:20rpx;
+        font-size: 31rpx;
+        width: 600rpx;
       }
       span:disabled{
         color: #ABABAB;
@@ -316,9 +308,10 @@ export default {
         color: #000;
       }
       image{
-        padding-top:1.5vh;
-        width: 5%;
-        height: 60%;
+        margin-top:20rpx;
+        margin-left: 0;
+        width: 15rpx;
+        height: 27rpx;
         align-items: right;
         justify-content: right;
       }
