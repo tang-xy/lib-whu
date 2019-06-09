@@ -4,7 +4,7 @@
       <textarea placeholder='请留下您的宝贵意见或建议，我们将努力改进 （不少于五个字）' focus=true></textarea>
     </div>
     <div class='suggest-tel'>
-      <input type='text' placeholder='请留下手机号或QQ号，以便我们及时回复你' focus=true/>
+      <input type='text' placeholder='请留下手机号或QQ号，以便我们及时回复你'/>
     </div>
     <button class="up">
         <span>提&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交</span>

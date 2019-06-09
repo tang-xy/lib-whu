@@ -165,6 +165,7 @@ export default {
         align-content: center;
         align-self:center;
         justify-self:center;
+        width: 490rpx;
       }
     }
     #bind{
