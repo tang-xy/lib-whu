@@ -140,7 +140,7 @@ export default {
         border-color: #82a6dd;
         border-radius: 10rpx;
         font-size: 30rpx;
-        width: 303rpx;
+        width: 200rpx;
         margin-top: 2%;
         margin-bottom: 2%;
         display: flex;
@@ -155,7 +155,7 @@ export default {
           left: 2vw;
         }
         .arrow{
-          width: 5vw;
+          width: 3vw;
           height: 2vw;
           position: absolute;
           right: 2vw;
