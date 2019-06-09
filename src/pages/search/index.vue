@@ -23,7 +23,7 @@
         <input class='search-input' type='text' placeholder='搜索' @confirm=onInputSearch focus=true/>
       </div>
     </div>
-    <div class='search-history-bar'>
+    <div class='search-history-bar' @click="onClickDelete">
       <span>历史搜索</span>
       <image src='https://system.lib.whu.edu.cn/mp-static/110/垃圾桶@3x.png' mode='scaleToFill'/>
     </div>
@@ -63,6 +63,9 @@ export default {
     ],
   },
   methods: {
+    onClickDelete() {
+      this.searchHistory = [];
+    },
     onSwitchToCN() {
       this.lang = 'cn';
       this.cnStyle = {
@@ -97,6 +100,9 @@ export default {
       this.search(list[key]);
     },
     search(value) {
+      this.searchHistory.push({
+        name: value,
+      });
       wx.navigateTo({ url: `/pages/search/result?value=${value}` });
     },
   },

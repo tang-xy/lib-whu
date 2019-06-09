@@ -146,10 +146,25 @@ export default {
       height: 8vh;
       justify-content: center;
       align-content: center;
+      font-size: 30rpx;
+      image{
+        margin-top: 5%;
+      }
+      span{
+        margin-top: 5%;
+      }
       input{
+        height: 72rpx;
+        font-size: 24rpx;
+        padding-left: 13rpx;
+        padding-top: 3rpx;
         border-style: solid;
         border-width: 1px;
         border-color: grey;
+        justify-content: center;
+        align-content: center;
+        align-self:center;
+        justify-self:center;
       }
     }
     #bind{
