@@ -17,6 +17,9 @@
     </scroll-view>
     <div class="find-tittle">
         <span>&nbsp;&nbsp;教学培训&nbsp;</span>
+        <div class="tittle-en">
+          <span>TEACHING &TRAINING</span>
+        </div>
     </div>
     <div class='education-button-container'>
       <button type='default' @click='toTraining'>
@@ -33,11 +36,14 @@
       </button>
       <span>培训日程</span>
       <span>小布微课</span>
-      <span>小布微课</span>
+      <span>往期培训</span>
       <span>使用攻略</span>
     </div>
     <div class="find-tittle">
       <span>&nbsp;&nbsp;新生专栏&nbsp;</span>
+        <div class="tittle-en">
+          <span>FRESHMAN COLUMN</span>
+        </div>
     </div>
     <div class='education-button-container'>
       <button type='default' @click='toUnfinished'>
@@ -59,6 +65,9 @@
     </div>
     <div class="find-tittle">
       <span>&nbsp;&nbsp;移动数据库&nbsp;</span>
+        <div class="tittle-en">
+          <span>MOBILE  DATABASE</span>
+        </div>
     </div>
     <div class='education-button-container'>
       <button type='default' @click='toUnfinished'>
@@ -167,9 +176,21 @@ export default {
       margin-right: 67rpx;
       margin-top: 31rpx; 
       margin-bottom: 12rpx;
+      display: flex;
+      display: -webkit-flex;
+      flex-wrap: wrap;
+      -webkit-flex-direction: row;
+      flex-direction: row;
       span{
         font-size: 30rpx;
         color: #525252;
+      }
+      .tittle-en{
+        margin-left: 299rpx;
+        span{
+          font-size: 18rpx;
+          color: #525252;
+        }
       }
   }
   .education-button-container{
@@ -203,8 +224,8 @@ export default {
         justify-content: center;
         font-size: 24rpx;
         margin-top: 0vh;
-        margin-left: 12rpx;
-        margin-right: 52rpx;
+        margin-left: 13rpx;
+        margin-right: 56rpx;
         color: #525252;
       }
 
