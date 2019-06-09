@@ -23,7 +23,7 @@
     <div class='info' v-if=reserve>
       <div class='key'>取书分馆</div>
       <div class='value'>
-        <picker @change=onLibChange :value=libIndex :range=libs>
+        <picker @change=onLibChange :value=libIndex :range="['总馆', '信息馆', '工学分馆', '医学分馆']" mode="selector">
           <image class='book' src='https://system.lib.whu.edu.cn/mp-static/112/立即预约@3x.png' mode='scaleToFill'/>
           <span>总馆</span>
           <image class='arrow' src='https://system.lib.whu.edu.cn/mp-static/112/更多 (1)@3x.png' mode='scaleToFill'/>
@@ -81,6 +81,7 @@ export default {
   },
   data: {
     libs: ['总馆', '信息馆', '工学分馆', '医学分馆'],
+    // 现版本失效
     libIndex: 0,
   },
   computed: {
@@ -139,7 +140,7 @@ export default {
         border-color: #82a6dd;
         border-radius: 10rpx;
         font-size: 30rpx;
-        width: 70%;
+        width: 303rpx;
         margin-top: 2%;
         margin-bottom: 2%;
         display: flex;
@@ -162,13 +163,14 @@ export default {
         }
       }
       button{
-        font-size: 30rpx;
+        font-size: 23rpx;
         border-radius: 100rpx;
         background: #82a6dd;
         color: white;
         margin-top: 1%;
         margin-bottom: 1%;
-        width: 50%;
+        width: 143rpx;
+        height: 41rpx;;
         position: absolute;
         line-height: 40rpx;
       }

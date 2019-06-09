@@ -17,7 +17,7 @@
         <span class='key'>出版发行：</span>
         <span class='value'>{{publish}}</span>
       </div>
-      <button class='share' @click=onShare>
+      <button class='share' @click=onShare open-type="share">
         <image src='https://system.lib.whu.edu.cn/mp-static/112/分享@3x.png'/>
       </button>
     </div>
