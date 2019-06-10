@@ -23,9 +23,9 @@
     <div class='info' v-if=reserve>
       <div class='key'>取书分馆</div>
       <div class='value'>
-        <picker @change=onLibChange :value=libIndex :range="['总馆', '信息馆', '工学分馆', '医学分馆']" mode="selector">
+        <picker @change=onLibChange :value=libIndex :range="libs" mode="selector">
           <image class='book' src='https://system.lib.whu.edu.cn/mp-static/112/立即预约@3x.png' mode='scaleToFill'/>
-          <span>总馆</span>
+          <span>{{libs[libIndex]}}</span>
           <image class='arrow' src='https://system.lib.whu.edu.cn/mp-static/112/更多 (1)@3x.png' mode='scaleToFill'/>
         </picker>
       </div>
@@ -42,7 +42,19 @@
 <script>
 export default {
   name: 'DetailCard',
+  created() {
+  },
   props: {
+    libs: {
+      type: Array,
+      required: false,
+      default: ['总馆', '信息馆', '工学分馆', '医学分馆'],
+    },
+    libIndex: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
     key: {
       type: Number,
       required: true,
@@ -80,9 +92,6 @@ export default {
     },
   },
   data: {
-    libs: ['总馆', '信息馆', '工学分馆', '医学分馆'],
-    // 现版本失效
-    libIndex: 0,
   },
   computed: {
     index() {
@@ -169,7 +178,7 @@ export default {
         color: white;
         margin-top: 1%;
         margin-bottom: 1%;
-        width: 143rpx;
+        width: 150rpx;
         height: 41rpx;;
         position: absolute;
         line-height: 40rpx;
