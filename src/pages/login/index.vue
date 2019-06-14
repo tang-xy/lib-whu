@@ -61,7 +61,7 @@ export default {
       if (this.userName === '' || this.password === '') {
         wx.showToast({ title: '学号/密码不能为空', icon: 'none' });
       } else {
-        this.$store.dispatch('bindLibAccount', { libId: this.userName, libPsw: this.password });
+        this.$store.dispatch('bindLibAccount', { session: this.$store.getters.getSession, libId: this.userName, libPsw: this.password });
       }
     },
     getUserInfo(e) {

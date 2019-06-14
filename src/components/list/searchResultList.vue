@@ -3,9 +3,10 @@
   <search-result-card
   v-for='(item, index) in result'
   :key=index
-  :name=item.name
+  :name=item.title
   :author=item.author
   :publish=item.publish
+  :book=item
   @click-card=onClickCard
   />
 </div>

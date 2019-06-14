@@ -4,7 +4,7 @@
       <open-data class='avatar' type=userAvatarUrl lang=zh_CN />
       <view @click="onClick">
         <open-data type=userNickName lang=zh_CN />
-        <span>{{user.name}}&nbsp;{{user.id}}</span>
+        <span>{{user.name}}&nbsp;{{user.bor_id}}</span>
       </view>
       <div/>
     </div>
@@ -150,15 +150,12 @@ export default {
       baseurl = 'https://system.lib.whu.edu.cn/mp-static/330/';
       t.disabled = true;
       t.text = '解除绑定';
-      t.user = Object({
-        name: '李安国',
-        id: '2017*****007',
-        pic: 'https://system.lib.whu.edu.cn/mp-static/330/图层 1@3x.png',
-      });
+      t.user = t.$store.getters.getLibUser;
     } else {
       baseurl = 'https://system.lib.whu.edu.cn/mp-static/320/';
       t.disabled = false;
       t.text = '点击绑定';
+      t.user = { name: '点击登录' };
     }
     const a = {};
     Object.keys(t.piclist).forEach((key) => {
@@ -179,13 +176,17 @@ export default {
       }
     },
     onLogin() {
+      const that = this;
       if (this.disabled) {
         wx.showModal({
           title: '确定解绑？',
           content: '解除绑定后将无法使用座位预约、借阅信息查询等功能，重新绑定即可查看',
           success(res) {
             if (res.confirm) {
-              console.log('用户点击确定');
+              that.$store.dispatch('unbindLibAccount', { session: that.$store.getters.getSession });
+              that.disabled = false;
+              const url = '/pages/login';
+              wx.navigateTo({ url });
             } else if (res.cancel) {
               console.log('用户点击取消');
             }

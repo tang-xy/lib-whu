@@ -20,9 +20,9 @@
       </picker>
       <div class='input-container'>
         <image src='https://system.lib.whu.edu.cn/mp-static/110/搜索@3x.png' mode='scaleToFill'/>
-        <input class='search-input' type='text' placeholder='搜索' @confirm=onInputSearch focus=true/>
+        <input class='search-input' type='text' placeholder='搜索' @confirm=onInputSearch :focus="focus"/>
       </div>
-      <div class="search-search-button" @click="onInputSearch">
+      <div class="search-search-button" @click=onInputSearch v-if=false>
         <span>搜索</span>
       </div>
     </div>
@@ -46,6 +46,7 @@ export default {
       src: 'https://system.lib.whu.edu.cn/mp-static/110/圆角矩形 10@3x.png',
       color: 'white',
     },
+    focus: true,
     enStyle: {
       src: 'https://system.lib.whu.edu.cn/mp-static/110/圆角矩形 10 副本@3x.png',
       color: '#4A88DD',
@@ -53,17 +54,15 @@ export default {
     searchType: ['全部', '题名', '著者', '索书号', 'ISSN', 'ISBN'],
     index: 0,
     searchContent: '',
-    searchHistory: [
-      { name: '明朝那些事' },
-      { name: '明朝那些事' },
-      { name: '活着' },
-      { name: '明朝那些事' },
-      { name: '活着' },
-      { name: '明朝那些事' },
-      { name: '活着' },
-      { name: '明朝那些事' },
-      { name: '明朝那些事' },
-    ],
+    searchHistory: wx.getStorageSync('searchHistory') || [],
+  },
+  watch: {
+    searchHistory: {
+      handler(val, oldVal) {
+        wx.setStorageSync('searchHistory', val);
+      },
+      deep: true,
+    },
   },
   methods: {
     onClickDelete() {
@@ -71,6 +70,7 @@ export default {
     },
     onSwitchToCN() {
       this.lang = 'cn';
+      this.focus = true;
       this.cnStyle = {
         src: 'https://system.lib.whu.edu.cn/mp-static/110/圆角矩形 10@3x.png',
         color: 'white',
@@ -82,6 +82,7 @@ export default {
     },
     onSwitchToEN() {
       this.lang = 'en';
+      this.focus = true;
       this.enStyle = {
         src: 'https://system.lib.whu.edu.cn/mp-static/110/圆角矩形 10@3x.png',
         color: 'white',
@@ -100,13 +101,13 @@ export default {
     },
     onClickHistory(key) {
       const list = this.searchHistory;
-      this.search(list[key]);
+      this.search(list[key].name);
     },
     search(value) {
       this.searchHistory.push({
         name: value,
       });
-      wx.navigateTo({ url: `/pages/search/result?value=${value}` });
+      wx.navigateTo({ url: `/pages/search/result?value=${value}&&index=${this.index}` });
     },
   },
 };

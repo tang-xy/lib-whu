@@ -186,7 +186,7 @@ export default {
         color: #525252;
       }
       .tittle-en{
-        margin-left: 299rpx;
+        margin-left: 288rpx;
         span{
           font-size: 18rpx;
           color: #525252;
@@ -196,9 +196,9 @@ export default {
   .education-button-container{
     display: flex;
     margin-top: 12rpx;
-    margin-left: 73rpx;
+    margin-left: 70rpx;
     margin-right: 28rpx;
-    width: 646rpx;
+    width: 649rpx;
     height: 190rpx;
     flex-wrap: wrap;
     button::after{
@@ -224,8 +224,8 @@ export default {
         justify-content: center;
         font-size: 24rpx;
         margin-top: 0vh;
-        margin-left: 13rpx;
-        margin-right: 56rpx;
+        margin-left: 13.5rpx;
+        margin-right: 53rpx;
         color: #525252;
       }
 

@@ -10,9 +10,9 @@
       </scroll-view>
     </div>
     <div class='control-container'>
-      <div class='select-all'>
+      <div class='select-all' @click=onSelectAll>
         <image src='https://system.lib.whu.edu.cn/mp-static/130/圆角矩形 3@3x.png'/>
-        <image style='position:absolute;' src='https://system.lib.whu.edu.cn/mp-static/131/勾@3x.png'/>
+        <image style='position:absolute;' src='https://system.lib.whu.edu.cn/mp-static/131/勾@3x.png' v-if="all"/>
         <span>全选</span>
       </div>
       <button class='con-borrow'>续借</button>
@@ -31,19 +31,25 @@ export default {
     const { value } = options;
     const that = this;
     getBorrowInfo({
-      start: 0,
-      limit: 10,
+      session: that.$store.getters.getSession,
     }).then((response) => {
-      that.result = response.map((e) => {
-        const tmp = e;
-        tmp.isSelected = false;
-        return tmp;
-      });
+      if (response.status === 0) {
+        let i = 0;
+        that.result = response.result.map((e) => {
+          const tmp = e;
+          tmp.isSelected = false;
+          return tmp;
+        });
+        for (i = 0; i < that.result.length; i += 1) {
+          that.result[i].index = i;
+        }
+      }
       wx.hideLoading();
     });
   },
   data: {
     result: [],
+    all: false,
   },
   components: {
     borrowList,
@@ -61,7 +67,15 @@ export default {
   },
   methods: {
     onClickCard(key) {
-      wx.navigateTo({ url: `/pages/search/detail?key=${key}` });
+      this.result[key].isSelected = !this.result[key].isSelected;
+    },
+    onSelectAll() {
+      this.all = !this.all;
+      this.result.map((e) => {
+        const tmp = e;
+        tmp.isSelected = this.all;
+        return tmp;
+      });
     },
     onChoiceYear() {
       this.year = true;

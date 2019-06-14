@@ -2,15 +2,16 @@
 <div class='detail-list'>
   <detail-card
   v-for='(item, index) in result'
-  :key=index
-  :status=item.status
-  :return-date=item.returnDate
-  :position=item.position
-  :number=item.number
-  :code=item.code
+  :key=item.index
+  :status=item.loan_status
+  :return-date=item.due_date
+  :position=item.sub_library
+  :number=item.location
+  :code=item.bar_code
   :rfid=item.rfid
   :reserve=item.reserve
   @click-reserve=onClickReserve
+  @click-rfid=onRFID
   />
 </div>
 </template>
@@ -23,6 +24,9 @@ export default {
   components: {
     detailCard,
   },
+  onLoad() {
+    console.log(this.result);
+  },
   props: {
     result: {
       type: Array,
@@ -33,6 +37,10 @@ export default {
   methods: {
     onClickReserve(key) {
       this.$emit('click-reserve', key);
+    },
+    onRFID(key) {
+      console.log('list');
+      this.$emit('click-rfid', key);
     },
   },
 };

@@ -2,14 +2,14 @@
 <div class='borrow-list'>
   <borrow-card
   v-for='(item, index) in result'
-  :key=index
-  :name=item.name
-  :author=item.author
-  :position=item.position
-  :from-time=item.fromTime
-  :to-time=item.toTime
+  :key=item.index
+  :name=item.book_info.title
+  :author=item.book_info.author
+  :position=item.loan_info.sub_library
+  :from-time=item.loan_info.loan_date
+  :to-time=item.loan_info.due_date
   :is-selected=item.isSelected
-  @click=onClickCard(index)
+  @click=onClickCard(item.index)
   />
 </div>
 </template>

@@ -31,7 +31,7 @@
       scroll-y=true
       enable-back-to-top=true
       @scrolltolower=onScrollToBottom>
-        <detail-list :result=books @click-reserve=onClickReserve />
+        <detail-list :result=books @click-reserve=onClickReserve @click-rfid=onRFID />
       </scroll-view>
     </div>
   </div>
@@ -39,20 +39,35 @@
 
 <script>
 import detailList from '../../components/list/detailList';
-import { getBookDetail } from '../../api';
+import { getBookDetail, reserveBook } from '../../api';
 
 export default {
   mpType: 'page',
   onLoad(options) {
     wx.showLoading({ title: '加载中...' });
-    const { value } = options;
     const that = this;
-    getBookDetail().then((response) => {
-      that.name = response.name;
-      that.author = response.author;
-      that.theme = response.theme;
-      that.publish = response.publish;
-      that.books = response.books;
+    that.name = options.title;
+    that.author = options.author;
+    that.theme = options.theme;
+    that.publish = options.publish;
+    getBookDetail({
+      session: that.$store.getters.getSession,
+      doc_num: options.doc_number,
+    }).then((response) => {
+      if (response.status === 0) {
+        that.books = response.result;
+        let i = 0;
+        for (i = 0; i < that.books.length;) {
+          that.books[i].index = i;
+          that.books[i].reserve = (that.books[i].loan_status === '外借书');
+          if (that.books[i].due_date === 'On Shelf') {
+            that.books[i].due_date = '在架上';
+          } else if (that.books[i].due_date === 'Reshelving') {
+            that.books[i].due_date = '返架中';
+          }
+          i += 1;
+        }
+      }
       wx.hideLoading();
     });
   },
@@ -70,14 +85,30 @@ export default {
 
   },
   methods: {
-    onClickReserve(key) {
-
+    onClickReserve(p) {
+      const pick = ['WL', 'XX', 'GX', 'YX'];
+      const that = this;
+      reserveBook({
+        session: that.$store.getters.getSession,
+        bar_code: p.code,
+        pickup: pick[p.pick],
+      }).then((response) => {
+        if (response.status === 0) {
+          wx.showToast({ title: '预约成功', icon: 'none' });
+        } else {
+          wx.showToast({ title: '本书目前无法预约', icon: 'none' });
+        }
+      });
     },
     onShare() {
 
     },
     onScrollToBottom() {
 
+    },
+    onRFID(key) {
+      const url = `rfid?url=${key}`;
+      wx.navigateTo({ url });
     },
   },
   onReachBottom() {

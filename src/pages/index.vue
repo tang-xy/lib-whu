@@ -37,7 +37,9 @@ export default {
   mpType: 'page',
   onLoad() {
     const session = wx.getStorageSync('session') || '';
-    this.$store.dispatch('setSession', session);
+    const libUser = wx.getStorageSync('libUser') || '';
+    console.log(session);
+    this.$store.dispatch('vertifyLogin', { ses: session, user: libUser });
   },
 
   data() {

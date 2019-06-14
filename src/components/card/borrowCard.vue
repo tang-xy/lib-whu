@@ -151,4 +151,7 @@ export default {
     }
   }
 }
+.selected{
+  background-color: #E3EFFF;
+}
 </style>

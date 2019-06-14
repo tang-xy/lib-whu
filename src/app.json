@@ -49,6 +49,12 @@
       "route": "pages/search/detail"
     },
     {
+      "path": "pages/search/rfid",
+      "config":{
+      },
+      "route": "pages/search/rfid"
+    },
+    {
       "path": "pages/borrow/borrow",
       "config":{
       },

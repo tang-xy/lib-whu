@@ -10,7 +10,7 @@
     </div>
     <div class='info'>
       <div class='key'>馆藏位置</div>
-      <div class='value'>{{status}}</div>
+      <div class='value'>{{position}}</div>
     </div>
     <div class='info'>
       <div class='key'>索书号</div>
@@ -19,6 +19,10 @@
     <div class='info'>
       <div class='key'>条码</div>
       <div class='value'>{{code}}</div>
+    </div>
+    <div class='info'>
+      <div class='key'>rfid</div>
+      <div class='value' @click=onRFID>点击查看</div>
     </div>
     <div class='info' v-if=reserve>
       <div class='key'>取书分馆</div>
@@ -85,6 +89,11 @@ export default {
       required: true,
       default: '',
     },
+    rfid: {
+      type: String,
+      required: true,
+      default: '',
+    },
     reserve: {
       type: Boolean,
       required: true,
@@ -104,7 +113,12 @@ export default {
     },
     onReserve() {
       const that = this;
-      this.$emit('click-reserve', that.key);
+      this.$emit('click-reserve', { key: that.code, pick: that.libIndex });
+    },
+    onRFID() {
+      console.log('card层');
+      const that = this;
+      this.$emit('click-rfid', that.rfid);
     },
   },
 };

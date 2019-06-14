@@ -40,6 +40,19 @@ export function vertifyLibAccount(params) {
   });
 }
 
+export function reserveBook(params) {
+  console.log(params);
+  return new Promise((resolve, reject) => {
+    request.get('/libuser/hold_req/', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
 export function login(params) {
   return new Promise((resolve, reject) => {
     request.get('/user/login/', params)
@@ -64,9 +77,34 @@ export function bindLib(params) {
   });
 }
 
+export function unbindLib(params) {
+  return new Promise((resolve, reject) => {
+    request.get('/user/unbind_lib/', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
+export function findLib(params) {
+  return new Promise((resolve, reject) => {
+    request.get('/libuser/find/', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
+
 export function searchLib(params) {
   return new Promise((resolve, reject) => {
-    request.get('/libuser/search_lib/', params)
+    request.get('/libuser/present/', params)
       .then((response) => {
         resolve(response.data);
       })
@@ -105,7 +143,6 @@ export function getBorrowInfo(params) {
   return new Promise((resolve, reject) => {
     request.get('/libuser/borrow_info/', params)
       .then((response) => {
-        console.log(response.data);
         resolve(response.data);
       })
       .catch(() => {

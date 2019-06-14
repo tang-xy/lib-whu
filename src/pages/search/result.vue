@@ -1,7 +1,7 @@
 <template>
   <div class='container'>
     <div class='total'>
-      <span>共检索到{{result.length}}条记录。</span>
+      <span>共检索到{{no_records}}条记录。</span>
     </div>
     <scroll-view
     class='scroll-list'
@@ -15,7 +15,7 @@
 
 <script>
 import searchResultList from '../../components/list/searchResultList';
-import { searchLib } from '../../api';
+import { searchLib, findLib } from '../../api';
 
 export default {
   mpType: 'page',
@@ -23,23 +23,37 @@ export default {
     wx.showLoading({ title: '加载中...' });
     const { value } = options;
     const that = this;
-    searchLib({
-      start: 0,
-      limit: 10,
+    const code = ['wrd', 'wti', 'WAU', 'CAN', 'ISS', 'ISB'];
+    findLib({
+      session: that.$store.getters.getSession,
+      keyword: options.value,
+      code: code[options.index],
     }).then((response) => {
-      that.result = response;
-      wx.hideLoading();
+      if (response.status === 0) {
+        that.no_records = response.result.no_records || '0';
+        searchLib({
+          session: that.$store.getters.getSession,
+          set_num: response.result.set_number,
+        }).then((r) => {
+          if (r.status === 0) {
+            that.result = r.result;
+            wx.hideLoading();
+          }
+        });
+      }
     });
   },
   data: {
-    result: {},
+    result: {
+    },
+    no_records: 0,
   },
   components: {
     searchResultList,
   },
   methods: {
     onClickCard(key) {
-      wx.navigateTo({ url: `/pages/search/detail?key=${key}` });
+      wx.navigateTo({ url: `/pages/search/detail?doc_number=${key.doc_number}&&title=${key.title}&&publish=${key.publish}&&author=${key.author}&&theme=${key.theme}` });
     },
     onScrollToBottom() {
 
