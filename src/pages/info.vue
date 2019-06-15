@@ -63,7 +63,7 @@
         <view class="divLine"></view>
       </div>
       <div class="info-margin"/>
-      <div class="info-line" :disabled='disabled'>
+      <div class="info-line" :disabled='disabled' @click="toReserve">
         <image :src=picurl.yuyuepic mode='aspectFit'/>
         <div>
           <span>&nbsp;预约结果</span>
@@ -196,11 +196,24 @@ export default {
         this.onClick();
       }
     },
+    toReserve() {
+      if (!this.$store.getters.getLibBind) {
+        return;
+      }
+      const url = 'borrow/reserve';
+      wx.navigateTo({ url });
+    },
     toCard() {
+      if (!this.$store.getters.getLibBind) {
+        return;
+      }
       const url = '/pages/card';
       wx.navigateTo({ url });
     },
     toBorrow() {
+      if (!this.$store.getters.getLibBind) {
+        return;
+      }
       const url = '/pages/borrow';
       wx.navigateTo({ url });
     },

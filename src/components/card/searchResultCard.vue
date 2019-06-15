@@ -1,7 +1,7 @@
 <template>
   <div class='search-result-card' @click=clickCard>
     <div class='title'>
-      <span class='index'>{{index}}&nbsp;&nbsp;</span>
+      <span class='index'>{{book.index + 1}}&nbsp;&nbsp;</span>
       <span class='name'>{{name}}</span>
     </div>
     <div class='author'>
@@ -20,7 +20,7 @@ export default {
   name: 'SearchResultCard',
   props: {
     key: {
-      type: Number,
+      type: String,
       required: true,
       default: 0,
     },
@@ -55,6 +55,8 @@ export default {
       const that = this;
       this.$emit('click-card', that.book);
     },
+  },
+  onLoad() {
   },
 };
 </script>

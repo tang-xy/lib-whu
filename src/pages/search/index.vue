@@ -107,7 +107,7 @@ export default {
       this.searchHistory.push({
         name: value,
       });
-      wx.navigateTo({ url: `/pages/search/result?value=${value}&&index=${this.index}` });
+      wx.navigateTo({ url: `/pages/search/result?value=${value}&&index=${this.index}&&lang=${this.lang}` });
     },
   },
 };

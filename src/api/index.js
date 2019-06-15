@@ -151,6 +151,42 @@ export function getBorrowInfo(params) {
   });
 }
 
+export function getLoanInfo(params) {
+  return new Promise((resolve, reject) => {
+    request.get('/libuser/hold_info/', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
+export function holdReqCancel(params) {
+  return new Promise((resolve, reject) => {
+    request.get('/libuser/hold_req_cancel/', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
+export function borrowRenew(params) {
+  return new Promise((resolve, reject) => {
+    request.get('/libuser/renew/', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
 export function getBookDetail(params) {
   return new Promise((resolve, reject) => {
     request.get('/libuser/book_detail/', params)

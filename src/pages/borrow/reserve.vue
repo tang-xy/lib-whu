@@ -7,7 +7,7 @@
       enable-back-to-top=true
       @scrolltolower=onScrollToBottom>
         <div class="tip" v-if="result.length===0">
-          <span>无借阅图书</span>
+          <span>无预约图书</span>
         </div>
         <borrow-list :result=result @click-card=onClickCard />
       </scroll-view>
@@ -18,14 +18,14 @@
         <image style='position:absolute;' src='https://system.lib.whu.edu.cn/mp-static/131/勾@3x.png' v-if="all"/>
         <span>全选</span>
       </div>
-      <button class='con-borrow' @click="onRenew">续借</button>
+      <button class='con-borrow' @click="onRenew">取消预约</button>
     </div>
   </div>
 </template>
 
 <script>
 import borrowList from '../../components/list/borrowList';
-import { getBorrowInfo, borrowRenew } from '../../api';
+import { getLoanInfo, holdReqCancel } from '../../api';
 
 export default {
   mpType: 'page',
@@ -33,7 +33,7 @@ export default {
     wx.showLoading({ title: '加载中...' });
     const { value } = options;
     const that = this;
-    getBorrowInfo({
+    getLoanInfo({
       session: that.$store.getters.getSession,
     }).then((response) => {
       if (response.status === 0) {
@@ -77,17 +77,18 @@ export default {
       const success = [];
       const fail = [];
       this.selectedBooks.forEach((element) => {
-        borrowRenew({
+        holdReqCancel({
           session: that.$store.getters.getSession,
-          bar_code: element.loan_info.doc_number,
+          doc_number: element.loan_info.doc_number,
+          item_sequence: element.loan_info.item_sequence,
+          sequence: element.sequence,
         }).then((response) => {
-          console.log(response);
           if (response.status === 0) {
             success.push(element.book_info.title);
-            wx.showToast({ title: `${element.book_info.title}续借成功`, icon: 'none' });
+            wx.showToast({ title: `${element.book_info.title}取消成功`, icon: 'none' });
           } else {
             fail.push(element.book_info.title);
-            wx.showToast({ title: `${element.book_info.title}续借失败`, icon: 'none' });
+            wx.showToast({ title: `${element.book_info.title}取消失败`, icon: 'none' });
           }
         });
       });

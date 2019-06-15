@@ -56,18 +56,30 @@ export default {
       wx.navigateTo({ url });
     },
     toSeat() {
+      if (!this.$store.getters.getLibBind) {
+        return;
+      }
       const url = '/pages/seatReserve';
       wx.navigateTo({ url });
     },
     toBorrow() {
+      if (!this.$store.getters.getLibBind) {
+        return;
+      }
       const url = '/pages/borrow';
       wx.navigateTo({ url });
     },
     toRank() {
+      if (!this.$store.getters.getLibBind) {
+        return;
+      }
       const url = '/pages/borrow/rank';
       wx.navigateTo({ url });
     },
     toNotice() {
+      if (!this.$store.getters.getLibBind) {
+        return;
+      }
       const url = '/pages/notice';
       wx.navigateTo({ url });
     },

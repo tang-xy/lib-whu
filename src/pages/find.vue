@@ -130,15 +130,23 @@ export default {
       'decrement',
     ]),
     toTraining() {
-      console.log('training');
+      if (!this.$store.getters.getLibBind) {
+        return;
+      }
       const url = '/pages/training';
       wx.navigateTo({ url });
     },
     toUnfinished() {
+      if (!this.$store.getters.getLibBind) {
+        return;
+      }
       const url = '/pages/unfinished';
       wx.navigateTo({ url });
     },
     toWeiKe() {
+      if (!this.$store.getters.getLibBind) {
+        return;
+      }
       const url = '/pages/weike';
       wx.navigateTo({ url });
     },

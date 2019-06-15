@@ -113,10 +113,10 @@ export default {
     },
     onReserve() {
       const that = this;
+      console.log(that);
       this.$emit('click-reserve', { key: that.code, pick: that.libIndex });
     },
     onRFID() {
-      console.log('card层');
       const that = this;
       this.$emit('click-rfid', that.rfid);
     },

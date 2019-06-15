@@ -21,22 +21,29 @@ export default {
   mpType: 'page',
   onLoad(options) {
     wx.showLoading({ title: '加载中...' });
-    const { value } = options;
     const that = this;
     const code = ['wrd', 'wti', 'WAU', 'CAN', 'ISS', 'ISB'];
+    this.lang = options.lang;
     findLib({
       session: that.$store.getters.getSession,
       keyword: options.value,
       code: code[options.index],
+      lang: options.lang,
     }).then((response) => {
       if (response.status === 0) {
+        that.set_number = response.result.set_number;
         that.no_records = response.result.no_records || '0';
         searchLib({
           session: that.$store.getters.getSession,
           set_num: response.result.set_number,
+          lang: options.lang,
         }).then((r) => {
           if (r.status === 0) {
             that.result = r.result;
+            let i = 0;
+            for (i = 0; i < that.result.length; i += 1) {
+              that.result[i].index = i;
+            }
             wx.hideLoading();
           }
         });
@@ -44,19 +51,44 @@ export default {
     });
   },
   data: {
-    result: {
-    },
+    result: [],
+    options: {},
+    set_number: '',
     no_records: 0,
+    lang: 'cn',
+  },
+  computed: {
+    entry() {
+      return this.result.length + 1;
+    },
   },
   components: {
     searchResultList,
   },
   methods: {
     onClickCard(key) {
-      wx.navigateTo({ url: `/pages/search/detail?doc_number=${key.doc_number}&&title=${key.title}&&publish=${key.publish}&&author=${key.author}&&theme=${key.theme}` });
+      wx.navigateTo({ url: `/pages/search/detail?lang=${this.lang}&&doc_number=${key.doc_number}&&title=${key.title}&&publish=${key.publish}&&author=${key.author}&&theme=${key.theme}` });
     },
     onScrollToBottom() {
-
+      const that = this;
+      searchLib({
+        session: that.$store.getters.getSession,
+        set_num: that.set_number,
+        entry: that.entry,
+        lang: that.lang,
+      }).then((r) => {
+        if (r.status === 0) {
+          if (r.result.length === 0) {
+            wx.showToast({ title: '没有更多了', icon: 'none' });
+          }
+          let i = 0;
+          for (i = 0; i < r.result.length; i += 1) {
+            const temp = r.result[i];
+            temp.index = that.entry - 1;
+            that.result.push(temp);
+          }
+        }
+      });
     },
   },
   onReachBottom() {

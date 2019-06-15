@@ -67,6 +67,12 @@
       "route": "pages/borrow/rank"
     },
     {
+      "path": "pages/borrow/reserve",
+      "config":{
+      },
+      "route": "pages/borrow/reserve"
+    },
+    {
       "path": "pages/card/card",
       "config":{
       },

@@ -116,7 +116,8 @@ const store = new Vuex.Store({
           commit('setLibUser', response.user);
           console.log(1);
           wx.setStorageSync('libUser', response.user);
-          bindLib({ session, libId: info.libId }).then((r) => {
+          bindLib({ session: response.session, libId: info.libId }).then((r) => {
+            console.log(r);
             wx.showToast({ title: '绑定成功', icon: 'success' });
             commit('setLibBind', true);
             wx.navigateBack({ delta: 1 });

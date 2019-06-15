@@ -86,11 +86,16 @@ export default {
   },
   methods: {
     onClickReserve(p) {
+      if (!this.$store.getters.getLibBind) {
+        const url = '/pages/login';
+        wx.navigateTo({ url });
+        return;
+      }
       const pick = ['WL', 'XX', 'GX', 'YX'];
       const that = this;
       reserveBook({
         session: that.$store.getters.getSession,
-        bar_code: p.code,
+        bar_code: p.key,
         pickup: pick[p.pick],
       }).then((response) => {
         if (response.status === 0) {
