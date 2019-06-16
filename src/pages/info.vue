@@ -50,7 +50,7 @@
         <view class="divLine"></view>
       </div>
       <div class="info-margin"/>
-      <div class="info-line" :disabled='disabled'>
+      <div class="info-line" :disabled='disabled' @click="toHistory">
         <image :src=picurl.lishipic mode='aspectFit'/>
         <div>
           <span>&nbsp;借阅历史</span>
@@ -201,6 +201,13 @@ export default {
         return;
       }
       const url = 'borrow/reserve';
+      wx.navigateTo({ url });
+    },
+    toHistory() {
+      if (!this.$store.getters.getLibBind) {
+        return;
+      }
+      const url = 'borrow/history';
       wx.navigateTo({ url });
     },
     toCard() {

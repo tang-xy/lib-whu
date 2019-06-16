@@ -20,9 +20,9 @@
       </picker>
       <div class='input-container'>
         <image src='https://system.lib.whu.edu.cn/mp-static/110/搜索@3x.png' mode='scaleToFill'/>
-        <input class='search-input' type='text' placeholder='搜索' @confirm=onInputSearch :focus="focus"/>
+        <input class='search-input' type='text' placeholder='搜索' @confirm=onInputSearch :focus="focus" @input=onBindinput />
       </div>
-      <div class="search-search-button" @click=onInputSearch v-if=false>
+      <div class="search-search-button" @click=onInputSearch v-if=true>
         <span>搜索</span>
       </div>
     </div>
@@ -55,6 +55,7 @@ export default {
     index: 0,
     searchContent: '',
     searchHistory: wx.getStorageSync('searchHistory') || [],
+    value: '',
   },
   watch: {
     searchHistory: {
@@ -67,6 +68,9 @@ export default {
   methods: {
     onClickDelete() {
       this.searchHistory = [];
+    },
+    onBindinput(e) {
+      this.value = e.mp.detail.value;
     },
     onSwitchToCN() {
       this.lang = 'cn';
@@ -96,8 +100,7 @@ export default {
       this.index = Number(e.target.value);
     },
     onInputSearch(e) {
-      this.searchContent = e.mp.detail.value;
-      this.search(this.searchContent);
+      this.search(this.value);
     },
     onClickHistory(key) {
       const list = this.searchHistory;
@@ -107,6 +110,9 @@ export default {
       this.searchHistory.push({
         name: value,
       });
+      if (this.searchHistory.length > 16) {
+        this.searchHistory.shift();
+      }
       wx.navigateTo({ url: `/pages/search/result?value=${value}&&index=${this.index}&&lang=${this.lang}` });
     },
   },

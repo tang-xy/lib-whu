@@ -73,6 +73,12 @@
       "route": "pages/borrow/reserve"
     },
     {
+      "path": "pages/borrow/history",
+      "config":{
+      },
+      "route": "pages/borrow/history"
+    },
+    {
       "path": "pages/card/card",
       "config":{
       },

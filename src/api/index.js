@@ -163,6 +163,18 @@ export function getLoanInfo(params) {
   });
 }
 
+export function getLoanHistory(params) {
+  return new Promise((resolve, reject) => {
+    request.get('/libuser/loan_history/', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
 export function holdReqCancel(params) {
   return new Promise((resolve, reject) => {
     request.get('/libuser/hold_req_cancel/', params)
