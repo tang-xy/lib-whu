@@ -9,19 +9,22 @@
         <div class="tip" v-if="result.length===0">
           <span>无借阅历史</span>
         </div>
-        <borrow-list :result=result @click-card=onClickCard />
+        <history-list :result=result @click-card=onClickCard />
       </scroll-view>
     </div>
   </div>
 </template>
 
 <script>
-import borrowList from '../../components/list/borrowList';
+import historyList from '../../components/list/historyList';
 import { getLoanHistory } from '../../api';
 
 export default {
   mpType: 'page',
   onLoad(options) {
+    wx.setNavigationBarTitle({
+      title: '借阅历史',
+    });
     wx.showLoading({ title: '加载中...' });
     const { value } = options;
     const that = this;
@@ -34,12 +37,13 @@ export default {
           const tmp = {};
           tmp.isSelected = false;
           tmp.book_info = { title: e.booktitle, author: e.author };
-          tmp.loan_info = { loan_date: e.loan_date };
+          tmp.loan_info = { loan_date: this.insertStr(this.insertStr(e.loandate, 4, '/'), 7, '/') };
           return tmp;
         });
         for (i = 0; i < that.result.length; i += 1) {
           that.result[i].index = i;
         }
+        console.log(that.result);
       }
       wx.hideLoading();
     });
@@ -49,15 +53,18 @@ export default {
     all: false,
   },
   components: {
-    borrowList,
+    historyList,
   },
   computed: {
   },
   methods: {
     onClickCard(key) {
-      this.result[key].isSelected = !this.result[key].isSelected;
+      // this.result[key].isSelected = !this.result[key].isSelected;
     },
     onRenew() {
+    },
+    insertStr(soure, start, newStr) {
+      return soure.slice(0, start) + newStr + soure.slice(start);
     },
     onSelectAll() {
       this.all = !this.all;
@@ -101,7 +108,7 @@ export default {
   background-color: #f7f7f7;
   height: 100vh;
   .list-container{
-    height: 80vh;
+    height: 98vh;
     padding-bottom: 2vh;
     padding-top: 1vh;
     background: white;
@@ -134,7 +141,7 @@ export default {
         height: 5vw;
       }
     }
-    .con-borrow{
+    .con-history{
       width: 40vw;
       border-radius: 100rpx;
       background: #4a88dd;

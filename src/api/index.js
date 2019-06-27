@@ -116,7 +116,7 @@ export function searchLib(params) {
 
 export function getRank(params) {
   return new Promise((resolve, reject) => {
-    request.get('/libuser/rank/', params)
+    request.get('/libuser/bor_rank/', params)
       .then((response) => {
         resolve(response.data);
       })

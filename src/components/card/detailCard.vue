@@ -21,7 +21,7 @@
       <div class='value'>{{code}}</div>
     </div>
     <div class='info'>
-      <div class='key'>rfid</div>
+      <div class='key'>图书定位</div>
       <div class='value' @click=onRFID>点击查看</div>
     </div>
     <div class='info' v-if=reserve>
@@ -154,7 +154,7 @@ export default {
     }
     .value{
       width: 70%;
-      margin-left: 4%;
+      padding-left: 4%;
       background: white;
       position: relative;
       picker{

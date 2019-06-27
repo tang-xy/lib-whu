@@ -40,6 +40,11 @@
 <script>
 export default {
   mpType: 'page',
+  onLoad(options) {
+    wx.setNavigationBarTitle({
+      title: '小布微课',
+    });
+  },
   methods: {
     toUnfinished() {
       const url = '/pages/unfinished';

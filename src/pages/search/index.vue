@@ -40,6 +40,11 @@
 <script>
 export default {
   mpType: 'page',
+  onLoad() {
+    wx.setNavigationBarTitle({
+      title: '馆藏查询',
+    });
+  },
   data: {
     lang: 'cn',
     cnStyle: {
@@ -107,11 +112,11 @@ export default {
       this.search(list[key].name);
     },
     search(value) {
-      this.searchHistory.push({
+      this.searchHistory.unshift({
         name: value,
       });
-      if (this.searchHistory.length > 16) {
-        this.searchHistory.shift();
+      if (this.searchHistory.length > 10) {
+        this.searchHistory.pop();
       }
       wx.navigateTo({ url: `/pages/search/result?value=${value}&&index=${this.index}&&lang=${this.lang}` });
     },
@@ -174,7 +179,7 @@ export default {
     display: flex;
     picker{
       height: 69rpx;
-      width: 144rpx;
+      width: 170rpx;
       border-style: solid;
       border-radius: 5rpx;
       border-width: 1rpx;
@@ -193,7 +198,7 @@ export default {
     }
     .input-container{
       height: 69rpx;
-      width: 466rpx;
+      width: 434rpx;
       display: flex;
       border-style: solid;
       border-radius: 5px;

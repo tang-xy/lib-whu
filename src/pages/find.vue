@@ -106,7 +106,7 @@ export default {
           id: 0,
         },
         {
-          pic: 'https://system.lib.whu.edu.cn/mp-static/200/banner1 拷贝@3x.png',
+          pic: 'https://system.lib.whu.edu.cn/mp-static/200/banner@2x.png',
           url: '',
           id: 1,
         },
@@ -157,7 +157,7 @@ export default {
 <style lang="scss" scoped>
 .find-view{
   width: 750rpx;
-  height: 1224rpx;
+  height: 100vh;
   padding-left: 8rpx;
   padding-right: 11rpx;
   padding-top: 22rpx;
@@ -232,8 +232,8 @@ export default {
         justify-content: center;
         font-size: 24rpx;
         margin-top: 0vh;
-        margin-left: 13.5rpx;
-        margin-right: 53rpx;
+        margin-left: 14.5rpx;
+        margin-right: 53.5rpx;
         color: #525252;
       }
 

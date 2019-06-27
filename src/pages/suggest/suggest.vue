@@ -15,6 +15,11 @@
 <script>
 export default {
   mpType: 'page',
+  onLoad(options) {
+    wx.setNavigationBarTitle({
+      title: '建议与反馈',
+    });
+  },
 };
 </script>
 

@@ -12,6 +12,11 @@
 <script>
 export default {
   mpType: 'page',
+  onLoad(options) {
+    wx.setNavigationBarTitle({
+      title: '电子校园卡',
+    });
+  },
 };
 </script>
 

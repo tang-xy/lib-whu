@@ -50,6 +50,11 @@
 <script>
 export default {
   mpType: 'page',
+  onLoad(options) {
+    wx.setNavigationBarTitle({
+      title: '个人信息',
+    });
+  },
   data: {
     userName: '',
     major: '',

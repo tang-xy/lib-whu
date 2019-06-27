@@ -76,7 +76,7 @@
     <div class="info-margin"/>
     <div class="info-list">
       <div class="info-margin"/>
-      <div class="info-line" :disabled='disabled'>
+      <div class="info-line" :disabled='disabled' @click="toUnfinished">
         <image :src=picurl.ziyuanpic mode='aspectFit'/>
         <div>
           <span>&nbsp;资源导购</span>
@@ -228,6 +228,13 @@ export default {
       const url = '/pages/suggest';
       wx.navigateTo({ url });
     },
+    toUnfinished() {
+      if (!this.$store.getters.getLibBind) {
+        return;
+      }
+      const url = '/pages/unfinished';
+      wx.navigateTo({ url });
+    },
   },
 };
 </script>
@@ -242,6 +249,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content:center;
+    height: 92rpx;
     span{
       display: flex;
     }

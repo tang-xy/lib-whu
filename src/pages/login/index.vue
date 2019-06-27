@@ -1,6 +1,6 @@
 <template>
   <div class='container'>
-    <image class='bk' src='https://system.lib.whu.edu.cn/mp-static/340/上方@3x.png' mode='aspectFill'/>
+    <image class='bk' src='https://system.lib.whu.edu.cn/mp-static/340/上方@3x.png' mode='aspectFill' :style="{ height: picHeight}" />
     <button v-if=login type='default' open-type='getUserInfo' @getuserinfo='getUserInfo' @click='wxlogin'>
       <span>微信快速登录</span>
       <image src='https://system.lib.whu.edu.cn/mp-static/340/矩形 5@3x.png' mode='scaleToFill'/>
@@ -9,7 +9,7 @@
       <div class='input-container'>
         <image src='https://system.lib.whu.edu.cn/mp-static/340/证件@3x.png' style='width:3.5vh; height:2.5vh;'/>
         <span>&nbsp;学&nbsp;&nbsp;号&nbsp;</span>
-        <input class='un-input' type='number' placeholder='请输入学号或学工号' @input=inputUsername confirm-type='next'/>
+        <input class='un-input' type='number' placeholder='请输入学号或学工号' @input=inputUsername confirm-type='next' @focus=onFocus />
       </div>
       <div class='input-container' style='top: 10vh;'>
         <image src='https://system.lib.whu.edu.cn/mp-static/340/密码@3x.png' style='width:3.5vh; height:3.5vh;'/>
@@ -37,7 +37,15 @@ export default {
     password: '',
     code: '',
   },
+  computed: {
+    picHeight() {
+      return this.login ? '165vw' : '120vw';
+    },
+  },
   onLoad(options) {
+    wx.setNavigationBarTitle({
+      title: '账号登录',
+    });
     const { type } = options;
     if (type === 'login') {
       this.login = true;
@@ -49,6 +57,12 @@ export default {
     }
   },
   methods: {
+    onFocus() {
+      wx.pageScrollTo({
+        scrollTop: 0,
+        duration: 300,
+      });
+    },
     wxlogin() {
       const that = this;
       wx.login({
@@ -109,7 +123,7 @@ export default {
     position: absolute;
     top: -35vw;
     width: 100vw;
-    height: 120vw;
+    height: 160vw;
   }
   button{
     position: absolute;

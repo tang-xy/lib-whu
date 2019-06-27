@@ -30,6 +30,9 @@ import { getBorrowInfo, borrowRenew } from '../../api';
 export default {
   mpType: 'page',
   onLoad(options) {
+    wx.setNavigationBarTitle({
+      title: '借阅信息',
+    });
     wx.showLoading({ title: '加载中...' });
     const { value } = options;
     const that = this;
@@ -79,7 +82,7 @@ export default {
       this.selectedBooks.forEach((element) => {
         borrowRenew({
           session: that.$store.getters.getSession,
-          bar_code: element.loan_info.doc_number,
+          bar_code: element.bar_code,
         }).then((response) => {
           console.log(response);
           if (response.status === 0) {

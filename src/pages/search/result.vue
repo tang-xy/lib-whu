@@ -20,6 +20,9 @@ import { searchLib, findLib } from '../../api';
 export default {
   mpType: 'page',
   onLoad(options) {
+    wx.setNavigationBarTitle({
+      title: '检索结果',
+    });
     wx.showLoading({ title: '加载中...' });
     const that = this;
     const code = ['wrd', 'wti', 'WAU', 'CAN', 'ISS', 'ISB'];
@@ -71,6 +74,7 @@ export default {
     },
     onScrollToBottom() {
       const that = this;
+      wx.showLoading({ title: '加载中...' });
       searchLib({
         session: that.$store.getters.getSession,
         set_num: that.set_number,
@@ -88,6 +92,7 @@ export default {
             that.result.push(temp);
           }
         }
+        wx.hideLoading();
       });
     },
   },

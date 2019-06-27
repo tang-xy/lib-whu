@@ -17,16 +17,10 @@ import { searchLib } from '../../api';
 export default {
   mpType: 'page',
   onLoad(options) {
-    wx.showLoading({ title: '加载中...' });
-    const { value } = options;
-    const that = this;
-    searchLib({
-      start: 0,
-      limit: 10,
-    }).then((response) => {
-      that.result = response;
-      wx.hideLoading();
+    wx.setNavigationBarTitle({
+      title: '培训日程',
     });
+    this.result = {};
   },
   data: {
     result: {},

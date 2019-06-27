@@ -30,6 +30,9 @@ import { getLoanInfo, holdReqCancel } from '../../api';
 export default {
   mpType: 'page',
   onLoad(options) {
+    wx.setNavigationBarTitle({
+      title: '预约结果',
+    });
     wx.showLoading({ title: '加载中...' });
     const { value } = options;
     const that = this;

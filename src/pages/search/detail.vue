@@ -44,6 +44,9 @@ import { getBookDetail, reserveBook } from '../../api';
 export default {
   mpType: 'page',
   onLoad(options) {
+    wx.setNavigationBarTitle({
+      title: '馆藏查询',
+    });
     wx.showLoading({ title: '加载中...' });
     const that = this;
     that.name = options.title;
@@ -145,18 +148,24 @@ export default {
       }
     }
     .share{
-      width: 5vw;
-      height: 7vw;
+      width: 34rpx;
+      height: 42rpx;
       position: absolute;
       right: 0;
       border-radius: 0;
       border: none;
+      border-color: #ffffff;
+      background-color: #ffffff;
       image{
-        width: 100%;
-        height: 100%;
+        width: 34rpx;
+        height: 42rpx;
         position: absolute;
         left: 0;
       }
+    }
+    .shar::after{
+      border-color: #ffffff;
+      border: none;
     }
   }
   .list-container{
