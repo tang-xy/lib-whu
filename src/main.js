@@ -7,7 +7,6 @@ import './style/index.scss';
 
 Vue.use(MpvueRouterPatch);
 Vue.config.productionTip = false;
-
 const app = new Vue({
   mpType: 'app',
   store,

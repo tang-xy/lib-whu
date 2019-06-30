@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import JSEncrypt from 'jsencrypt';
+
 export default {
   mpType: 'page',
   data: {
@@ -102,7 +104,16 @@ export default {
       this.userName = e.mp.detail.value;
     },
     inputPassword(e) {
-      this.password = e.mp.detail.value;
+      const encrypt = new JSEncrypt();
+      const PUB_KEY = `-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCMRWy62srQJhljxzaxbSjbl6R3
+bA4dXTEdVhcSB7ZDM54axZFmikmOdiAZ7kD4xdRysdp1P+vRjBIWMFJeyYN8v/p+
+NqJT8o2Y8nJdmBTX7e0JkwIiEgSORlXai+eR3e8eBOtBQ8EUwSSi0bgkLOkOTQ7/
+CPDsDJ7vp7Q2+WLvlQIDAQAB
+-----END PUBLIC KEY-----`;
+      encrypt.setPublicKey(PUB_KEY);
+      console.log(encrypt.encrypt(e.mp.detail.value));
+      this.password = encrypt.encrypt(e.mp.detail.value);
     },
   },
   created() {

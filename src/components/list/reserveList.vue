@@ -1,25 +1,26 @@
 <template>
-<div class='borrow-rank-list'>
-  <borrow-rank-card
+<div class='reserve-list'>
+  <reserve-card
   v-for='(item, index) in result'
   :key=item.index
-  :name=item.title
-  :author=item.author
-  :rate=item.rate
-  :rank=item.index+1
-  :borrow-times=item.bor_num
-  @click-card=onClickCard
+  :name=item.book_info.title
+  :author=item.book_info.author
+  :position=item.loan_info.sub_library
+  :from-time=item.loan_info.loan_date
+  :to-time=item.loan_info.due_date
+  :is-selected=item.isSelected
+  @click=onClickCard(item.index)
   />
 </div>
 </template>
 
 <script>
-import borrowRankCard from '../card/borrowRankCard';
+import reserveCard from '../card/reserveCard';
 
 export default {
-  name: 'BorrowRankList',
+  name: 'reserveList',
   components: {
-    borrowRankCard,
+    reserveCard,
   },
   props: {
     result: {
@@ -38,8 +39,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.borrow-rank-list{
+.reserve-list{
   margin: 3vw;
+  margin-left: 8vw;
   height: 100%;
 }
 

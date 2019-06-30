@@ -22,44 +22,64 @@ import { getRank } from '../../api';
 export default {
   mpType: 'page',
   onLoad(options) {
-    wx.showLoading({ title: '加载中...' });
-    const { value } = options;
-    const that = this;
-    getRank({
-      start: 0,
-      limit: 10,
-    }).then((response) => {
-      that.result = response;
-      wx.hideLoading();
-    });
+    this.LoadData();
   },
   data: {
-    result: {},
+    result: [],
     year: true,
     month: false,
     week: false,
+  },
+  computed: {
+    time() {
+      if (this.year) return 'y';
+      if (this.month) return 'm';
+      if (this.week) return 'w';
+      return '';
+    },
   },
   components: {
     borrowRankList,
   },
   methods: {
+    LoadData() {
+      wx.showLoading({ title: '加载中...' });
+      const that = this;
+      getRank({
+        session: that.$store.getters.getSession,
+        time: that.time,
+      }).then((response) => {
+        if (response.status === 0) {
+          that.result = response.result;
+          let i = 0;
+          for (i = 0; i < that.result.length; i += 1) {
+            that.result[i].index = i;
+          }
+          console.log(that.result);
+          wx.hideLoading();
+        }
+      });
+    },
     onClickCard(key) {
-      wx.navigateTo({ url: `/pages/search/detail?key=${key}` });
+      // wx.navigateTo({ url: `/pages/search/detail?key=${key}` });
     },
     onChoiceYear() {
       this.year = true;
       this.week = false;
       this.month = false;
+      this.LoadData();
     },
     onChoiceWeek() {
       this.year = false;
       this.week = true;
       this.month = false;
+      this.LoadData();
     },
     onChoiceMonth() {
       this.year = false;
       this.week = false;
       this.month = true;
+      this.LoadData();
     },
     onScrollToBottom() {
 
@@ -84,6 +104,10 @@ export default {
     .list-choice{
       // position: static;
       color: grey;
+      border: none;
+    }
+    .list-choice::after{
+      border: none;
     }
     .list-choice-selected{
       border-bottom-color: #4a88dd;

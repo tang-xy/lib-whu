@@ -163,7 +163,7 @@ export default {
         left: 0;
       }
     }
-    .shar::after{
+    .share::after{
       border-color: #ffffff;
       border: none;
     }

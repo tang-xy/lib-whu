@@ -5,11 +5,6 @@
       <span class='author'>{{author}}&nbsp;著</span>
     </div>
     <div class='rate'>
-      <span class='key'>豆瓣评分：{{rate}}</span>
-      <vant-rate
-      :value=rate
-      readonly
-      />
     </div>
     <div class='times'>
       <span>借阅次数：{{borrowTimes}}次</span>
