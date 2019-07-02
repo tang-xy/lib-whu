@@ -4,10 +4,9 @@
     <div class='line'/>
     <div class='title'>
       <span class='name'>{{name}}</span>
-      <span class='author'>{{author}}&nbsp;著</span>
+      <span class='name'>&nbsp;{{position}}</span>
     </div>
     <div class='info'>
-      <span class='position'>{{position}}</span>
       <span class='time'>{{fromTime}}至{{toTime}}</span>
     </div>
     <button class='ratio'>

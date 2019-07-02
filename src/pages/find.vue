@@ -46,13 +46,13 @@
         </div>
     </div>
     <div class='education-button-container'>
-      <button type='default' @click='toUnfinished'>
+      <button type='default' @click='toAbout'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/我的图书馆@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toUnfinished'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/书 (2)@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toUnfinished'>
+      <button type='default' @click='toCurator'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/lingdao@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toUnfinished'>
@@ -148,6 +148,20 @@ export default {
         return;
       }
       const url = '/pages/weike';
+      wx.navigateTo({ url });
+    },
+    toCurator() {
+      if (!this.$store.getters.getLibBind) {
+        return;
+      }
+      const url = '/pages/curator';
+      wx.navigateTo({ url });
+    },
+    toAbout() {
+      if (!this.$store.getters.getLibBind) {
+        return;
+      }
+      const url = '/pages/about';
       wx.navigateTo({ url });
     },
   },

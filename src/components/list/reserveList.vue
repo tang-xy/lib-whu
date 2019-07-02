@@ -5,9 +5,9 @@
   :key=item.index
   :name=item.book_info.title
   :author=item.book_info.author
-  :position=item.loan_info.sub_library
-  :from-time=item.loan_info.loan_date
-  :to-time=item.loan_info.due_date
+  :position=item.hold_info.pickup_loc
+  :from-time=item.hold_info.request_date
+  :to-time=item.hold_info.end_date
   :is-selected=item.isSelected
   @click=onClickCard(item.index)
   />

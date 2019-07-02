@@ -9,7 +9,7 @@
         <div class="tip" v-if="result.length===0">
           <span>无预约图书</span>
         </div>
-        <borrow-list :result=result @click-card=onClickCard />
+        <reserve-list :result=result @click-card=onClickCard />
       </scroll-view>
     </div>
     <div class='control-container'>
@@ -18,13 +18,13 @@
         <image style='position:absolute;' src='https://system.lib.whu.edu.cn/mp-static/131/勾@3x.png' v-if="all"/>
         <span>全选</span>
       </div>
-      <button class='con-borrow' @click="onRenew">取消预约</button>
+      <button class='con-borrow' @click=onRenew >取消预约</button>
     </div>
   </div>
 </template>
 
 <script>
-import borrowList from '../../components/list/borrowList';
+import reserveList from '../../components/list/reserveList';
 import { getLoanInfo, holdReqCancel } from '../../api';
 
 export default {
@@ -54,11 +54,11 @@ export default {
     });
   },
   data: {
-    result: [],
+    result: {},
     all: false,
   },
   components: {
-    borrowList,
+    reserveList,
   },
   computed: {
     selectedBooks() {
@@ -82,13 +82,14 @@ export default {
       this.selectedBooks.forEach((element) => {
         holdReqCancel({
           session: that.$store.getters.getSession,
-          doc_number: element.loan_info.doc_number,
-          item_sequence: element.loan_info.item_sequence,
-          sequence: element.sequence,
+          doc_number: element.hold_info.doc_number,
+          item_sequence: element.hold_info.item_sequence,
+          sequence: element.hold_info.sequence,
         }).then((response) => {
           if (response.status === 0) {
             success.push(element.book_info.title);
             wx.showToast({ title: `${element.book_info.title}取消成功`, icon: 'none' });
+            that.result.splice(element.index, 1);
           } else {
             fail.push(element.book_info.title);
             wx.showToast({ title: `${element.book_info.title}取消失败`, icon: 'none' });

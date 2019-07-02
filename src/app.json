@@ -31,6 +31,18 @@
       "route": "pages/weike"
     },
     {
+      "path": "pages/freshman/curator",
+      "config":{
+      },
+      "route": "pages/curator"
+    },
+    {
+      "path": "pages/freshman/about",
+      "config":{
+      },
+      "route": "pages/about"
+    },
+    {
       "path": "pages/search",
       "config":{
       },
