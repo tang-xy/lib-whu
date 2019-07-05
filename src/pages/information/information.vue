@@ -9,7 +9,7 @@
                 <image src='https://system.lib.whu.edu.cn/mp-static/331/姓名@3x.png'/>
                 <span>真实姓名:</span>
                 <div>
-                    <input type='text' @input='inputName'/>
+                    <input type='text' @input='inputName' :value="userName"/>
                     <div/>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                 <image src='https://system.lib.whu.edu.cn/mp-static/331/博士帽@3x.png'/>
                 <span>专业:</span>
                 <div>
-                    <input type='text' @input="inputMajor"/>
+                    <input type='text' @input="inputMajor" :value="major"/>
                     <div/>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                 <image src='https://system.lib.whu.edu.cn/mp-static/331/电话@3x.png'/>
                 <span>联系电话:</span>
                 <div>
-                    <input type='number' @input="inputTel"/>
+                    <input type='number' @input="inputTel" :value="tel"/>
                     <div/>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                 <image src='https://system.lib.whu.edu.cn/mp-static/331/邮箱@3x.png'/>
                 <span>邮箱:</span>
                 <div>
-                    <input type='text' @input="inputEmail"/>
+                    <input type='text' @input="inputEmail" :value="email"/>
                     <div/>
                 </div>
             </div>
@@ -48,11 +48,22 @@
 </template>
 
 <script>
+import { getBorInfo } from '../../api';
+
 export default {
   mpType: 'page',
   onLoad(options) {
     wx.setNavigationBarTitle({
       title: '个人信息',
+    });
+    const that = this;
+    getBorInfo({
+      session: that.$store.getters.getSession,
+    }).then((response) => {
+      that.userName = response.result.name;
+      that.major = response.result.prof;
+      that.tel = response.result.telephone;
+      that.email = response.result.email;
     });
   },
   data: {
@@ -67,7 +78,7 @@ export default {
         wx.showToast({ title: '信息不能为空', icon: 'none' });
       } else {
         wx.showToast({
-          title: '信息更新成功',
+          title: '抱歉，暂时无法更新信息',
         });
       }
     },

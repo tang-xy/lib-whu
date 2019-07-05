@@ -3,13 +3,12 @@
     <image class='bk' src='https://system.lib.whu.edu.cn/mp-static/340/上方@3x.png' mode='aspectFill' :style="{ height: picHeight}" />
     <button v-if=login type='default' open-type='getUserInfo' @getuserinfo='getUserInfo' @click='wxlogin'>
       <span>微信快速登录</span>
-      <image src='https://system.lib.whu.edu.cn/mp-static/340/矩形 5@3x.png' mode='scaleToFill'/>
     </button>
     <div class='bind-container' v-if=!login>
       <div class='input-container'>
         <image src='https://system.lib.whu.edu.cn/mp-static/340/证件@3x.png' style='width:3.5vh; height:2.5vh;'/>
         <span>&nbsp;学&nbsp;&nbsp;号&nbsp;</span>
-        <input class='un-input' type='number' placeholder='请输入学号或学工号' @input=inputUsername confirm-type='next' @focus=onFocus />
+        <input class='un-input' placeholder='请输入学号或学工号' @input=inputUsername confirm-type='next' @focus=onFocus />
       </div>
       <div class='input-container' style='top: 10vh;'>
         <image src='https://system.lib.whu.edu.cn/mp-static/340/密码@3x.png' style='width:3.5vh; height:3.5vh;'/>
@@ -22,7 +21,6 @@
       </button>
       <button id='exit' type='default' @click='exit'>
         <span>以后再说</span>
-        <image src='https://system.lib.whu.edu.cn/mp-static/340/矩形 5 副本@3x.png' mode='scaleToFill'/>
       </button>
     </div>
   </div>
@@ -41,8 +39,12 @@ export default {
   },
   computed: {
     picHeight() {
-      return this.login ? '165vw' : '120vw';
+      return this.login ? '744rpx' : '653rpx';
     },
+  },
+  onUnLoad() {
+    this.userName = '';
+    this.password = '';
   },
   onLoad(options) {
     wx.setNavigationBarTitle({
@@ -89,6 +91,8 @@ export default {
           encryptedData,
           iv,
           userInfo,
+        }).then((res) => {
+          // wx.navigateBack({ delta: 1 });
         });
         if (this.$store.getters.getLibBind) {
           wx.navigateBack({ delta: 1 });
@@ -132,7 +136,7 @@ CPDsDJ7vp7Q2+WLvlQIDAQAB
   background: #f7f7f7;
   .bk{
     position: absolute;
-    top: -35vw;
+    top: 0vw;
     width: 100vw;
     height: 160vw;
   }
@@ -143,7 +147,8 @@ CPDsDJ7vp7Q2+WLvlQIDAQAB
     height: 8vh;
     padding: 0%;
     border: none;
-    border-radius: 0px;
+    background-color: #4F8ADD;
+    border-radius: 4vh;
     image{
       width: 100%;
       height: 100%;
@@ -195,14 +200,20 @@ CPDsDJ7vp7Q2+WLvlQIDAQAB
     }
     #bind{
       bottom: 20vh;
+      border-radius: 0;
       span{
         left: 35vw;
       }
     }
     #exit{
+      background-color: rgba($color: #000000, $alpha: 0.0);
+      border: #525252;
+      border-width: 1rpx;
+      border-radius: 0;
       span{
-        color: black;
+        color: #525252;
         left: 34vw;
+        font-size: 36rpx
       }
     }
   }

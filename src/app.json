@@ -109,6 +109,12 @@
       "route": "pages/information"
     },
     {
+      "path": "pages/entry/entry",
+      "config":{
+      },
+      "route": "pages/entry"
+    },
+    {
       "path": "pages/seatReserve",
       "config":{
       },
@@ -119,6 +125,12 @@
       "config":{
       },
       "route": "pages/seatReserve/announcement"
+    },
+    {
+      "path": "pages/notice/activity",
+      "config":{
+      },
+      "route": "pages/notice/activity"
     },
     {
       "path": "pages/seatReserve/myReservation",

@@ -25,16 +25,6 @@
       <div class='value' @click=onRFID>点击查看</div>
     </div>
     <div class='info' v-if=reserve>
-      <div class='key'>取书分馆</div>
-      <div class='value'>
-        <picker @change=onLibChange :value=libIndex :range="libs" mode="selector">
-          <image class='book' src='https://system.lib.whu.edu.cn/mp-static/112/立即预约@3x.png' mode='scaleToFill'/>
-          <span>{{libs[libIndex]}}</span>
-          <image class='arrow' src='https://system.lib.whu.edu.cn/mp-static/112/更多 (1)@3x.png' mode='scaleToFill'/>
-        </picker>
-      </div>
-    </div>
-    <div class='info' v-if=reserve>
       <div class='key'>预约</div>
       <div class='value'>
         <button class='btn-reserve' @click=onReserve>立即预约</button>

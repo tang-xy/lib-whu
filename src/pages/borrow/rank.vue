@@ -22,6 +22,9 @@ import { getRank } from '../../api';
 export default {
   mpType: 'page',
   onLoad(options) {
+    wx.setNavigationBarTitle({
+      title: '借阅排行',
+    });
     this.LoadData();
   },
   data: {
@@ -61,7 +64,8 @@ export default {
       });
     },
     onClickCard(key) {
-      // wx.navigateTo({ url: `/pages/search/detail?key=${key}` });
+      const value = this.result[key].title;
+      wx.navigateTo({ url: `/pages/search/result?value=${value}&&index=0&&lang=cn` });
     },
     onChoiceYear() {
       this.year = true;

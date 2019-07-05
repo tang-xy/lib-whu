@@ -6,8 +6,7 @@
       <span>{{title}}</span>
     </div>
     <div class='info'>
-      <span class='volume'>点击{{volume}}次</span>
-      <span class='time'>{{time}}</span>
+      <span class='time'>{{firstTime[0]}}&nbsp;&nbsp;{{firstTime[1]}}</span>
     </div>
   </div>
 </template>
@@ -26,11 +25,6 @@ export default {
       required: true,
       default: '',
     },
-    volume: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
     time: {
       type: String,
       required: true,
@@ -42,6 +36,9 @@ export default {
   computed: {
     index() {
       return (this.key + 1).toString();
+    },
+    firstTime() {
+      return this.time.slice(0, 19).split('T');
     },
   },
   methods: {

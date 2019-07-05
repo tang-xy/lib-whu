@@ -31,21 +31,29 @@
       scroll-y=true
       enable-back-to-top=true
       @scrolltolower=onScrollToBottom>
-        <detail-list :result=books @click-reserve=onClickReserve @click-rfid=onRFID />
+        <detail-list :result=books @click-reserve=onClickReserve @click-rfid=toUnfinished />
       </scroll-view>
     </div>
+    <success-modal :showModal="showModal" text='可前往我的-预约结果查看预约详情' title='预约成功' @confirm=onConfirm @cancel=onCancel buttontext='查看'/>
+    <pick-modal :showModal='pickModal' title='预约成功' @confirm=onClickModal @cancel=onCancel />
   </div>
 </template>
 
 <script>
 import detailList from '../../components/list/detailList';
+import pickModal from '../../components/modal/pickModal';
+import successModal from '../../components/modal/successModal';
 import { getBookDetail, reserveBook } from '../../api';
 
 export default {
   mpType: 'page',
+  onUnload() {
+    this.showModal = false;
+    this.pickModal = false;
+  },
   onLoad(options) {
     wx.setNavigationBarTitle({
-      title: '馆藏查询',
+      title: '书籍详情',
     });
     wx.showLoading({ title: '加载中...' });
     const that = this;
@@ -80,33 +88,53 @@ export default {
     theme: '',
     publish: '',
     books: [],
+    showModal: false,
+    pickModal: false,
+    bar_code: '',
   },
   components: {
+    successModal,
     detailList,
+    pickModal,
   },
   computed: {
 
   },
   methods: {
+    onConfirm() {
+      this.showModal = false;
+      this.pickModal = false;
+      const url = '/pages/borrow/reserve';
+      wx.navigateTo({ url });
+    },
+    onCancel() {
+      this.showModal = false;
+      this.pickModal = false;
+    },
+    onClickModal(pickup) {
+      const pick = ['WL', 'XX', 'GX', 'YX'];
+      const that = this;
+      reserveBook({
+        session: that.$store.getters.getSession,
+        bar_code: that.bar_code,
+        pickup: pick[pickup],
+      }).then((response) => {
+        if (response.status === 0) {
+          this.pickModal = false;
+          that.showModal = true;
+        } else {
+          // wx.showToast({ title: '本书目前无法预约', icon: 'none' });
+        }
+      });
+    },
     onClickReserve(p) {
       if (!this.$store.getters.getLibBind) {
         const url = '/pages/login';
         wx.navigateTo({ url });
         return;
       }
-      const pick = ['WL', 'XX', 'GX', 'YX'];
-      const that = this;
-      reserveBook({
-        session: that.$store.getters.getSession,
-        bar_code: p.key,
-        pickup: pick[p.pick],
-      }).then((response) => {
-        if (response.status === 0) {
-          wx.showToast({ title: '预约成功', icon: 'none' });
-        } else {
-          wx.showToast({ title: '本书目前无法预约', icon: 'none' });
-        }
-      });
+      this.bar_code = p.key;
+      this.pickModal = true;
     },
     onShare() {
 
@@ -116,6 +144,16 @@ export default {
     },
     onRFID(key) {
       const url = `rfid?url=${key}`;
+      wx.navigateTo({ url });
+    },
+    toUnfinished(key) {
+      if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
+      }
+      const url = '/pages/unfinished';
       wx.navigateTo({ url });
     },
   },

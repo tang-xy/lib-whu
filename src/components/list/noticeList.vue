@@ -2,11 +2,10 @@
 <div class='notice-list'>
   <notice-card
   v-for='(item, index) in result'
-  :key=index
+  :key=item.index
   :title=item.title
-  :volume=item.volume
-  :time=item.time
-  @click=onClickCard(index)
+  :time=item.publishTime
+  @click=onClickCard(item.index)
   />
 </div>
 </template>

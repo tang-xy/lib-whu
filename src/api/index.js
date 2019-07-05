@@ -126,9 +126,57 @@ export function getRank(params) {
   });
 }
 
+export function getVisitInfo(params) {
+  return new Promise((resolve, reject) => {
+    request.get('/libuser/visit_info/', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
+export function getActivity(params) {
+  return new Promise((resolve, reject) => {
+    request.get('/activity/', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
+export function getAdvise(params) {
+  return new Promise((resolve, reject) => {
+    request.post('/advise/', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
+export function getBorInfo(params) {
+  return new Promise((resolve, reject) => {
+    request.get('libuser/bor_info/', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
 export function getNotice(params) {
   return new Promise((resolve, reject) => {
-    request.get('/libuser/notice/', params)
+    request.get('/notice/', params)
       .then((response) => {
         console.log(response.data);
         resolve(response.data);

@@ -14,7 +14,7 @@ export default {
     error: '网络通信异常',
   },
   onLoad(options) {
-    const errorList = ['网络通信异常', '页面不存在'];
+    const errorList = ['网络通信异常', '验证过期，请重新登录'];
     this.error = errorList[options.type];
   },
   methods: {

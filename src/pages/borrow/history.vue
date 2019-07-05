@@ -1,5 +1,8 @@
 <template>
   <div class='container'>
+    <div class='total'>
+      <span>列出了总共{{result.length}}条中的{{result.length}}条外借信息</span>
+    </div>
     <div class='list-container'>
       <scroll-view
       class='list-container'
@@ -111,7 +114,6 @@ export default {
     height: 98vh;
     padding-bottom: 2vh;
     padding-top: 1vh;
-    background: white;
     border-radius: 20rpx;
     .tip{
       span{
@@ -141,15 +143,15 @@ export default {
         height: 5vw;
       }
     }
-    .con-history{
-      width: 40vw;
-      border-radius: 100rpx;
-      background: #4a88dd;
-      color: white;
-      position: absolute;
-      right:0;
-    }
   }
+}
+.total{
+  font-size:28rpx;
+font-family:MicrosoftYaHei;
+font-weight:400;
+color:rgba(57,57,57,1);
+line-height:36rpx;
+margin-left: 67rpx;
 }
 
 </style>

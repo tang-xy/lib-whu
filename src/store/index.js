@@ -15,10 +15,14 @@ const store = new Vuex.Store({
     userInfo: {},
     libUser: {},
     searchHistory: [],
+    activityUrl: '',
   },
   getters: {
     getSession(state) {
       return state.session;
+    },
+    getActivityUrl(state) {
+      return state.activityUrl;
     },
     getsearchHistory(state) {
       return state.searchHistory;
@@ -39,6 +43,9 @@ const store = new Vuex.Store({
       console.log('session');
       console.log(session);
     },
+    setActivityUrl({ commit, state }, activityUrl) {
+      commit('setActivityUrl', activityUrl);
+    },
     vertifyLogin({ commit, state }, par) {
       // eslint-disable-next-line prefer-destructuring
       const session = par.ses;
@@ -46,7 +53,6 @@ const store = new Vuex.Store({
       wx.setStorageSync('session', session);
       if (session === '') {
         wx.navigateTo({ url: '/pages/login?type=login' });
-        console.log('s = null');
         return;
       }
       vertifySession({ session }).then((response) => {
@@ -134,6 +140,10 @@ const store = new Vuex.Store({
     setLibUser(state, libUser) {
       // eslint-disable-next-line no-param-reassign
       state.libUser = libUser;
+    },
+    setActivityUrl(state, activityUrl) {
+      // eslint-disable-next-line no-param-reassign
+      state.activityUrl = activityUrl;
     },
     setsearchHistory(state, searchHistory) {
       // eslint-disable-next-line no-param-reassign

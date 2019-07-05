@@ -38,7 +38,7 @@ export default {
   onLoad() {
     const session = wx.getStorageSync('session') || '';
     const libUser = wx.getStorageSync('libUser') || '';
-    console.log(session);
+    console.log(libUser);
     this.$store.dispatch('vertifyLogin', { ses: session, user: libUser });
   },
 
@@ -57,6 +57,10 @@ export default {
     },
     toSeat() {
       if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
         return;
       }
       const url = '/pages/seatReserve';
@@ -64,6 +68,10 @@ export default {
     },
     toBorrow() {
       if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
         return;
       }
       const url = '/pages/borrow';
@@ -71,6 +79,10 @@ export default {
     },
     toRank() {
       if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
         return;
       }
       const url = '/pages/borrow/rank';
@@ -78,6 +90,10 @@ export default {
     },
     toNotice() {
       if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
         return;
       }
       const url = '/pages/notice';

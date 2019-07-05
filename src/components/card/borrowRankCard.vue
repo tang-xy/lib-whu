@@ -57,7 +57,7 @@ export default {
   methods: {
     clickCard() {
       const that = this;
-      this.$emit('click-card', that.key);
+      this.$emit('click-card', that.rank - 1);
     },
   },
 };
@@ -79,14 +79,14 @@ export default {
   position: relative;
   .title{
     display: flex;
-    font-size: 40rpx;
+    font-size: 30rpx;
     font-weight: bold;
     .name{
       margin-right: 4vw;
     }
     .author{
-      font-size: 30rpx;
-      font-weight: lighter;
+      font-size: 24rpx;
+      font-weight: normal;
       color: grey;
     }
   }
@@ -99,10 +99,10 @@ export default {
   }
   .times{
     display: flex;
-    font-size: 30rpx;
+    font-size: 24rpx;
     span{
       color: grey;
-      text-align: right;
+      text-align: left;
       flex: 1;
     }
   }

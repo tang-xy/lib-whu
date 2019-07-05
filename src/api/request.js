@@ -1,5 +1,6 @@
 import Fly from 'flyio';
 import app from '../main.js';
+import updateSession from '../api';
 
 const fly = new Fly();
 const that = this;
@@ -32,6 +33,14 @@ fly.interceptors.response.use(
     if (response.session !== undefined) {
       app.$store.dispatch('setSession', response.session);
       wx.setStorageSync('session', response.session);
+    }
+    if (response.data.status === 1) {
+      wx.showToast({ title: '授权过期,请重新授权', icon: 'none' });
+      const url = '/pages/login?type=login';
+      wx.navigateTo({ url });
+    }
+    if (response.data.status === 6) {
+      wx.showToast({ title: response.data.detail, icon: 'none' });
     }
     return response;
   },

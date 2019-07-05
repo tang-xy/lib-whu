@@ -54,7 +54,7 @@ export default {
     });
   },
   data: {
-    result: {},
+    result: [],
     all: false,
   },
   components: {

@@ -4,6 +4,8 @@
     <div class='line'/>
     <div class='title'>
       <span class='name'>{{name}}</span>
+    </div>
+    <div class='info'>
       <span class='author'>{{author}}&nbsp;著</span>
     </div>
     <div class='info'>
@@ -107,18 +109,19 @@ export default {
   }
   .title{
     display: flex;
-    font-size: 40rpx;
+    font-size: 30rpx;
     align-items: center;
-    color: #444444;
+    font-weight: bold;
+    color: #525252;
     margin-top: 1.5vh;
     margin-bottom: 1.5vh;
     .name{
       margin-right: 4vw;
     }
     .author{
-      font-size: 30rpx;
-      font-weight: lighter;
-      color: grey;
+      font-size: 24rpx;
+      font-weight: normal;
+      color: #777777;
     }
   }
   .info{

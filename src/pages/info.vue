@@ -1,9 +1,11 @@
 <template>
   <div class='info-view'>
     <div class="info-logon">
-      <open-data class='avatar' type=userAvatarUrl lang=zh_CN />
+      <open-data class='avatar' type=userAvatarUrl lang=zh_CN v-if='login'/>
+      <image class='avatar' src='https://system.lib.whu.edu.cn/mp-static/320/矢量免扣卡通人物@3x.png' v-if='!login' />
       <view @click="onClick">
-        <open-data type=userNickName lang=zh_CN />
+        <open-data type=userNickName lang=zh_CN v-if='login'/>
+        <div v-if='!login'>点击登录</div>
         <span>{{user.name}}&nbsp;{{user.bor_id}}</span>
       </view>
       <div/>
@@ -72,6 +74,19 @@
       </div>
       <div class="info-margin">
       </div>
+      <div class="info-underscores">
+        <view class="divLine"></view>
+      </div>
+      <div class="info-margin"/>
+      <div class="info-line" :disabled='disabled' @click="toEntry">
+        <image :src=picurl.ruguanpic mode='aspectFit'/>
+        <div>
+          <span>&nbsp;入馆记录</span>
+          <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
+        </div>
+      </div>
+      <div class="info-margin">
+      </div>
     </div>
     <div class="info-margin"/>
     <div class="info-list">
@@ -108,12 +123,18 @@
       </div>
       <div class="info-margin">
       </div>
+      <tip-modal :showModal="showModal" text='解除绑定后将无法使用座位预约、借阅信息查询等功能，重新绑定即可查看' title='确定解绑？' @confirm=onConfirm @cancel=onCancel />
   </div>
 </template>
 
 <script>
+import tipModal from '../components/modal/tipModal';
+
 export default {
   mpType: 'page',
+  components: {
+    tipModal,
+  },
   data() {
     return {
       piclist: {
@@ -124,6 +145,7 @@ export default {
         yuyuepic: '预约 (1)@3x.png',
         ziyuanpic: '购物车@3x.png',
         jianyipic: '建议 (1)@3x.png',
+        ruguanpic: 'zanwucanyujilu@2x.png',
       },
       picurl: {
         cardpic: 'https://system.lib.whu.edu.cn/mp-static/320/卡 (1)@3x.png',
@@ -134,6 +156,7 @@ export default {
         ziyuanpic: 'https://system.lib.whu.edu.cn/mp-static/320/购物车@3x.png',
         jianyipic: 'https://system.lib.whu.edu.cn/mp-static/320/建议 (1)@3x.png',
       },
+      showModal: false,
       disabled: false,
       text: '点击绑定',
       user: {
@@ -155,7 +178,8 @@ export default {
       baseurl = 'https://system.lib.whu.edu.cn/mp-static/320/';
       t.disabled = false;
       t.text = '点击绑定';
-      t.user = { name: '点击登录' };
+      if (this.login) t.user = { name: '点击绑定' };
+      else t.user = { name: '登录更精彩' };
     }
     const a = {};
     Object.keys(t.piclist).forEach((key) => {
@@ -164,6 +188,12 @@ export default {
     t.picurl = a;
   },
   computed: {
+    login() {
+      return this.$store.getters.getLogin;
+    },
+  },
+  onUnload() {
+    this.showModal = false;
   },
   methods: {
     onClick() {
@@ -171,33 +201,32 @@ export default {
         const url = '/pages/information';
         wx.navigateTo({ url });
       } else {
-        const url = '/pages/login';
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
         wx.navigateTo({ url });
       }
     },
-    onLogin() {
+    onConfirm() {
+      this.showModal = false;
       const that = this;
-      if (this.disabled) {
-        wx.showModal({
-          title: '确定解绑？',
-          content: '解除绑定后将无法使用座位预约、借阅信息查询等功能，重新绑定即可查看',
-          success(res) {
-            if (res.confirm) {
-              that.$store.dispatch('unbindLibAccount', { session: that.$store.getters.getSession });
-              that.disabled = false;
-              const url = '/pages/login';
-              wx.navigateTo({ url });
-            } else if (res.cancel) {
-              console.log('用户点击取消');
-            }
-          },
-        });
-      } else {
-        this.onClick();
-      }
+      that.$store.dispatch('unbindLibAccount', { session: that.$store.getters.getSession });
+      that.disabled = false;
+      const url = '/pages/login';
+      wx.navigateTo({ url });
+    },
+    onCancel() {
+      this.showModal = false;
+    },
+    onLogin() {
+      this.showModal = true;
     },
     toReserve() {
       if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
         return;
       }
       const url = 'borrow/reserve';
@@ -205,13 +234,32 @@ export default {
     },
     toHistory() {
       if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
         return;
       }
       const url = 'borrow/history';
       wx.navigateTo({ url });
     },
+    toEntry() {
+      if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
+        return;
+      }
+      const url = '/pages/entry';
+      wx.navigateTo({ url });
+    },
     toCard() {
       if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
         return;
       }
       const url = '/pages/card';
@@ -219,6 +267,10 @@ export default {
     },
     toBorrow() {
       if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
         return;
       }
       const url = '/pages/borrow';
@@ -230,6 +282,10 @@ export default {
     },
     toUnfinished() {
       if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
         return;
       }
       const url = '/pages/unfinished';
@@ -279,6 +335,12 @@ export default {
       color: #393939;
       display: flex;
       flex-direction: column;
+      div{
+        padding: 0;
+        width: 178rpx;
+        font-size: 43rpx;
+        height: 62rpx;;
+      }
       span{
         margin-left: 2rpx;
         font-size: 30rpx;

@@ -7,8 +7,8 @@
               indicator-color="#fff">
           <block v-for='(item, index) in banner_url' :key=index>
             <swiper-item>
-              <block :wx:if="item.pic">
-                <image class="scroll-image" :src="item.pic"  mode="aspectFill"/>
+              <block :wx:if="item.img_url">
+                <image class="scroll-image" :src="item.img_url"  mode="aspectFill" @click='onClickPic(item.url)' />
               </block>
             </swiper-item>
           </block>
@@ -92,25 +92,28 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex';
+import { getActivity } from '../api';
 
 export default {
   mpType: 'page',
+  onLoad(options) {
+    wx.showLoading({ title: '加载中...' });
+    const { value } = options;
+    const that = this;
+    getActivity({
+      session: that.$store.getters.getSession,
+    }).then((response) => {
+      if (response.count !== 0) {
+        that.banner_url = response.results;
+      }
+      wx.hideLoading();
+    });
+  },
   config: {
   },
   data() {
     return {
-      banner_url: [
-        {
-          pic: 'https://system.lib.whu.edu.cn/mp-static/200/banner1 拷贝@3x.png',
-          url: '',
-          id: 0,
-        },
-        {
-          pic: 'https://system.lib.whu.edu.cn/mp-static/200/banner@2x.png',
-          url: '',
-          id: 1,
-        },
-      ],
+      banner_url: [],
       open: false,
       indicatorDots: true,
       autoplay: true,
@@ -131,6 +134,10 @@ export default {
     ]),
     toTraining() {
       if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
         return;
       }
       const url = '/pages/training';
@@ -138,6 +145,10 @@ export default {
     },
     toUnfinished() {
       if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
         return;
       }
       const url = '/pages/unfinished';
@@ -145,6 +156,10 @@ export default {
     },
     toWeiKe() {
       if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
         return;
       }
       const url = '/pages/weike';
@@ -152,6 +167,10 @@ export default {
     },
     toCurator() {
       if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
         return;
       }
       const url = '/pages/curator';
@@ -159,9 +178,18 @@ export default {
     },
     toAbout() {
       if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
         return;
       }
       const url = '/pages/about';
+      wx.navigateTo({ url });
+    },
+    onClickPic(aurl) {
+      this.$store.dispatch('setActivityUrl', aurl);
+      const url = '/pages/notice/activity';
       wx.navigateTo({ url });
     },
   },

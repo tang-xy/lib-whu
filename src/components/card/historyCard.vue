@@ -3,12 +3,12 @@
     <div class='circle'/>
     <div class='line'/>
     <div class='title'>
-      <span class='index'>&nbsp;&nbsp;</span>
+      <span class='index'></span>
       <span class='name'>{{name}}</span>
     </div>
     <div class='author'>
       <span class='key'>作者：</span>
-      <span class='value'>{{author}}&nbsp;著</span>
+      <span class='value'>{{author}}&nbsp;</span>
     </div>
     <div class='publish'>
       <span class='key'>借阅时间：</span>
@@ -127,23 +127,24 @@ export default {
   }
   .title{
     display: flex;
-    font-size: 40rpx;
+    font-size: 30rpx;
     align-items: center;
     color: #444444;
     margin-top: 1.5vh;
     margin-bottom: 1.5vh;
     .name{
+      font-weight: bold;
       margin-right: 4vw;
     }
     .author{
-      font-size: 30rpx;
-      font-weight: lighter;
+      font-size: 24rpx;
+      font-weight: normal;
       color: grey;
     }
   }
   .info{
     display: flex;
-    font-size: 25rpx;
+    font-size: 24rpx;
     color: #777777;
     justify-content: space-between;
   }

@@ -19,6 +19,9 @@ import { searchLib, findLib } from '../../api';
 
 export default {
   mpType: 'page',
+  onUnload() {
+    this.result = [];
+  },
   onLoad(options) {
     wx.setNavigationBarTitle({
       title: '检索结果',
@@ -40,6 +43,7 @@ export default {
           session: that.$store.getters.getSession,
           set_num: response.result.set_number,
           lang: options.lang,
+          entry: 1,
         }).then((r) => {
           if (r.status === 0) {
             that.result = r.result;
