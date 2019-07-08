@@ -13,16 +13,16 @@
       <div class='value'>{{position}}</div>
     </div>
     <div class='info'>
+      <div class='key'>图书定位</div>
+      <div class='value' @click=onRFID>点击查看</div>
+    </div>
+    <div class='info'>
       <div class='key'>索书号</div>
       <div class='value'>{{number}}</div>
     </div>
     <div class='info'>
       <div class='key'>条码</div>
       <div class='value'>{{code}}</div>
-    </div>
-    <div class='info'>
-      <div class='key'>图书定位</div>
-      <div class='value' @click=onRFID>点击查看</div>
     </div>
     <div class='info' v-if=reserve>
       <div class='key'>预约</div>

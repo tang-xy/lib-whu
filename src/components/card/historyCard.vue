@@ -93,16 +93,18 @@ export default {
   }
   .author{
     display: flex;
-    font-size: 30rpx;
+    font-size: 24rpx;
+    color: #777777;
     .value{
-      font-weight: lighter;
+      font-weight: normal;
     }
   }
   .publish{
     display: flex;
-    font-size: 30rpx;
+    font-size: 24rpx;
+    color: #777777;
     .value{
-      font-weight: lighter;
+      font-weight: normal;
     }
   }
   .line{

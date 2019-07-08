@@ -88,6 +88,7 @@ export default {
       font-size: 24rpx;
       font-weight: normal;
       color: grey;
+      margin-top: 12rpx;
     }
   }
   .rate{
@@ -100,6 +101,7 @@ export default {
   .times{
     display: flex;
     font-size: 24rpx;
+    margin-top: 20rpx;
     span{
       color: grey;
       text-align: left;

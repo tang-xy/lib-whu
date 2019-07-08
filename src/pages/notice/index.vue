@@ -157,19 +157,29 @@ export default {
   height: 100vh;
   .list-type{
     display: flex;
+    border-bottom-color: #c7c7c7;
+    border-bottom-style: solid;
+    border-bottom-width: 2rpx;
+    border-radius: 0;
     .list-choice{
       // position: static;
-      color: grey;
+      color: #ffffff;
+      font-size:29rpx;
+      font-family:MicrosoftYaHei;
+      background-color: #C7C7C7;
       border: none;
+      border-radius: 0;
+      width: 226rpx;
+      height: 61rpx;
     }
     .list-choice::after{
       border: none;
     }
     .list-choice-selected{
       border-bottom-color: #4a88dd;
+      background-color: #4A88DD;
       border-bottom-style: solid;
-      border-radius: 0px;
-      color: black;
+      border-radius: 0;
     }
   }
   .scroll-list{

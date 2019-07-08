@@ -22,10 +22,10 @@
         </div>
     </div>
     <div class='education-button-container'>
-      <button type='default' @click='toTraining'>
+      <button type='default' @click='toUnfinished'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/日程 (1)@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toWeiKe'>
+      <button type='default' @click='toUnfinished'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/视频 (2) 副本@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toUnfinished'>

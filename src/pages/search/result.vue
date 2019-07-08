@@ -21,6 +21,7 @@ export default {
   mpType: 'page',
   onUnload() {
     this.result = [];
+    this.no_records = 0;
   },
   onLoad(options) {
     wx.setNavigationBarTitle({
@@ -36,8 +37,8 @@ export default {
       code: code[options.index],
       lang: options.lang,
     }).then((response) => {
-      if (response.status === 0) {
-        that.set_number = response.result.set_number;
+      if (response.status >= 0) {
+        that.set_number = response.result.set_number || '';
         that.no_records = response.result.no_records || '0';
         searchLib({
           session: that.$store.getters.getSession,

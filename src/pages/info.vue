@@ -16,7 +16,7 @@
       <div class="info-line" @click="toUnfinished" :disabled='disabled'>
         <image :src=picurl.cardpic mode='aspectFit'/>
         <div>
-          <span>&nbsp;电子校园卡</span>
+          <span :class="{ 'list-disabled': !disabled }">&nbsp;电子校园卡</span>
           <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
@@ -29,7 +29,7 @@
       <div class="info-line" :disabled='disabled' @click="toUnfinished">
         <image :src=picurl.zhangdanpic mode='aspectFit'/>
         <div>
-          <span>&nbsp;图书馆账单</span>
+          <span :class="{ 'list-disabled': !disabled }">&nbsp;图书馆账单</span>
           <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
@@ -42,7 +42,7 @@
       <div class="info-line" @click="toBorrow">
         <image :src=picurl.jieyuepic mode='aspectFit'/>
         <div>
-          <span>&nbsp;借阅信息</span>
+          <span :class="{ 'list-disabled': !disabled }">&nbsp;借阅信息</span>
           <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
@@ -55,7 +55,7 @@
       <div class="info-line" :disabled='disabled' @click="toHistory">
         <image :src=picurl.lishipic mode='aspectFit'/>
         <div>
-          <span>&nbsp;借阅历史</span>
+          <span :class="{ 'list-disabled': !disabled }">&nbsp;借阅历史</span>
           <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
@@ -68,7 +68,7 @@
       <div class="info-line" :disabled='disabled' @click="toReserve">
         <image :src=picurl.yuyuepic mode='aspectFit'/>
         <div>
-          <span>&nbsp;预约结果</span>
+          <span :class="{ 'list-disabled': !disabled }">&nbsp;预约结果</span>
           <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
@@ -81,7 +81,7 @@
       <div class="info-line" :disabled='disabled' @click="toEntry">
         <image :src=picurl.ruguanpic mode='aspectFit'/>
         <div>
-          <span>&nbsp;入馆记录</span>
+          <span :class="{ 'list-disabled': !disabled }">&nbsp;入馆记录</span>
           <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
@@ -94,7 +94,7 @@
       <div class="info-line" :disabled='disabled' @click="toUnfinished">
         <image :src=picurl.ziyuanpic mode='aspectFit'/>
         <div>
-          <span>&nbsp;资源导购</span>
+          <span :class="{ 'list-disabled': !disabled }">&nbsp;资源荐购</span>
           <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
@@ -107,7 +107,7 @@
       <div class="info-line" @click="toSuggest" :disabled='disabled'>
         <image :src=picurl.jianyipic mode='aspectFit'/>
         <div>
-          <span>&nbsp;建议与反馈</span>
+          <span >&nbsp;建议与反馈</span>
           <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
         </div>
       </div>
@@ -408,6 +408,9 @@ export default {
       }
     }
   }
+}
+.list-disabled{
+  color: #ABABAB;
 }
 </style>
 

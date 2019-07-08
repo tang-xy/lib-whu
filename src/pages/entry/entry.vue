@@ -93,6 +93,7 @@ export default {
       ctx.fill();
       ctx.setFillStyle('#ffffff');
       ctx.fillText(this.result['most-branch-name'], 79 * this.rpxToPx, 236 * this.rpxToPx);
+      ctx.fillText(`  ${(100 * tmp).toFixed(0)}%`, 79 * this.rpxToPx, 266 * this.rpxToPx);
       ctx.setFillStyle('#E0EFFF');
       ctx.beginPath();
       ctx.arc(afterX * this.rpxToPx, afterY * this.rpxToPx, 178 * this.rpxToPx, 0, d, true);
@@ -189,17 +190,17 @@ export default {
         }
         .gra{
             .line{
-            width: 1px;
+            width: 1rpx;
             height: 162rpx;
-            padding-left: 14rpx;
+            padding-left: 10rpx;
             border-right-style: solid;
             border-color: #7aa6e2;
             border-width: 5rpx;
             opacity: 0.7;
             }
             .circle{
-            width:18px;
-            height:18px;
+            width:28rpx;
+            height:28rpx;
             background:rgba(130,166,221,1);
             border-radius:50%;
             margin-top: 4rpx;

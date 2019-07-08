@@ -34,7 +34,7 @@ export default {
   mpType: 'page',
   onLoad(options) {
     wx.setNavigationBarTitle({
-      title: '馆长寄语',
+      title: '关于本馆',
     });
   },
   data: {

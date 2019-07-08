@@ -85,15 +85,17 @@ export default {
   }
   .title{
     display: flex;
-    font-size: 40rpx;
+    font-size: 28rpx;
     align-items: center;
-    color: #444444;
+    color: #525252;
     margin-top: 1.5vh;
+    font-family:MicrosoftYaHei;
+    font-weight: 700;
     margin-bottom: 1.5vh;
   }
   .info{
     display: flex;
-    font-size: 25rpx;
+    font-size: 24rpx;
     color: #777777;
     justify-content: space-between;
   }
