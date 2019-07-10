@@ -23,6 +23,11 @@ export default {
     this.result = [];
     this.no_records = 0;
   },
+  onShareAppMessage() {
+    return {
+      title: '武汉大学图书馆',
+    };
+  },
   onLoad(options) {
     wx.setNavigationBarTitle({
       title: '检索结果',

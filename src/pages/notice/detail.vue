@@ -10,6 +10,11 @@ export default {
   data: {
     contents: '',
   },
+  onShareAppMessage() {
+    return {
+      title: '武汉大学图书馆',
+    };
+  },
   onLoad(options) {
     const { contents, title } = options;
     this.contents = contents;
@@ -28,8 +33,7 @@ export default {
 }
 .text{
   width: 672rpx;
-  text-indent:60rpx;
-font-size:24rpx;
+font-size:28rpx;
 font-family:PingFangSC-Regular;
 font-weight:400;
 color:rgba(101,101,101,1);

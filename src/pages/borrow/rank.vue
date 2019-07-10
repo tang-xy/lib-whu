@@ -33,6 +33,11 @@ export default {
     month: false,
     week: false,
   },
+  onShareAppMessage() {
+    return {
+      title: '武汉大学图书馆',
+    };
+  },
   computed: {
     time() {
       if (this.year) return 'y';

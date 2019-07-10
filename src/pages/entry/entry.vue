@@ -52,6 +52,11 @@ export default {
   mpType: 'page',
   components: {
   },
+  onShareAppMessage() {
+    return {
+      title: '武汉大学图书馆',
+    };
+  },
   onLoad() {
     wx.setNavigationBarTitle({
       title: '入馆记录',

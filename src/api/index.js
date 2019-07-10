@@ -138,6 +138,18 @@ export function getVisitInfo(params) {
   });
 }
 
+export function getFineInfo(params) {
+  return new Promise((resolve, reject) => {
+    request.get('/libuser/fine_info/', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
 export function getActivity(params) {
   return new Promise((resolve, reject) => {
     request.get('/activity/', params)

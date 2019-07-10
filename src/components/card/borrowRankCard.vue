@@ -88,7 +88,7 @@ export default {
       font-size: 24rpx;
       font-weight: normal;
       color: grey;
-      margin-top: 12rpx;
+      margin-top: 6rpx;
     }
   }
   .rate{

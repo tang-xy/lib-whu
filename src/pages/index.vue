@@ -45,7 +45,11 @@ export default {
   data() {
 
   },
-
+  onShareAppMessage() {
+    return {
+      title: '武汉大学图书馆',
+    };
+  },
   components: {
 
   },
@@ -78,24 +82,10 @@ export default {
       wx.navigateTo({ url });
     },
     toRank() {
-      if (!this.$store.getters.getLibBind) {
-        let url;
-        if (this.$store.getters.getLogin) url = '/pages/login';
-        else url = '/pages/login?type=login';
-        wx.navigateTo({ url });
-        return;
-      }
       const url = '/pages/borrow/rank';
       wx.navigateTo({ url });
     },
     toNotice() {
-      if (!this.$store.getters.getLibBind) {
-        let url;
-        if (this.$store.getters.getLogin) url = '/pages/login';
-        else url = '/pages/login?type=login';
-        wx.navigateTo({ url });
-        return;
-      }
       const url = '/pages/notice';
       wx.navigateTo({ url });
     },

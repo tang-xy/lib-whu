@@ -37,6 +37,11 @@ export default {
       title: '关于本馆',
     });
   },
+  onShareAppMessage() {
+    return {
+      title: '武汉大学图书馆',
+    };
+  },
   data: {
   },
   methods: {

@@ -43,6 +43,12 @@
       "route": "pages/about"
     },
     {
+      "path": "pages/freshman/students",
+      "config":{
+      },
+      "route": "pages/students"
+    },
+    {
       "path": "pages/search",
       "config":{
       },
@@ -53,6 +59,12 @@
       "config":{
       },
       "route": "pages/search/result"
+    },
+    {
+      "path": "pages/fine/fine",
+      "config":{
+      },
+      "route": "pages/fine/fine"
     },
     {
       "path": "pages/search/detail",

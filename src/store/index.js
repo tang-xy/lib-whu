@@ -128,11 +128,9 @@ const store = new Vuex.Store({
             commit('setLibBind', true);
             wx.navigateBack({ delta: 1 });
           });
-        } else {
-          wx.showToast({ title: '学号/密码错误', icon: 'none' });
         }
       }).catch(() => {
-        wx.showToast({ title: '学号/密码错误', icon: 'none' });
+        // wx.showToast({ title: '学号/密码错误', icon: 'none' });
       });
     },
   },

@@ -49,7 +49,7 @@
       <button type='default' @click='toAbout'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/我的图书馆@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toUnfinished'>
+      <button type='default' @click='toStudent'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/书 (2)@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toCurator'>
@@ -70,22 +70,22 @@
         </div>
     </div>
     <div class='education-button-container'>
-      <button type='default' @click='toUnfinished'>
-        <image src='https://system.lib.whu.edu.cn/mp-static/200/图层 1@3x.png' mode='aspectFit'/>
-      </button>
-      <button type='default' @click='toUnfinished'>
+      <button type='default' @click='onClickPic("http://librarywap.koolearn.com/encryptedLogin/5769d078bb186da8")'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/图层 2@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toUnfinished'>
+      <button type='default' @click='onClickPic("http://web.libvideo.com/index.html")'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/图层 4@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toUnfinished'>
+      <button type='default' @click='onClickPic("http://whdx.w.chineseall.cn/index")'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/图层 3@3x.png' mode='aspectFit'/>
       </button>
-      <span>百度教育</span>
-      <span>&nbsp;新东方&nbsp;&nbsp;</span>
-      <span>知识世界</span>
+      <button type='default' @click='toUnfinished'>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/gengduo@2x.png' mode='aspectFit'/>
+      </button>
+      <span>&ensp;新东方&ensp;</span>
+      <span>知识视界</span>
       <span>书香中国</span>
+      <span>&ensp;&ensp;更多&ensp;&ensp;</span>
     </div>
   </div>
 </template>
@@ -126,7 +126,11 @@ export default {
       'count',
     ]),
   },
-
+  onShareAppMessage() {
+    return {
+      title: '武汉大学图书馆',
+    };
+  },
   methods: {
     ...mapMutations([
       'increment',
@@ -165,6 +169,17 @@ export default {
       const url = '/pages/weike';
       wx.navigateTo({ url });
     },
+    toStudent() {
+      if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
+        return;
+      }
+      const url = '/pages/students';
+      wx.navigateTo({ url });
+    },
     toCurator() {
       if (!this.$store.getters.getLibBind) {
         let url;
@@ -198,15 +213,14 @@ export default {
 
 <style lang="scss" scoped>
 .find-view{
-  width: 750rpx;
-  height: 100vh;
+  width: 100vw;
+  height: 1350rpx;
   padding-left: 8rpx;
-  padding-right: 11rpx;
   padding-top: 22rpx;
   padding-bottom: 0vh;
   background-color: #f7f7f7;
   .scroll-view{
-    width: 731rpx;
+    width: 740rpx;
     height: 295rpx;
     .swiper-box{
       height: 295rpx;
@@ -248,7 +262,7 @@ export default {
     margin-top: 12rpx;
     margin-left: 70rpx;
     margin-right: 28rpx;
-    width: 649rpx;
+    width: 656rpx;
     height: 190rpx;
     flex-wrap: wrap;
     button::after{
@@ -274,8 +288,8 @@ export default {
         justify-content: center;
         font-size: 24rpx;
         margin-top: 0vh;
-        margin-left: 14.5rpx;
-        margin-right: 53.5rpx;
+        margin-left: 12rpx;
+        margin-right: 56rpx;
         color: #525252;
       }
 

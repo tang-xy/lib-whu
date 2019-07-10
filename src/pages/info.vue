@@ -26,7 +26,7 @@
         <view class="divLine"></view>
       </div>
       <div class="info-margin"/>
-      <div class="info-line" :disabled='disabled' @click="toUnfinished">
+      <div class="info-line" :disabled='disabled' @click="toFine">
         <image :src=picurl.zhangdanpic mode='aspectFit'/>
         <div>
           <span :class="{ 'list-disabled': !disabled }">&nbsp;图书馆账单</span>
@@ -134,6 +134,11 @@ export default {
   mpType: 'page',
   components: {
     tipModal,
+  },
+  onShareAppMessage() {
+    return {
+      title: '武汉大学图书馆',
+    };
   },
   data() {
     return {
@@ -252,6 +257,17 @@ export default {
         return;
       }
       const url = '/pages/entry';
+      wx.navigateTo({ url });
+    },
+    toFine() {
+      if (!this.$store.getters.getLibBind) {
+        let url;
+        if (this.$store.getters.getLogin) url = '/pages/login';
+        else url = '/pages/login?type=login';
+        wx.navigateTo({ url });
+        return;
+      }
+      const url = '/pages/fine/fine';
       wx.navigateTo({ url });
     },
     toCard() {

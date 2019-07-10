@@ -11,6 +11,11 @@ export default {
   onLoad() {
     wx.showLoading({ title: '加载中...' });
   },
+  onShareAppMessage() {
+    return {
+      title: '武汉大学图书馆座位预约',
+    };
+  },
   methods: {
     webLoad(e) {
       wx.hideLoading();

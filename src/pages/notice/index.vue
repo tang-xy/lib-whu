@@ -23,6 +23,11 @@ export default {
   mpType: 'page',
   onUnLoad() {
   },
+  onShareAppMessage() {
+    return {
+      title: '武汉大学图书馆',
+    };
+  },
   onLoad(options) {
     if (this.type === 0) {
       this.type = -1;

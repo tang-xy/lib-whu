@@ -13,6 +13,11 @@ export default {
     this.url = this.$store.getters.getActivityUrl;
     console.log(this.$store.getters.getActivityUrl);
   },
+  onShareAppMessage() {
+    return {
+      title: '武汉大学图书馆',
+    };
+  },
   methods: {
     webLoad(e) {
       wx.hideLoading();

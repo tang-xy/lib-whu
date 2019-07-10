@@ -41,6 +41,11 @@ export default {
   },
   methods: {
   },
+  onShareAppMessage() {
+    return {
+      title: '武汉大学图书馆',
+    };
+  },
 };
 </script>
 

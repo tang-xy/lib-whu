@@ -51,6 +51,11 @@ export default {
     this.showModal = false;
     this.pickModal = false;
   },
+  onShareAppMessage() {
+    return {
+      title: '武汉大学图书馆',
+    };
+  },
   onLoad(options) {
     wx.setNavigationBarTitle({
       title: '书籍详情',
