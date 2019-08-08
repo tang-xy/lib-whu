@@ -49,6 +49,12 @@
       "route": "pages/students"
     },
     {
+      "path": "pages/freshman/use",
+      "config":{
+      },
+      "route": "pages/use"
+    },
+    {
       "path": "pages/search",
       "config":{
       },
@@ -190,6 +196,12 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle": "black"
+  },
+  "plugins": {
+    "tencentvideo": {
+      "version": "1.3.6",
+      "provider": "wxa75efa648b60994b"
+    }
   },
   "tabBar": {
     "backgroundColor": "#ffffff",

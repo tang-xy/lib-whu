@@ -1,5 +1,5 @@
 import Fly from 'flyio';
-import app from '../main.js';
+import obj from '../main.js';
 import updateSession from '../api';
 
 const fly = new Fly();
@@ -27,11 +27,11 @@ fly.interceptors.request.use((config) => {
 fly.interceptors.response.use(
   (response) => {
     if (response.data.session !== undefined) {
-      app.$store.dispatch('setSession', response.data.session);
+      obj.app.$store.dispatch('setSession', response.data.session);
       wx.setStorageSync('session', response.data.session);
     }
     if (response.session !== undefined) {
-      app.$store.dispatch('setSession', response.session);
+      obj.app.$store.dispatch('setSession', response.session);
       wx.setStorageSync('session', response.session);
     }
     if (response.data.status === 1) {

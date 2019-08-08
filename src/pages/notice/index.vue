@@ -45,10 +45,6 @@ export default {
     type: 0,
   },
   computed: {
-    displayList() {
-      const that = this;
-      return that.result.filter(e => e.type === that.type);
-    },
     notice() {
       return this.type === 0;
     },

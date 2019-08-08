@@ -13,10 +13,6 @@
       <div class='value'>{{position}}</div>
     </div>
     <div class='info'>
-      <div class='key'>图书定位</div>
-      <div class='value' @click=onRFID>点击查看</div>
-    </div>
-    <div class='info'>
       <div class='key'>索书号</div>
       <div class='value'>{{number}}</div>
     </div>

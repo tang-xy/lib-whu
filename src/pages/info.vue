@@ -13,7 +13,7 @@
     <div class="info-margin"/>
     <div class="info-list">
       <div class="info-margin"/>
-      <div class="info-line" @click="toUnfinished" :disabled='disabled'>
+      <div class="info-line" @click="toCard" :disabled='disabled'>
         <image :src=picurl.cardpic mode='aspectFit'/>
         <div>
           <span :class="{ 'list-disabled': !disabled }">&nbsp;电子校园卡</span>
@@ -91,19 +91,6 @@
     <div class="info-margin"/>
     <div class="info-list">
       <div class="info-margin"/>
-      <div class="info-line" :disabled='disabled' @click="toUnfinished">
-        <image :src=picurl.ziyuanpic mode='aspectFit'/>
-        <div>
-          <span :class="{ 'list-disabled': !disabled }">&nbsp;资源荐购</span>
-          <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
-        </div>
-      </div>
-      <div class="info-margin">
-      </div>
-    </div>
-    <div class="info-margin"/>
-    <div class="info-list">
-      <div class="info-margin"/>
       <div class="info-line" @click="toSuggest" :disabled='disabled'>
         <image :src=picurl.jianyipic mode='aspectFit'/>
         <div>
@@ -129,6 +116,7 @@
 
 <script>
 import tipModal from '../components/modal/tipModal';
+import { getBorInfo } from '../api';
 
 export default {
   mpType: 'page',
@@ -199,6 +187,14 @@ export default {
   },
   onUnload() {
     this.showModal = false;
+  },
+  onLoad() {
+    const that = this;
+    getBorInfo({
+      session: that.$store.getters.getSession,
+    }).then((response) => {
+      that.user.name = response.result.name;
+    });
   },
   methods: {
     onClick() {

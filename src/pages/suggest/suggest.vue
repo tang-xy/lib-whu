@@ -89,7 +89,7 @@ export default {
   background-color: #f7f7f7;
   .suggest-text{
     width: 92vw;
-    height: 27vh;
+    height: 25vh;
     background-color: #FFFFFF;
     textarea{
       margin-left: 2%;

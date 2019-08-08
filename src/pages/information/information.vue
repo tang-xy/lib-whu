@@ -9,7 +9,7 @@
                 <image src='https://system.lib.whu.edu.cn/mp-static/331/姓名@3x.png'/>
                 <span>真实姓名:</span>
                 <div>
-                    <input type='text' @input='inputName' :value="userName"/>
+                    <input type='text' @input='inputName' :value="userName" disabled/>
                     <div/>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                 <image src='https://system.lib.whu.edu.cn/mp-static/331/博士帽@3x.png'/>
                 <span>专业:</span>
                 <div>
-                    <input type='text' @input="inputMajor" :value="major"/>
+                    <input type='text' @input="inputMajor" :value="major" />
                     <div/>
                 </div>
             </div>

@@ -69,6 +69,7 @@ export default {
     }).then((response) => {
       that.result = response.result;
       that.result['fist-visit-time'] = that.result['fist-visit-time'].slice(0, 19);
+      that.result['last-visit-time'] = that.result['last-visit-time'].slice(0, 19);
       const ctx = wx.createCanvasContext('canvas');
       that.drawPie(ctx);
       wx.hideLoading();
@@ -125,24 +126,28 @@ export default {
     height: 293rpx;
     top: 0;
     left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
     .entry-username{
-        position: absolute;
-        top: 23rpx;
-        left: 54rpx;
+        display: flex;
+        margin-top: 23rpx;
+        margin-left: 54rpx;
         font-size: 36rpx;
         color: #3a3a3a;
     }
     .entry-username-text{
-        position: absolute;
-        top: 37rpx;
-        left: 170rpx;
+        display: flex;
+        margin-top: 37rpx;
+        margin-left: 10rpx;
         font-size: 24rpx;
         color: #3a3a3a;
     }
     .entry-count{
         width: 750rpx;
         text-align: center;
-        padding-top: 108rpx;
+        padding-top: 50rpx;
         font-size: 72rpx;
         color: #5888d7;
     }
@@ -150,7 +155,6 @@ export default {
         width: 750rpx;
         text-align: center;
         font-size: 30rpx;
-        padding-top: 18rpx;
         color: #525252;
     }
 }

@@ -6,7 +6,10 @@
             <div>总欠款</div>
         </div>
         <div class="entry-count">{{result.balance}}元</div>
-        <div class="entry-count-text">您共有{{length}}笔欠款记录，尚有{{np_count}}笔欠款未结清，请尽快前往图书馆服务台结清欠款。 在线结算功能正在加紧开发中，敬请期待...</div>
+        <div class="entry-count-text" v-if="result.balance>=1.0">您共有{{length}}笔欠款记录，尚有{{np_count}}笔欠款未结清，图书馆已暂停您的外借、续借及预约等服务权限，请尽快前往图书馆服务台结清欠款。在线结算功能正在加紧开发中，敬请期待…</div>
+        <div class="entry-count-text" v-if="result.balance<1.0&&result.balance>0">您共有{{length}}笔欠款记录，尚有{{np_count}}笔欠款未结清，请保持良好的使用习惯，当总欠款超过1.00元，图书馆将暂停您的外借、续借及预约等服务权限。</div>
+        <div class="entry-count-text" v-if="result.balance<=0&&length>0">您共有{{length}}笔欠款记录，已全部结清，请继续保持良好的使用习惯~</div>
+        <div class="entry-count-text" v-if="length===0">您没有逾期欠款记录，请继续保持良好的使用习惯~</div>
       </div>
       <scroll-view
       class='scroll-list'
@@ -49,6 +52,7 @@ export default {
     }).then((response) => {
       that.result = response.result;
       that.length = that.result.detail.length;
+      that.np_count = 0;
       that.result.detail.map((element) => {
         const tmp = element;
         tmp.fine_info.date = that.formatDate(element.fine_info.date);

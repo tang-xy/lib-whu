@@ -3,9 +3,11 @@
   <training-card
   v-for='(item, index) in result'
   :key=index
-  :name=item.name
-  :author=item.author
-  :publish=item.publish
+  :theme=item.theme
+  :spealker=item.speaker
+  :time=item.time
+  :place=item.place
+  :content=item.content
   @click-card=onClickCard
   />
 </div>

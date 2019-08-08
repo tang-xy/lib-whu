@@ -60,13 +60,6 @@ export default {
       wx.navigateTo({ url });
     },
     toSeat() {
-      if (!this.$store.getters.getLibBind) {
-        let url;
-        if (this.$store.getters.getLogin) url = '/pages/login';
-        else url = '/pages/login?type=login';
-        wx.navigateTo({ url });
-        return;
-      }
       const url = '/pages/seatReserve';
       wx.navigateTo({ url });
     },
