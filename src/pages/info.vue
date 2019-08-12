@@ -189,7 +189,7 @@ export default {
     this.showModal = false;
   },
   onLoad() {
-    if (!this.$store.getters.getLibBind) { return }
+    if (!this.$store.getters.getLibBind) { return; }
     const that = this;
     getBorInfo({
       session: that.$store.getters.getSession,
