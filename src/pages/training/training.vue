@@ -12,10 +12,12 @@
     @scrolltolower=onScrollToBottom>
       <training-list :result=result[this.type] @click-card=onClickCard />
     </scroll-view>
+    <tip-modal :showModal="showModal" text='我们将在培训开始前一小时向您发送推送提醒' title='确定提醒？' @confirm=onConfirm @cancel=onCancel />
   </div>
 </template>
 
 <script>
+import tipModal from '../components/modal/tipModal';
 import trainingList from '../../components/list/trainingList';
 import { searchLib } from '../../api';
 
@@ -234,6 +236,9 @@ export default {
   methods: {
     onScrollToBottom() {
 
+    },
+    onConfirm() {
+      
     },
     onChoiceNotice() {
       this.type = 0;
