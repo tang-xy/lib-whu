@@ -114,6 +114,18 @@ export function searchLib(params) {
   });
 }
 
+export function training(params) {
+  return new Promise((resolve, reject) => {
+    request.get('/training/', params)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch(() => {
+        reject();
+      });
+  });
+}
+
 export function getRank(params) {
   return new Promise((resolve, reject) => {
     request.get('/libuser/bor_rank/', params)

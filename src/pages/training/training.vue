@@ -17,15 +17,25 @@
 </template>
 
 <script>
-import tipModal from '../components/modal/tipModal';
+import tipModal from '../../components/modal/tipModal';
 import trainingList from '../../components/list/trainingList';
-import { searchLib } from '../../api';
+import { training } from '../../api';
 
 export default {
   mpType: 'page',
   onLoad(options) {
     wx.setNavigationBarTitle({
       title: '培训日程',
+    });
+    const that = this;
+    training({
+      type: that.typeC,
+      session: that.$store.getters.getSession,
+    }).then((response) => {
+      if (response.count !== 0) {
+        that.result = response.results;
+      }
+      wx.hideLoading();
     });
   },
   data: {
@@ -216,6 +226,7 @@ export default {
   },
   components: {
     trainingList,
+    tipModal,
   },
   computed: {
     notice() {
@@ -228,9 +239,9 @@ export default {
       return this.type === 2;
     },
     typeC() {
-      if (this.type === 0) return 'N';
-      if (this.type === 1) return 'Z';
-      return 'P';
+      if (this.type === 0) return 'B';
+      if (this.type === 1) return 'X';
+      return 'S';
     },
   },
   methods: {
@@ -238,7 +249,6 @@ export default {
 
     },
     onConfirm() {
-      
     },
     onChoiceNotice() {
       this.type = 0;

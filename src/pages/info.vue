@@ -168,7 +168,7 @@ export default {
       t.text = '解除绑定';
       t.user = t.$store.getters.getLibUser;
     } else {
-      baseurl = 'https://system.lib.whu.edu.cn/mp-static/320/';
+      baseurl = 'https://system.lib.whu.edu.cn/mp-static/330/';
       t.disabled = false;
       t.text = '点击绑定';
       if (this.login) t.user = { name: '点击绑定' };
