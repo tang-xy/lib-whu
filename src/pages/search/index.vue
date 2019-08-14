@@ -1,7 +1,7 @@
 <template>
   <div class='bk-container'>
     <div class='title-container'>
-      <span>馆藏查询</span>
+      <span></span>
     </div>
     <div class='lang-switch'>
       <button id='cn' type='default' @click='onSwitchToCN' style='margin-left: 4.5vw;'>

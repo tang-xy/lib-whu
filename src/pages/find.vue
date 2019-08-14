@@ -25,19 +25,19 @@
       <button type='default' @click='toTraining'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/日程 (1)@3x.png' mode='aspectFit'/>
       </button>
+      <button type='default' @click='toPast'>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/视频 (1)@3x.png' mode='aspectFit'/>
+      </button>
       <button type='default' @click='toWeiKe'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/视频 (2) 副本@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toUnfinished'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/齿轮@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toUnfinished'>
-        <image src='https://system.lib.whu.edu.cn/mp-static/200/视频 (1)@3x.png' mode='aspectFit'/>
-      </button>
       <span>培训日程</span>
+      <span>往期培训</span>
       <span>小布微课</span>
       <span>使用攻略</span>
-      <span>往期培训</span>
     </div>
     <div class="find-tittle">
       <span>&nbsp;&nbsp;新生专栏&nbsp;</span>
@@ -55,7 +55,7 @@
       <button type='default' @click='toCurator'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/lingdao@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='onClickPic("https://system.lib.whu.edu.cn/game2018/web-mobile/index.html")'>
+      <button type='default' @click='toUnfinished'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/游戏@3x.png' mode='aspectFit'/>
       </button>
       <span>关于本馆</span>
@@ -73,24 +73,25 @@
       <button type='default' @click='onClickPic("https://librarywap.koolearn.com/encryptedLogin/5769d078bb186da8")'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/图层 2@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='onClickPic("https://whdx.w.chineseall.cn/index")'>
-        <image src='https://system.lib.whu.edu.cn/mp-static/200/图层 3@3x.png' mode='aspectFit'/>
+      <button type='default' @click='toUnfinished'>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/gengduo@2x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='onClickPic("https://web.libvideo.com/index.html")'>
-        <image src='https://system.lib.whu.edu.cn/mp-static/200/图层 4@3x.png' mode='aspectFit'/>
+      <button type='default' @click='toUnfinished'>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/gengduo@2x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toUnfinished'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/gengduo@2x.png' mode='aspectFit'/>
       </button>
       <span>&ensp;新东方&ensp;</span>
-      <span>书香中国</span>
-      <span>知识视界</span>
-      <span>&ensp;&ensp;更多&ensp;&ensp;</span>
+      <span>敬请期待</span>
+      <span>敬请期待</span>
+      <span>敬请期待</span>
     </div>
   </div>
 </template>
 
 <script>
+
 import { mapState, mapMutations } from 'vuex';
 import { getActivity } from '../api';
 
@@ -145,6 +146,10 @@ export default {
         return;
       }
       const url = '/pages/training';
+      wx.navigateTo({ url });
+    },
+    toPast() {
+      const url = '/pages/pastTraining';
       wx.navigateTo({ url });
     },
     toUnfinished() {

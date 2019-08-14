@@ -4,10 +4,10 @@
       <image src='https://system.lib.whu.edu.cn/mp-static/100/1_100首页.png'/>
     </div>
     <div class='index-search'>
-      <button type='default' @click='onSearch'>
+      <div type='default' @click='onSearch'>
         <image src='https://system.lib.whu.edu.cn/mp-static/100/sousuo@3x.png'/>
         <span>&nbsp;点击搜索馆藏资源</span>
-      </button>
+      </div>
     </div>
     <div class='index-command'>
       <image src='https://system.lib.whu.edu.cn/mp-static/100/个性@3x.png'/>
@@ -119,7 +119,7 @@ export default {
     margin-bottom: 2vh;
     width: 96vw;
     height: 7vh;
-    button{
+    div{
       background-color: #E4E4E4;
       border-color: #e6e6e6;
       border-width: 1em;
@@ -130,9 +130,11 @@ export default {
       display: flex;
       justify-content: left;
       align-items: center;
+      font-size: 27rpx;
       image{
-        height: 4vh;
-        width: 4vh;
+        height: 28rpx;
+        width: 28rpx;
+        margin-left: 20rpx;
       }
     }
   }

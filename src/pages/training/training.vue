@@ -1,23 +1,25 @@
 <template>
   <div class='container'>
     <div class='list-type'>
-      <button class='list-choice' :class="{ 'list-choice-selected': notice }" @click=onChoiceNotice>毕业指导</button>
-      <button class='list-choice' :class="{ 'list-choice-selected': source }" @click=onChoiceSource>学习助手</button>
-      <button class='list-choice' :class="{ 'list-choice-selected': classInfo }" @click=onChoiceClass>实用软件</button>
+      <button class='list-choice' :class="{ 'list-choice-selected': notice }" @click=onChoiceNotice>学习助手</button>
+      <button class='list-choice' :class="{ 'list-choice-selected': source }" @click=onChoiceSource>实用软件</button>
+      <button class='list-choice' :class="{ 'list-choice-selected': classInfo }" >敬请期待</button>
     </div>
     <scroll-view
     class='scroll-list'
     scroll-y=true
     enable-back-to-top=true
     @scrolltolower=onScrollToBottom>
-      <training-list :result=result[this.type] @click-card=onClickCard />
+      <training-list :result=result[this.type] @bell=onB />
     </scroll-view>
-    <tip-modal :showModal="showModal" text='我们将在培训开始前一小时向您发送推送提醒' title='确定提醒？' @confirm=onConfirm @cancel=onCancel />
+    <tip-modal :showModal="showModal" :text="text" :title="title" @confirm=onConfirm @cancel=onCancel />
+    <false-modal :showModal="showFalse" text="当前距离培训开始超过7天，暂不支持设置提醒" title="设置失败" @confirm=onCancelFalse />
   </div>
 </template>
 
 <script>
 import tipModal from '../../components/modal/tipModal';
+import falseModal from '../../components/modal/falseModal';
 import trainingList from '../../components/list/trainingList';
 import { training } from '../../api';
 
@@ -28,91 +30,27 @@ export default {
       title: '培训日程',
     });
     const that = this;
-    training({
-      type: that.typeC,
-      session: that.$store.getters.getSession,
-    }).then((response) => {
-      if (response.count !== 0) {
-        that.result = response.results;
+    // training({
+    //   type: that.typeC,
+    //   session: that.$store.getters.getSession,
+    // }).then((response) => {
+    //   if (response.count !== 0) {
+    //     that.result = response.results;
+    //   }
+    //   wx.hideLoading();
+    // });
+    this.result.map((e) => {
+      let i = 0;
+      for (i = 0; i < e.length; i += 1) {
+        e[i].index = i;
+        e.selected = false;
       }
-      wx.hideLoading();
+      return e;
     });
   },
   data: {
     result: [
       [
-        {
-          theme: '撰写毕业论文时，如何利用图书馆的资源和服务',
-          time: '2019年3月1日 18.30-22.00',
-          place: '总馆D栋117培训室',
-          speaker: '常定姁（咨询馆员）',
-          content: '又是一年毕业季，你是否正在忙着写毕业论文呢？不妨来看看图书馆有哪些资源和服务能够为你所用吧！本讲将从撰写毕业论文的角度出发，介绍如何查找图书馆资源，以及图书馆有哪些服务能为你的毕业论文写作提供帮助。',
-        },
-        {
-          theme: '如何利用电子资源助力论文及科研选题',
-          time: '2019年9月8日 18:30-20:00',
-          place: '总馆D栋117培训室',
-          speaker: '胡永生（咨询馆员）',
-          content: '您还在为毕业论文如何撰写发愁么？图书馆林林总总的电子资源你还一头雾水么？我们为你答疑解惑！本课程将为你讲述课题选题原则和途径，检索结果的调整与处理，检出文献阅读分析技巧，让图书馆的电子资源能为你毕业论文写作提供帮助。',
-        },
-        {
-          theme: '论文写作助手—— NoteExpress个人文献管理软件介绍',
-          time: '2019年9月15日 18:30-20:00',
-          place: '总馆D栋117培训室',
-          speaker: '陈进（咨询馆员）',
-          content: '写论文或做科研时参考文献太多太乱？试试NoteExpress吧！NoteExpress是目前流行的参考文献管理工具软件，其核心功能是帮助读者在整个科研流程中高效利用电子资源。本讲将介绍NoteExpress个人文献管理软件的特点及使用方法。',
-        },
-        {
-          theme: 'NoteExpress个人文献管理软件介绍',
-          time: '2019年9月18日 18:30-20:00',
-          place: '工学分馆四楼教学培训室',
-          speaker: '汪秀丽（咨询馆员）',
-          content: 'NoteExpress是目前流行的参考文献管理工具软件，其核心功能是帮助读者在整个科研流程中高效利用电子资源。本讲将介绍NoteExpress个人文献管理软件的特点及使用方法。',
-        },
-        {
-          theme: '参考文献管理软件NoteExpress简明教程',
-          time: '2019年9月19日 18:30-20:00',
-          place: '信息科学分馆五楼培训室',
-          speaker: '龚芙蓉（学科馆员）',
-          content: '珞樱缤纷毕业季，亲爱的同学，你的毕业论文是否也开得如樱花一般绚丽？是否参考文献还处在复制粘贴的低端时代？请到图书馆来，让我们给你一份完美的答卷！本讲座讲解国内参考文献管理软件NoteExpress的检索、管理、写作、分析四种功能，教你如何轻松边写作边插入参考文献以及如何管理撰写毕业论文所需的专业核心文献等。',
-        },
-        {
-          theme: '论文写作必备——Word应用技巧介绍',
-          time: '2019年9月22日 18:30-20:00',
-          place: '总馆D栋117培训室（D栋一楼电梯口旁）',
-          speaker: '陈阵（校友）',
-          content: '又是一年毕业论文写作季，掌握一些必要的Word应用技巧，能够显著提升论文的写作效率：同时也对将来的工作大有裨益。打开Word，也许你看到的只是空荡荡的界面，但Word的精髓是“大盈若冲、其用无穷”，让我们通过这节课一起领悟。',
-        },
-        {
-          theme: '全文获取?So easy!简单高效的全文获取方法介绍',
-          time: '2019年9月29日 18:30-20:00',
-          place: '总馆D栋117培训室（D栋一楼电梯口旁）',
-          speaker: '廖莎（馆际互借员）',
-          content: '找到想要的文献，却发现无法下载全文？试试文献传递吧！本讲座将告诉您当图书馆没有收藏您所需的文献时，该如何查找并获取文献原文。',
-        },
-        {
-          theme: '尖叫吧，HR!----求职简历制作方法小诀窍',
-          time: '2019年10月12日 18:30-20:00',
-          place: '总馆D栋117培训室（D栋一楼电梯口旁）',
-          speaker: '朱丹（宣传馆员）',
-          content: '一个美好的人生从一份满意的工作开始，一份满意的工作从一份动人的简历开始，今天的你还在写枯燥乏味的简历吗，还不快点加入我的战队，让我教你几个简历制作的小诀窍，从标题到内容，轻松两步让HR为你尖叫！准备好接大招吧！',
-        },
-        {
-          theme: '幻灯片速成技巧及心得感悟',
-          time: '2019年10月26日 18:30-20:00',
-          place: '总馆D栋117培训室（D栋一楼电梯口旁）',
-          speaker: '陈阵（校友）',
-          content: '答辩在即，你的答辩幻灯准备好了吗？职场沉浮，你是否曾因求职幻灯无法客观表述自己的实力而被用人单位婉拒？是否还在套用几年前师兄留下的PPT模板？是否苦求提升PPT技术而不得其法？是否订阅了许多PPT课程却因拖延症发作无暇研习？本讲座将从战术层面、分八个环节讲解如何包装你的PPT，如何避免常犯的错误；将从战略层面、分五个部分讲解如何迅速掌握各种技巧，如何养成幻灯思维；最后还有各种技巧演示、心得分享和互动环节，精彩不容错过！',
-        },
-      ],
-      [
-        {
-          theme: '医学文献检索指南',
-          time: '2019年3月1日 18:30-20:00',
-          place: '医学分馆电子阅览室',
-          speaker: '汪雁（学科馆员）',
-          content: '介绍医学相关文献数据库的概况、检索途径和方法，以及精准查找和获取文献原文的技巧。',
-        },
         {
           theme: '国内外学位论文的查找',
           time: '2019年9月4日 18:30-20:00',
@@ -179,13 +117,6 @@ export default {
       ],
       [
         {
-          theme: 'Excel应用小技巧',
-          time: '2019年4月1日 18:30-20:00',
-          place: '工学分馆四楼教学培训室',
-          speaker: '李鹏（学科馆员）',
-          content: '以Excel2007为蓝本，介绍数据输入和数据处理过程中的小技巧、小窍门。',
-        },
-        {
           theme: 'Excel的几个高级实用技巧',
           time: '2019年10月9日 18:30-20:00',
           place: '信息科学分馆五楼培训室',
@@ -223,10 +154,16 @@ export default {
       ],
     ],
     type: 0,
+    showModal: false,
+    showFalse: false,
+    key: -1,
+    text: '我们将在培训开始前一小时向您发送推送提醒',
+    title: '确定提醒？',
   },
   components: {
     trainingList,
     tipModal,
+    falseModal,
   },
   computed: {
     notice() {
@@ -249,6 +186,8 @@ export default {
 
     },
     onConfirm() {
+      this.showModal = false;
+      this.result[this.type][this.key].selected = !this.result[this.type][this.key].selected;
     },
     onChoiceNotice() {
       this.type = 0;
@@ -258,6 +197,27 @@ export default {
     },
     onChoiceClass() {
       this.type = 2;
+    },
+    onB(key) {
+      if (true) {
+        this.showFalse = true;
+        return;
+      }
+      if (this.result[this.type][key].selected) {
+        this.text = '取消提醒';
+        this.title = '';
+      } else {
+        this.text = '我们将在培训开始前一小时向您发送推送提醒';
+        this.title = '确定提醒？';
+      }
+      this.showModal = true;
+      this.key = key;
+    },
+    onCancel() {
+      this.showModal = false;
+    },
+    onCancelFalse() {
+      this.showFalse = false;
     },
   },
   onReachBottom() {

@@ -5,10 +5,14 @@
       scroll-y=true
       enable-back-to-top=true
       @scrolltolower=onScrollToBottom>
-      <div class="list" v-for='(item, index) in result' :key=item.index>
+      <div class="list" v-for='(item, index) in result' :key=index>
         <div class="title">{{item.title}}</div>
-        <div class="list" v-for='(item2, index2) in item' :key=item2.index>
+        <div class="list2" v-for='(item2, index2) in item.data' :key=index2>
           <div class="title2">{{item2.title2}}</div>
+          <div class="con" v-for='(item3, index3) in item2.context' :key=index3>
+            <div class="title3">{{item3.title3}}</div>
+            <div class="text">{{item3.text}}</div>
+          </div>
         </div>
       </div>
       </scroll-view>
@@ -74,4 +78,32 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.use{
+  margin-left: 40rpx;
+  margin-top: 46rpx;
+  margin-right: 50rpx;
+  .list{
+    margin-bottom: 72rpx;
+  }
+  .title{
+    font-size: 48rpx;
+    color: #5888D7;
+  }
+  .title2{
+    font-weight: 700;
+    font-size: 30rpx;
+    color: #606060;
+    border-bottom-color: #B4B4B4;
+    border-bottom-width: 2rpx;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+  }
+  .con{
+    background-color: #E9E9E9;
+    font-size: 24rpx;
+    .title3{
+    font-weight: 700;
+    }
+  }
+}
 </style>

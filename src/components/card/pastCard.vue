@@ -1,5 +1,5 @@
 <template>
-  <div class='training-card' :class="{ 'selected': isSelected }">
+  <div class='past-card' :class="{ 'selected': isSelected }">
     <div class='author'>
       <span class='key'>主题：</span>
       <span class='value'>{{theme}}</span>
@@ -25,10 +25,6 @@
         <image :src="picpath" />
       </div>
       <div class="event" >
-        <div class='bell' @click=toBell>
-          <image :src="bellpath" />
-        </div>
-        <div class="tip" @click=toBell>提醒</div>
       </div>
     </div>
     <div class="content" v-if="isSelected">{{content}}</div>
@@ -37,7 +33,7 @@
 
 <script>
 export default {
-  name: 'trainingCard',
+  name: 'pastCard',
   props: {
     keys: {
       type: Number,
@@ -113,7 +109,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.training-card{
+.past-card{
   border: #BFBFBF;
   border-radius: 17rpx;
   width: 636rpx;

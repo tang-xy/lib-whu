@@ -1,6 +1,6 @@
 <template>
-<div class='training-list'>
-  <training-card
+<div class='past-list'>
+  <past-card
   v-for='(item, index) in result'
   :key=index
   :keys=index
@@ -16,12 +16,12 @@
 </template>
 
 <script>
-import trainingCard from '../card/trainingCard';
+import pastCard from '../card/pastCard';
 
 export default {
-  name: 'trainingList',
+  name: 'pastList',
   components: {
-    trainingCard,
+    pastCard,
   },
   props: {
     result: {
@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.training-list{
+.past-list{
   margin: 0;
   height: 100%;
 }
