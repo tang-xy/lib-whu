@@ -13,19 +13,6 @@
     <div class="info-margin"/>
     <div class="info-list">
       <div class="info-margin"/>
-      <div class="info-line" @click="toCard" :disabled='disabled'>
-        <image :src=picurl.cardpic mode='aspectFit'/>
-        <div>
-          <span :class="{ 'list-disabled': !disabled }">&nbsp;电子校园卡</span>
-          <image src='https://system.lib.whu.edu.cn/mp-static/320/更多 (1)@3x.png' mode='aspectFit'/>
-        </div>
-      </div>
-      <div class="info-margin">
-      </div>
-      <div class="info-underscores">
-        <view class="divLine"></view>
-      </div>
-      <div class="info-margin"/>
       <div class="info-line" :disabled='disabled' @click="toFine">
         <image :src=picurl.zhangdanpic mode='aspectFit'/>
         <div>

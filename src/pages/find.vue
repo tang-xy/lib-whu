@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class='education-button-container'>
-      <button type='default' @click='toTraining'>
+      <button type='default' @click='toUnfinished'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/日程 (1)@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toPast'>
@@ -55,7 +55,7 @@
       <button type='default' @click='toCurator'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/lingdao@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toUnfinished'>
+      <button type='default' @click='onClickPic("http://system.lib.whu.edu.cn/game2018/web-mobile/index.html")'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/游戏@3x.png' mode='aspectFit'/>
       </button>
       <span>关于本馆</span>
@@ -73,18 +73,18 @@
       <button type='default' @click='onClickPic("https://librarywap.koolearn.com/encryptedLogin/5769d078bb186da8")'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/图层 2@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toUnfinished'>
-        <image src='https://system.lib.whu.edu.cn/mp-static/200/gengduo@2x.png' mode='aspectFit'/>
+      <button type='default' @click='onClickPic("https://web.libvideo.com/index.html")'>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/图层 4@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='toUnfinished'>
-        <image src='https://system.lib.whu.edu.cn/mp-static/200/gengduo@2x.png' mode='aspectFit'/>
+      <button type='default' @click='onClickPic("https://whdx.w.chineseall.cn/")'>
+        <image src='https://system.lib.whu.edu.cn/mp-static/200/图层 3@3x.png' mode='aspectFit'/>
       </button>
       <button type='default' @click='toUnfinished'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/gengduo@2x.png' mode='aspectFit'/>
       </button>
       <span>&ensp;新东方&ensp;</span>
-      <span>敬请期待</span>
-      <span>敬请期待</span>
+      <span>知识视界</span>
+      <span>书香中国</span>
       <span>敬请期待</span>
     </div>
   </div>
