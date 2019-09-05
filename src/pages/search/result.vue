@@ -88,7 +88,7 @@ export default {
       searchLib({
         session: that.$store.getters.getSession,
         set_num: that.set_number,
-        entry: that.entry,
+        entry: that.result.length + 1,
         lang: that.lang,
       }).then((r) => {
         if (r.status === 0) {
@@ -96,11 +96,14 @@ export default {
             wx.showToast({ title: '没有更多了', icon: 'none' });
           }
           let i = 0;
+          const tmpres = [];
           for (i = 0; i < r.result.length; i += 1) {
             const temp = r.result[i];
-            temp.index = that.entry - 1;
-            that.result.push(temp);
+            temp.index = that.result.length + i;
+            tmpres.push(temp);
           }
+          that.result = that.result.concat(tmpres);
+          console.log(that.result);
         }
         wx.hideLoading();
       });
