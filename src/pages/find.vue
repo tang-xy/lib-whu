@@ -55,7 +55,7 @@
       <button type='default' @click='toCurator'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/lingdao@3x.png' mode='aspectFit'/>
       </button>
-      <button type='default' @click='onClickPic("http://system.lib.whu.edu.cn/game2018/web-mobile/index.html")'>
+      <button type='default' @click='onClickPic("https://system.lib.whu.edu.cn/game2018/web-mobile/index.html")'>
         <image src='https://system.lib.whu.edu.cn/mp-static/200/游戏@3x.png' mode='aspectFit'/>
       </button>
       <span>关于本馆</span>
