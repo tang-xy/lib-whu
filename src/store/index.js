@@ -52,14 +52,14 @@ const store = new Vuex.Store({
       commit('setLibUser', par.user);
       wx.setStorageSync('session', session);
       if (session === '') {
-        wx.navigateTo({ url: '/pages/login?type=login' });
+        // wx.navigateTo({ url: '/pages/login?type=login' });
         return;
       }
       vertifySession({ session }).then((response) => {
         console.log(par.user);
         console.log(response);
         if (!response.login) {
-          wx.navigateTo({ url: '/pages/login?type=login' });
+          // wx.navigateTo({ url: '/pages/login?type=login' });
           return;
         }
         wx.checkSession({

@@ -56,6 +56,7 @@ export default {
   data: {
     result: [],
     all: false,
+    tempres: [],
   },
   components: {
     reserveList,
@@ -90,6 +91,7 @@ export default {
             success.push(element.book_info.title);
             wx.showToast({ title: `${element.book_info.title}取消成功`, icon: 'none' });
             that.result.splice(element.index, 1);
+            that.result = that.result.concat([]);
           } else {
             fail.push(element.book_info.title);
             wx.showToast({ title: `${element.book_info.title}取消失败`, icon: 'none' });

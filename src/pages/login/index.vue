@@ -1,8 +1,11 @@
 <template>
   <div class='container'>
     <image class='bk' src='https://system.lib.whu.edu.cn/mp-static/340/上方@3x.png' mode='aspectFill' :style="{ height: picHeight}" />
-    <button v-if=login type='default' open-type='getUserInfo' @getuserinfo='getUserInfo' @click='wxlogin'>
+    <button v-if=login type='default' open-type='getUserInfo' :style="{ bottom: '20vh'}" @getuserinfo='getUserInfo' @click='wxlogin'>
       <span>微信快速登录</span>
+    </button>
+    <button  v-if=login type='default' @click='exit'>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;以后再说</span>
     </button>
     <div class='bind-container' v-if=!login>
       <div class='input-container'>

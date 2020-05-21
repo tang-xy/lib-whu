@@ -35,7 +35,7 @@
       </scroll-view>
     </div>
     <success-modal :showModal="showModal" text='可前往我的-预约结果查看预约详情' title='预约成功' @confirm=onConfirm @cancel=onCancel buttontext='查看'/>
-    <pick-modal :showModal='pickModal' title='预约成功' @confirm=onClickModal @cancel=onCancel />
+    <pick-modal :showModal='pickModal' title='预约成功' @confirm=onClickModal @cancel=onCancel :place=place />
   </div>
 </template>
 
@@ -96,6 +96,7 @@ export default {
     showModal: false,
     pickModal: false,
     bar_code: '',
+    place: -1,
   },
   components: {
     successModal,
@@ -117,7 +118,7 @@ export default {
       this.pickModal = false;
     },
     onClickModal(pickup) {
-      const pick = ['WL', 'XX', 'GX', 'YX'];
+      const pick = ['WL', 'GX', 'XX', 'YX'];
       const that = this;
       reserveBook({
         session: that.$store.getters.getSession,
@@ -139,6 +140,15 @@ export default {
         return;
       }
       this.bar_code = p.key;
+      if (p.place[0] === '总') {
+        this.place = 0;
+      } else if (p.place[0] === '工') {
+        this.place = 1;
+      } else if (p.place[0] === '信') {
+        this.place = 2;
+      } else if (p.place[0] === '医') {
+        this.place = 3;
+      }
       this.pickModal = true;
     },
     onShare() {

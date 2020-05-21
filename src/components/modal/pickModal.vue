@@ -7,7 +7,7 @@
             <div class="modal-icon"
              v-for='(item, index) in pick'
              :key=index
-             :class="{ 'selected': item.index===selected, 'tmp': item.index===0}"
+             :class="{ 'selected': item.index===selected, 'tmp': item.index===0, 'none': item.index===place}"
              @click=onClickModal(item.index) >
                 <image :src="picurl[item.index].url" mode='aspectFit'>
                     <div>{{item.name}}</div>
@@ -30,6 +30,17 @@
 <script>
 export default {
   name: 'PickModal',
+  watch: {
+    showModal(val) {
+      if (val) {
+        if (this.place === 0) {
+          this.selected = 1;
+        } else {
+          this.selected = 0;
+        }
+      }
+    },
+  },
   props: {
     showModal: {
       type: Boolean,
@@ -50,6 +61,11 @@ export default {
       type: Number,
       required: true,
       default: 0,
+    },
+    place: {
+      type: Number,
+      required: true,
+      default: -1,
     },
     pick: {
       type: Array,
@@ -88,6 +104,8 @@ export default {
       });
     },
   },
+  onShow() {
+  },
   methods: {
     showDialogBtn() {
       this.showModal = true;
@@ -125,7 +143,7 @@ export default {
     display: flex;
 }
 .modal-icon{
-    margin-left: 24rpx;
+    margin-left: 67rpx;
     margin-top: 63rpx;
     width: 136rpx;
     height: 136rpx;
@@ -156,6 +174,9 @@ export default {
             color: #ffffff;
         }
     }
+}
+.none{
+  display: none;
 }
 .tmp{
     image{

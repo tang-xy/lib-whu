@@ -100,7 +100,7 @@ export default {
     onReserve() {
       const that = this;
       console.log(that);
-      this.$emit('click-reserve', { key: that.code, pick: that.libIndex });
+      this.$emit('click-reserve', { key: that.code, pick: that.libIndex, place: that.position });
     },
     onRFID() {
       const that = this;

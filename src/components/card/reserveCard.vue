@@ -8,6 +8,7 @@
     </div>
     <div class='info'>
       <span class='time'>{{fromTime}}至{{toTime}}</span>
+      <span class='time'>{{sta}}</span>
     </div>
     <button class='ratio'>
       <image :class="{ 'ratio-selected': isSelected }" src='https://system.lib.whu.edu.cn/mp-static/131/椭圆 11@3x.png'/>
@@ -23,6 +24,11 @@ export default {
       type: Number,
       required: true,
       default: 0,
+    },
+    status: {
+      type: String,
+      required: true,
+      default: '',
     },
     name: {
       type: String,
@@ -61,10 +67,20 @@ export default {
     index() {
       return (this.key + 1).toString();
     },
+    sta() {
+      if (this.status === 'In process') {
+        return '正在处理';
+      }
+      return '处理完成';
+    },
   },
   methods: {
     onClick() {
-      this.$emit('click');
+      if (this.sta === '正在处理') {
+        this.$emit('click');
+      } else {
+        wx.showToast({ title: '您的预约请求已完成处理，不可取消', icon: 'none' });
+      }
     },
   },
 };

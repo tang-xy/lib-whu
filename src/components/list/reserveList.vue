@@ -7,6 +7,7 @@
   :author=item.book_info.author
   :position=item.hold_info.pickup_loc
   :from-time=item.hold_info.request_date
+  :status=item.hold_info.status
   :to-time=item.hold_info.end_date
   :is-selected=item.isSelected
   @click=onClickCard(item.index)
